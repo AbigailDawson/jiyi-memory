@@ -78,7 +78,7 @@ END: The game ends when the board has been cleared of all cards.
 
 8. Write a checkForMatch function.
     This function will be called on the 2nd click of each turn. 
-    
+
     - If the clicked card and the previously clicked card show properties of the same card object, they are a match.
 
 9. Write the clear board status logic.
