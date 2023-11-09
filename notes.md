@@ -20,7 +20,7 @@ PLAY: When the player clicks a card, it will "flip", displaying either an Englis
 
 END: The game ends when the board has been cleared of all cards.
 
-**- Scoring -**
+**- Scoring (might include as additional feature later) -**
 The best possible score for the game is the minimum number of turns needed to clear the board (number of cards / 2). The player's score will be calculated based on how many turns they took to clear the board in comparison to the best possible score. The player will be shown some kind of message upon clearing the board reflecting this score.
 
 **- Additional Features -**
