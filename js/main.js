@@ -46,13 +46,23 @@ let board = [
     [0, 0, 0, 0, 0]
 ]
 
-// let rndCard = deck.cards[Math.floor(Math.random() * deck.cards.length)];
+// iterate over the array of cards, assign each card 2 random indexes in the board array. if that index is not 0 (if it's already taken) assign another index to it
 
-board.forEach((colArr, i) => {
-    colArr.forEach((cellVal, j) => {
-        board[i][j] = deck.cards[Math.floor(Math.random() * deck.cards.length)];;
-    });
-});
+board[0][1]
+
+let rndRowIdx = Math.floor(Math.random() * board.length);
+let rndColIdx = Math.floor(Math.random() * board[0].length);
+board[rndRowIdx][rndColIdx];
+
+// deck.cards.forEach((card) => {
+
+// })
+
+// board.forEach((colArr, i) => {
+//     colArr.forEach((cellVal, j) => {
+//         board[i][j] = deck.cards[Math.floor(Math.random() * deck.cards.length)];
+//     });
+// });
 
 
 
