@@ -74,8 +74,8 @@ function handleCardFlip(evt) {
     } else if (clickedCard.flipped === true) {
         return;
     }
-    
-    
+
+    render();
 }
 
 function render() {
@@ -91,7 +91,8 @@ function renderBoard() {
             if (card.flipped === false) {
                 cellEl.style.backgroundColor = '#a9def9';
             } else if (card.flipped === true) {
-                // display either card.char OR card.meaning
+                cellEl.style.backgroundColor = '#fff';
+                cellEl.innerText = card.meaning;
             }
         })
     })
