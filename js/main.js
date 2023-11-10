@@ -103,7 +103,7 @@ function renderBoard() {
                 cellEl.style.backgroundColor = '#a9def9';
             } else if (card.flipped === true) {
                 cellEl.style.backgroundColor = '#fff';
-                cellEl.innerText = card.meaning;
+                cellEl.innerText = card.text;
             }
         })
     })
@@ -121,23 +121,19 @@ function init() {
         [0, 0, 0, 0, 0]
     ]
     
-    // for each card object, assign to 2 random board indices
-    // deck.cards.forEach((card) => {
-    //     let rndRowIdx = Math.floor(Math.random() * board.length);
-    //     let rndColIdx = Math.floor(Math.random() * board[0].length);
-    //     let rndRowIdx2 = Math.floor(Math.random() * board.length);
-    //     let rndColIdx2 = Math.floor(Math.random() * board[0].length);
-    //     while(board[rndRowIdx][rndColIdx] !== 0) {
-    //         rndRowIdx = Math.floor(Math.random() * board.length);
-    //         rndColIdx = Math.floor(Math.random() * board[0].length);    
-    //     }
-    //     board[rndRowIdx][rndColIdx] = card;
-    //     while(board[rndRowIdx2][rndColIdx2] !== 0) {
-    //         rndRowIdx2 = Math.floor(Math.random() * board.length);
-    //         rndColIdx2 = Math.floor(Math.random() * board[0].length);    
-    //     }
-    //     board[rndRowIdx2][rndColIdx2] = card;
-    // });
+    // for each card object, assign a random board index
+    deck.cards.forEach((card) => {
+        let rndRowIdx = Math.floor(Math.random() * board.length);
+        let rndColIdx = Math.floor(Math.random() * board[0].length);
+
+        while(board[rndRowIdx][rndColIdx] !== 0) {
+            rndRowIdx = Math.floor(Math.random() * board.length);
+            rndColIdx = Math.floor(Math.random() * board[0].length);    
+        }
+
+        board[rndRowIdx][rndColIdx] = card;
+
+    });
 
     turns = 0;
 
