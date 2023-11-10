@@ -57,14 +57,25 @@ document.querySelector('.board').addEventListener('click', handleCardFlip);
 
 function handleCardFlip(evt) {
     const cellIdx = boardEls.indexOf(evt.target);
+
     // gaurd - don't listen to a click between the cards
     if (cellIdx === -1) return;    
-    // get board index from id
+
+    // get clicked card object from event target
     const cardIdx = String(evt.target.id).split('');
     const cardColIdx = cardIdx[1];
     const cardRowIdx = cardIdx[3];
-    firstPick = board[cardColIdx][cardRowIdx]
-    console.log(firstPick);
+    let clickedCard = board[cardColIdx][cardRowIdx];
+    
+    // Check if clicked card has already been flipped; if not, set firstPick to clickedCard and change flipped status to true
+    if (clickedCard.flipped === false) {
+        clickedCard.flipped = true;
+        firstPick = clickedCard;
+    } else if (clickedCard.flipped === true) {
+        return;
+    }
+    
+    
 }
 
 function render() {
