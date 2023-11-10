@@ -39,20 +39,22 @@ deck.newCard('貓', 'cat', false);
 deck.newCard('狗', 'dog', false);
 deck.newCard('夢', 'dream', false);
 
-board = [
+let board = [
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0]
 ]
 
-let rndIdx = deck.cards[Math.floor(Math.random() * deck.cards.length)];
+// let rndCard = deck.cards[Math.floor(Math.random() * deck.cards.length)];
 
-board.forEach((column, idx) => {
-    column.forEach((value, idx) => {
-        value = rndIdx;
+board.forEach((colArr, i) => {
+    colArr.forEach((cellVal, j) => {
+        board[i][j] = deck.cards[Math.floor(Math.random() * deck.cards.length)];;
     });
 });
+
+
 
 /*----- cached elements -----*/
 /*----- event listeners -----*/
