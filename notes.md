@@ -94,3 +94,50 @@ END: The game ends when the board has been cleared of all cards.
         - Run the render function to affect any necessary changes.
 
 QUESTION: Which things go under the event listener vs. the render function?
+
+
+1. Setup
+    - shuffle the cards
+        * update cards state
+    - place facedown in 4x5 grid
+        * take cards from the cards array and assign into board arrays
+        * renderBoard() will use the board array to update DOM (all cards will start as 'flipped: false')
+    - start a timer (icebox)
+
+2. Play the game
+    - choose a card
+        * turn the card over
+            + update the 'flipped' property of that card object to true
+            + update firstPick to store that card object temporarily
+            + renderBoard() will update the DOM to reflect the new 'flipped' status of this card on the board
+    - choose another card
+        * turn the card over
+            + update the 'flipped' property of that card object to true
+            + renderBoard() will update the DOM to reflect the new 'flipped' status of this card on the board
+    - check if the cards match
+            + check whether the card object that has just been clicked matches the card object stored in firstPick
+        * if they match, remove them from the board
+            + renderBoard() will update the DOM to reflect 2 empty spaces where the cards were removed
+            + increment turns by 1
+        * if they don't match, flip both back over
+            + update the 'flipped' property of that card object to false
+            + renderBoard() will update the DOM to reflect the unflipped state of all the cards
+            + increment turns by 1
+    - if all cards have been removed from the board:
+        * game is over
+        * render a message based on a score
+            + calcScore() ? new function  to determine the score based on number of turns
+            + renderMessage() will update the dom with a message
+
+Possible state:
+1. cards (array of card objects - include a 'flipped' property)
+2. board (2D array)
+3. firstPick (a card object)
+4. turns (num)
+
+Possible functions:
+1. render()
+    renderBoard()
+    renderMessage()
+
+2. calcScore()
