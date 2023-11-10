@@ -41,6 +41,7 @@ deck.newCard('夢', 'dream', false);
 
 let board;
 let turns;
+let firstPick;
 
 init();
 
@@ -57,7 +58,13 @@ document.querySelector('.board').addEventListener('click', handleCardFlip);
 function handleCardFlip(evt) {
     const cellIdx = boardEls.indexOf(evt.target);
     // gaurd - don't listen to a click between the cards
-    if (cellIdx === -1) return;
+    if (cellIdx === -1) return;    
+    // get board index from id
+    const cardIdx = String(evt.target.id).split('');
+    const cardColIdx = cardIdx[1];
+    const cardRowIdx = cardIdx[3];
+    firstPick = board[cardColIdx][cardRowIdx]
+    console.log(firstPick);
 }
 
 function render() {
