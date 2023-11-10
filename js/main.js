@@ -6,9 +6,9 @@
 // Create an array of instances of a class: https://stackoverflow.com/questions/52377344/javascript-array-of-instances-of-a-class
 
 class Card {
-    constructor(char, meaning, flipped) {
-        this.char = char;
-        this.meaning = meaning;
+    constructor(id, text, flipped) {
+        this.id = id;
+        this.text = text;
         this.flipped = flipped;
     }
 }
@@ -17,8 +17,8 @@ class Cards {
     constructor() {
         this.cards = [];
     }
-    newCard(char, meaning, flipped) {
-        let card = new Card(char, meaning, flipped);
+    newCard(id, text, flipped) {
+        let card = new Card(id, text, flipped);
         this.cards.push(card);
         return card;
     }
@@ -28,16 +28,27 @@ class Cards {
 }
 
 let deck = new Cards(); // deck.cards is the array
-deck.newCard('愛', 'love', false);
-deck.newCard('書', 'book', false);
-deck.newCard('國', 'country', false);
-deck.newCard('家', 'family', false);
-deck.newCard('學', 'learn', false);
-deck.newCard('吃', 'eat', false);
-deck.newCard('喝', 'drink', false);
-deck.newCard('貓', 'cat', false);
-deck.newCard('狗', 'dog', false);
-deck.newCard('夢', 'dream', false);
+deck.newCard('love', 'love', false);
+deck.newCard('book', 'book', false);
+deck.newCard('country', 'country', false);
+deck.newCard('family', 'family', false);
+deck.newCard('learn', 'learn', false);
+deck.newCard('eat', 'eat', false);
+deck.newCard('drink', 'drink', false);
+deck.newCard('cat', 'cat', false);
+deck.newCard('dog', 'dog', false);
+deck.newCard('dream', 'dream', false);
+
+deck.newCard('love', '愛', false);
+deck.newCard('book', '書', false);
+deck.newCard('country', '國', false);
+deck.newCard('family', '家', false);
+deck.newCard('learn', '學', false);
+deck.newCard('eat', '吃', false);
+deck.newCard('drink', '喝', false);
+deck.newCard('cat', '貓', false);
+deck.newCard('dog', '狗', false);
+deck.newCard('dream', '夢', false);
 
 let board;
 let turns;
@@ -111,22 +122,22 @@ function init() {
     ]
     
     // for each card object, assign to 2 random board indices
-    deck.cards.forEach((card) => {
-        let rndRowIdx = Math.floor(Math.random() * board.length);
-        let rndColIdx = Math.floor(Math.random() * board[0].length);
-        let rndRowIdx2 = Math.floor(Math.random() * board.length);
-        let rndColIdx2 = Math.floor(Math.random() * board[0].length);
-        while(board[rndRowIdx][rndColIdx] !== 0) {
-            rndRowIdx = Math.floor(Math.random() * board.length);
-            rndColIdx = Math.floor(Math.random() * board[0].length);    
-        }
-        board[rndRowIdx][rndColIdx] = card;
-        while(board[rndRowIdx2][rndColIdx2] !== 0) {
-            rndRowIdx2 = Math.floor(Math.random() * board.length);
-            rndColIdx2 = Math.floor(Math.random() * board[0].length);    
-        }
-        board[rndRowIdx2][rndColIdx2] = card;
-    });
+    // deck.cards.forEach((card) => {
+    //     let rndRowIdx = Math.floor(Math.random() * board.length);
+    //     let rndColIdx = Math.floor(Math.random() * board[0].length);
+    //     let rndRowIdx2 = Math.floor(Math.random() * board.length);
+    //     let rndColIdx2 = Math.floor(Math.random() * board[0].length);
+    //     while(board[rndRowIdx][rndColIdx] !== 0) {
+    //         rndRowIdx = Math.floor(Math.random() * board.length);
+    //         rndColIdx = Math.floor(Math.random() * board[0].length);    
+    //     }
+    //     board[rndRowIdx][rndColIdx] = card;
+    //     while(board[rndRowIdx2][rndColIdx2] !== 0) {
+    //         rndRowIdx2 = Math.floor(Math.random() * board.length);
+    //         rndColIdx2 = Math.floor(Math.random() * board[0].length);    
+    //     }
+    //     board[rndRowIdx2][rndColIdx2] = card;
+    // });
 
     turns = 0;
 
