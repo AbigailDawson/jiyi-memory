@@ -48,22 +48,28 @@ let board = [
 
 // iterate over the array of cards, assign each card 2 random indexes in the board array. if that index is not 0 (if it's already taken) assign another index to it
 
-board[0][1]
+// Have two sets of random indexes and check to see if either of their locations are != 0 or, set 1 = set 2, if they do, regenerate them until they do not
 
-let rndRowIdx = Math.floor(Math.random() * board.length);
-let rndColIdx = Math.floor(Math.random() * board[0].length);
-board[rndRowIdx][rndColIdx];
 
-// deck.cards.forEach((card) => {
-
-// })
-
-// board.forEach((colArr, i) => {
-//     colArr.forEach((cellVal, j) => {
-//         board[i][j] = deck.cards[Math.floor(Math.random() * deck.cards.length)];
-//     });
-// });
-
+deck.cards.forEach((card) => {
+    let rndRowIdx = Math.floor(Math.random() * board.length);
+    let rndColIdx = Math.floor(Math.random() * board[0].length);
+    let rndRowIdx2 = Math.floor(Math.random() * board.length);
+    let rndColIdx2 = Math.floor(Math.random() * board[0].length);
+    console.log(rndRowIdx, rndColIdx)
+    while(board[rndRowIdx][rndColIdx] !== 0) {
+        console.log(`While log`);
+        rndRowIdx = Math.floor(Math.random() * board.length);
+        rndColIdx = Math.floor(Math.random() * board[0].length);    
+    }
+    board[rndRowIdx][rndColIdx] = card;
+    while(board[rndRowIdx2][rndColIdx2] !== 0) {
+        console.log(`While log`);
+        rndRowIdx2 = Math.floor(Math.random() * board.length);
+        rndColIdx2 = Math.floor(Math.random() * board[0].length);    
+    }
+    board[rndRowIdx2][rndColIdx2] = card;
+})
 
 
 /*----- cached elements -----*/
