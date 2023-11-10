@@ -46,8 +46,19 @@ init();
 
 /*----- cached elements -----*/
 
+const boardEls = [...document.querySelectorAll('.board > div')];
+
 /*----- event listeners -----*/
+
+document.querySelector('.board').addEventListener('click', handleCardFlip);
+
 /*----- functions -----*/
+
+function handleCardFlip(evt) {
+    const cellIdx = boardEls.indexOf(evt.target);
+    // gaurd - don't listen to a click between the cards
+    if (cellIdx === -1) return;
+}
 
 function render() {
     renderBoard();
