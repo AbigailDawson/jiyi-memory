@@ -39,39 +39,66 @@ deck.newCard('貓', 'cat', false);
 deck.newCard('狗', 'dog', false);
 deck.newCard('夢', 'dream', false);
 
-let board = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0]
-]
+let board;
+let turns;
 
-// iterate over the array of cards, assign each card 2 random indexes in the board array. if that index is not 0 (if it's already taken) assign another index to it
-
-// Have two sets of random indexes and check to see if either of their locations are != 0 or, set 1 = set 2, if they do, regenerate them until they do not
-
-
-deck.cards.forEach((card) => {
-    let rndRowIdx = Math.floor(Math.random() * board.length);
-    let rndColIdx = Math.floor(Math.random() * board[0].length);
-    let rndRowIdx2 = Math.floor(Math.random() * board.length);
-    let rndColIdx2 = Math.floor(Math.random() * board[0].length);
-    console.log(rndRowIdx, rndColIdx)
-    while(board[rndRowIdx][rndColIdx] !== 0) {
-        console.log(`While log`);
-        rndRowIdx = Math.floor(Math.random() * board.length);
-        rndColIdx = Math.floor(Math.random() * board[0].length);    
-    }
-    board[rndRowIdx][rndColIdx] = card;
-    while(board[rndRowIdx2][rndColIdx2] !== 0) {
-        console.log(`While log`);
-        rndRowIdx2 = Math.floor(Math.random() * board.length);
-        rndColIdx2 = Math.floor(Math.random() * board[0].length);    
-    }
-    board[rndRowIdx2][rndColIdx2] = card;
-})
-
+init();
 
 /*----- cached elements -----*/
+
 /*----- event listeners -----*/
 /*----- functions -----*/
+
+function render() {
+    renderBoard();
+    renderMessage();
+}
+
+function renderBoard() {
+    board.forEach((colArr, colIdx) => {
+        colArr.forEach((card, rowIdx) => {
+            const cellId = `c${colIdx}r${rowIdx}`;
+            const cellEl = document.getElementById(cellId);
+            if (card.flipped === false) {
+                cellEl.style.backgroundColor = '#a9def9';
+            } else if (card.flipped === true) {
+                // display either card.char OR card.meaning
+            }
+        })
+    })
+}
+
+function renderMessage() {
+
+}
+
+function init() {
+    board = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ]
+    
+    // for each card object, assign to 2 random board indices
+    deck.cards.forEach((card) => {
+        let rndRowIdx = Math.floor(Math.random() * board.length);
+        let rndColIdx = Math.floor(Math.random() * board[0].length);
+        let rndRowIdx2 = Math.floor(Math.random() * board.length);
+        let rndColIdx2 = Math.floor(Math.random() * board[0].length);
+        while(board[rndRowIdx][rndColIdx] !== 0) {
+            rndRowIdx = Math.floor(Math.random() * board.length);
+            rndColIdx = Math.floor(Math.random() * board[0].length);    
+        }
+        board[rndRowIdx][rndColIdx] = card;
+        while(board[rndRowIdx2][rndColIdx2] !== 0) {
+            rndRowIdx2 = Math.floor(Math.random() * board.length);
+            rndColIdx2 = Math.floor(Math.random() * board[0].length);    
+        }
+        board[rndRowIdx2][rndColIdx2] = card;
+    });
+
+    turns = 0;
+
+    render();
+}
