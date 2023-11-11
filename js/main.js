@@ -145,6 +145,7 @@ function renderMatches() {
         const matchId = `${index}`;
         const matchEl = document.getElementById(matchId);
         if (item !== 0) {
+            matchEl.classList.add('reveal-card');
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
             matchEl.innerText = item.text;
         } else if (item === 0) {
