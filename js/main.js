@@ -141,22 +141,17 @@ function render() {
 }
 
 function renderMatches() {
-    matches.forEach((matchedCard, index) => {
+    matches.forEach((item, index) => {
         const matchId = `${index}`;
         const matchEl = document.getElementById(matchId);
-        if (matchedCard) {
+        if (item !== 0) {
             matchEl.style.backgroundColor = '#eee';
-            matchEl.innerText = matchedCard.text;
+            matchEl.innerText = item.text;
+        } else if (item === 0) {
+            matchEl.style.backgroundColor = '#fff';
+            matchEl.innerText = '';
         }
     })
-
-
-    // matchEls.forEach((item) => {
-    //     const matchEl = document.getElementById(item.id);
-    //     console.log(matchEl);
-
-    //     matchEl.style.backgroundColor = '#eee';
-    // })
 }
 
 function renderBoard() {
@@ -176,9 +171,7 @@ function renderBoard() {
                 cellEl.innerText = card.text;
             }
         })
-    })
-    
-    
+    })   
 }
 
 function renderMessage() {

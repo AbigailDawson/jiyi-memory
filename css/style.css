@@ -61,8 +61,8 @@ h1 {
 .match-board {
     border: 1px solid #eee;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(7, auto);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
     gap: 10px;
 }
 
