@@ -2,9 +2,9 @@
     --bg-color: #393939;
     --board: #393939;
     --card-color: #565656;
+    --matches-color: #404040;
     --flipped-card-color: #430707;
     --header-color: #000;
-    --match-board: #393939;
     --text-color: #fff;
 }
 
@@ -73,6 +73,7 @@ heading {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 10vmin;
 }
 
 #message {
@@ -84,47 +85,56 @@ heading {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, auto);
-    gap: 1vmin;
+    gap: 1.5vmin;
     padding: .5vmin;
-    margin-top: 10vmin;
 }
 
 .board > div {
-    width: 15vmin;
-    height: 15vmin;
+    width: 14vmin;
+    height: 14vmin;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2vmin;
     border-radius: 1vmin;
-    background: radial-gradient(
-        180deg,
-        var(--card-color) 0%,
-        var(--bg-color) 100%
-        );
+    background-color: var(--card-color);
 }
 
-.animate {
+.grow {
+    transition: 200ms ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 .2vmin .2vmin rgba(255, 255, 255, 0.5);
+}
+
+.reveal-card {
     animation: fade-in 500ms;
 }
 
 @keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
-  }
+}
+
+.hide-card {
+    transition: var(--card-color) 500ms;
+}
 
 .match-board {
-    background-color: var(--match-board);
+    background-color: var(--bg-color);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     gap: .5vmin;
     width: auto;
+    padding: 2vmin 0 2vmin 0;
 }
 
 .match-board > div {
-    width: 6vmin;
-    height: 6vmin;
+    width: 6.7vmin;
+    height: 6.7vmin;
     justify-self: center;
     display: flex;
     justify-content: center;

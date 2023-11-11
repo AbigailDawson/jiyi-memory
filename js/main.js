@@ -148,7 +148,7 @@ function renderMatches() {
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
             matchEl.innerText = item.text;
         } else if (item === 0) {
-            matchEl.style.backgroundColor = 'var(--card-color)';
+            matchEl.style.backgroundColor = 'var(--matches-color)';
             matchEl.innerText = '';
         }
     })
@@ -159,8 +159,11 @@ function renderBoard() {
         colArr.forEach((card, rowIdx) => {
             const cellId = `c${colIdx}r${rowIdx}`;
             const cellEl = document.getElementById(cellId);
+            cellEl.removeAttribute('class', 'reveal-card');
+            cellEl.classList.add('grow');
             if (card.matched === true) { // if the cards are matched
                 cellEl.style.backgroundColor = 'var(--board)';
+                cellEl.removeAttribute('class', 'grow');
                 cellEl.innerText = '';
             } 
             if (card.flipped === false) {
@@ -169,7 +172,6 @@ function renderBoard() {
             } else if (card.matched !== true && card.flipped === true) {
                 cellEl.style.backgroundColor = 'var(--flipped-card-color)';
                 cellEl.innerText = card.text;
-                cellEl.setAttribute('class', 'animate');
             }
         })
     })   
