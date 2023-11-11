@@ -60,14 +60,16 @@ init();
 /*----- cached elements -----*/
 
 const boardEls = [...document.querySelectorAll('.board > div')];
+const boardEl = document.querySelector('.board')
 
 /*----- event listeners -----*/
 
-document.querySelector('.board').addEventListener('click', handleCardFlip);
+boardEl.addEventListener('click', handleCardFlip);
 
 /*----- functions -----*/
 
 function handleCardFlip(evt) {
+    evt.preventDefault();
     const cellIdx = boardEls.indexOf(evt.target);
 
     // gaurd - don't listen to a click between the cards
@@ -95,6 +97,7 @@ function handleCardFlip(evt) {
     }
     
     function checkMatch() {
+        boardEl.style.pointerEvents = 'none'; // do not allow clicks while checkMatch is running
         setTimeout(() => {
             if (clickedCard.id === firstPick.id) {
                 // set matched property of both cards to true
@@ -107,11 +110,11 @@ function handleCardFlip(evt) {
                 // firstPick = null; // reset firstPick to null
             }
             firstPick = null; // reset firstPick to null
+            turns += 1;
             render();
+            boardEl.style.pointerEvents = 'auto';
         }, 1000)
     }
-
-    // render();
 }
 
 function render() {
