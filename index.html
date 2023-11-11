@@ -7,17 +7,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com"    crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <script defer src="/js/main.js"></script>
 </head>
 <body>
     <heading>
-        <div class="mini-flx">
+        <div class="title-flx">
             <h1 class="title">Memory</h1>
             <p class="subtitle">Match the Chinese characters to their meaning!</p>
         </div>
-        <p>Turns: <span id="turn-count"></span></p>
-        <p>Matches Remaining: <span id="remaining-count"></span></p>
+        <div class="mini-flx">
+            <p>Turns:</p>
+            <p id="turn-count"></p>
+        </div>
+        <div class="mini-flx">
+            <p>Matches</p>
+            <p>Remaining:</p>
+            <p id="remaining-count"></p>
+        </div>
         <button id="reset">Reset Board</button>
     </heading>
     <section class="main">
