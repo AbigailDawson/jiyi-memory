@@ -52,6 +52,10 @@ h1 {
     width: 150px;
     height: 100px;
     border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vmin;
 }
 
 .match-board {
