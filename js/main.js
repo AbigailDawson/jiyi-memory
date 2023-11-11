@@ -74,13 +74,6 @@ boardEl.addEventListener('click', handleCardFlip);
 init();
 
 document.getElementById('reset').addEventListener('click', init)
-document.getElementById('play-again').addEventListener('click', closeMessage);
-
-function closeMessage() {
-    console.log('click heard')
-    document.getElementById('cleared').classList.remove('active');
-    document.getElementById('overlay').classList.remove('active');
-}
 
 function handleCardFlip(evt) {
     evt.preventDefault();
@@ -192,6 +185,10 @@ function renderMessage() {
         // document.getElementById('message').style.visibility = 'visible';
         document.getElementById('cleared').classList.add('active');
         document.getElementById('overlay').classList.add('active');
+        document.getElementById('close-btn').addEventListener('click', function() {
+            document.getElementById('cleared').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        })
     }   
 }
 

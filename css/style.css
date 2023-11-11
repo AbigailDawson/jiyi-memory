@@ -193,7 +193,7 @@ heading {
     transform: translate(-50%, -50%) scale(1); /* makes cleared message visible when active class is applied */
 }
 
-.close-btn {
+#close-btn {
     position: absolute;
     top: 0;
     right: 0;
@@ -223,7 +223,7 @@ heading {
     font-size: 2vmin;
 } 
 
-.cleared-btn {
+#play-again {
     margin-top: 5vmin;
 }
 
