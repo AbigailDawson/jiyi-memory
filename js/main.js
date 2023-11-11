@@ -52,6 +52,7 @@ deck.newCard('dog', '狗', false, false);
 deck.newCard('dream', '夢', false, false);
 
 let board;
+let matches;
 let turns;
 let firstPick;
 let remaining;
@@ -109,6 +110,17 @@ function handleCardFlip(evt) {
                 clickedCard.matched = true;
                 firstPick.matched = true;
                 remaining -= 1;
+
+                // loop thru matches array and place matched cards
+                for (let i = 0; i < matches.length; i++){
+                    if (matches[i] === 0) {
+                        // console.log(`value at index ${i} is 0`)
+                        matches.splice(i, 2, firstPick, clickedCard);
+                        console.log(matches);
+                        break;
+                    }
+                }
+
             } else if (clickedCard.id !== firstPick.id) {
                 clickedCard.flipped = false;
                 firstPick.flipped = false;
@@ -123,6 +135,27 @@ function handleCardFlip(evt) {
 function render() {
     renderBoard();
     renderMessage();
+    renderMatches();
+}
+
+function renderMatches() {
+    matches.forEach((item, idx) => {
+        const matchesCellId = idx;
+        const matchesCellEl = document.getElementById(matchesCellId);
+        console.log(idx, matchesCellEl)
+
+        // if (card.matched === true) { // if the cards are matched
+        //     cellEl.style.backgroundColor = '#eee';
+        //     cellEl.innerText = '';
+        // } 
+        // if (card.flipped === false) {
+        //     cellEl.style.backgroundColor = '#a9def9';
+        //     cellEl.innerText = '';
+        // } else if (card.matched !== true && card.flipped === true) {
+        //     cellEl.style.backgroundColor = '#fff';
+        //     cellEl.innerText = card.text;
+        // }
+    })
 }
 
 function renderBoard() {
@@ -159,6 +192,11 @@ function init() {
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0]
+    ]
+
+    matches = [
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0  
     ]
     
     // for each card object, assign a random board index
