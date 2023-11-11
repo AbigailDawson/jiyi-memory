@@ -83,44 +83,35 @@ function handleCardFlip(evt) {
     if (clickedCard.flipped === false && firstPick === null) { // if this is the first card being flipped:
         clickedCard.flipped = true; // flip card
         firstPick = clickedCard; // store in firstPick variable
-        console.log(`${clickedCard.id} is the first card being flipped`);
+        render();
 
     } else if (clickedCard.flipped === false && firstPick !== null) { // if this is the second card being flipped:
         clickedCard.flipped = true; // flip card
-        console.log(`${clickedCard.id} is the second card being flipped`);
-
+        render();
         checkMatch();
-
+        
     } else if (clickedCard.flipped === true) { // if the card being clicked has already been flipped (not sure if needed)
         return; 
     }
     
-    
     function checkMatch() {
         setTimeout(() => {
             if (clickedCard.id === firstPick.id) {
-                console.log(`${clickedCard.id} and ${firstPick.id} are a match!`)
                 // set matched property of both cards to true
                 clickedCard.matched = true;
                 firstPick.matched = true;
-
-                render();
-
             } else if (clickedCard.id !== firstPick.id) {
-                console.log(`${clickedCard.id} and ${firstPick.id} are NOT a match!`)
 
                 clickedCard.flipped = false;
                 firstPick.flipped = false;
-                firstPick = null; // reset firstPick to null
-
-                console.log('The cards are flipped back over');
-
-                render();
+                // firstPick = null; // reset firstPick to null
             }
-        }, 2000)
+            firstPick = null; // reset firstPick to null
+            render();
+        }, 1000)
     }
 
-    render();
+    // render();
 }
 
 function render() {
@@ -133,14 +124,14 @@ function renderBoard() {
         colArr.forEach((card, rowIdx) => {
             const cellId = `c${colIdx}r${rowIdx}`;
             const cellEl = document.getElementById(cellId);
-            if (card.matched === true) {
+            if (card.matched === true) { // if the cards are matched
                 cellEl.style.backgroundColor = '#eee';
                 cellEl.innerText = '';
             } 
             if (card.flipped === false) {
                 cellEl.style.backgroundColor = '#a9def9';
                 cellEl.innerText = '';
-            } else if (card.flipped === true) {
+            } else if (card.matched !== true && card.flipped === true) {
                 cellEl.style.backgroundColor = '#fff';
                 cellEl.innerText = card.text;
             }
