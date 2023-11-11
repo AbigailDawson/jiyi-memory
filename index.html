@@ -14,6 +14,7 @@
     <div class="left">
         <h1>Memory</h1>
         <p>Match the Chinese characters to their meaning!</p>
+        <p id="message">Board Cleared!</p>
         <div class="board">
             <div id="c0r0"></div>
             <div id="c0r1"></div>
@@ -43,6 +44,7 @@
     <div class="right">
         <div class="match-board-wrapper">
             <h2>Matches</h2>
+            <p>Turns: <span id="turn-count"></span></p>
             <p>Matches Remaining: <span id="remaining-count"></span></p>
             <div class="match-board">
                 <div id="a0b0"></div>
@@ -71,7 +73,7 @@
                 <div id="a3b4"></div>
             </div>
         </div>
-        <button>Reset Board</button>
+        <button id="reset">Reset Board</button>
     </div>
 </body>
 </html>

@@ -54,19 +54,23 @@ deck.newCard('dream', '夢', false, false);
 let board;
 let turns;
 let firstPick;
+let remaining;
 
 init();
 
 /*----- cached elements -----*/
 
 const boardEls = [...document.querySelectorAll('.board > div')];
-const boardEl = document.querySelector('.board')
+const boardEl = document.querySelector('.board');
+
 
 /*----- event listeners -----*/
 
 boardEl.addEventListener('click', handleCardFlip);
 
 /*----- functions -----*/
+
+document.getElementById('reset').addEventListener('click', init)
 
 function handleCardFlip(evt) {
     evt.preventDefault();
@@ -89,6 +93,7 @@ function handleCardFlip(evt) {
 
     } else if (clickedCard.flipped === false && firstPick !== null) { // if this is the second card being flipped:
         clickedCard.flipped = true; // flip card
+        turns += 1;
         render();
         checkMatch();
         
@@ -103,14 +108,12 @@ function handleCardFlip(evt) {
                 // set matched property of both cards to true
                 clickedCard.matched = true;
                 firstPick.matched = true;
+                remaining -= 1;
             } else if (clickedCard.id !== firstPick.id) {
-
                 clickedCard.flipped = false;
                 firstPick.flipped = false;
-                // firstPick = null; // reset firstPick to null
             }
             firstPick = null; // reset firstPick to null
-            turns += 1;
             render();
             boardEl.style.pointerEvents = 'auto';
         }, 1000)
@@ -142,10 +145,12 @@ function renderBoard() {
     })
 }
 
-
-
 function renderMessage() {
-
+    document.getElementById('remaining-count').innerText = `${remaining}`;
+    document.getElementById('turn-count').innerText = `${turns}`;
+    if (remaining === 0) {
+        document.getElementById('message').style.visibility = 'visible';
+    }   
 }
 
 function init() {
@@ -158,6 +163,9 @@ function init() {
     
     // for each card object, assign a random board index
     deck.cards.forEach((card) => {
+        card.flipped = false;
+        card.matched = false;
+
         let rndRowIdx = Math.floor(Math.random() * board.length);
         let rndColIdx = Math.floor(Math.random() * board[0].length);
 
@@ -172,6 +180,7 @@ function init() {
 
     turns = 0;
     firstPick = null;
+    remaining = 10;
 
     render();
 }
