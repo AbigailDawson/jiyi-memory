@@ -74,6 +74,13 @@ boardEl.addEventListener('click', handleCardFlip);
 init();
 
 document.getElementById('reset').addEventListener('click', init)
+document.getElementById('play-again').addEventListener('click', closeMessage);
+
+function closeMessage() {
+    console.log('click heard')
+    document.getElementById('cleared').classList.remove('active');
+    document.getElementById('overlay').classList.remove('active');
+}
 
 function handleCardFlip(evt) {
     evt.preventDefault();
@@ -182,7 +189,9 @@ function renderMessage() {
     document.getElementById('remaining-count').innerText = `${remaining}`;
     document.getElementById('turn-count').innerText = `${turns}`;
     if (remaining === 0) {
-        document.getElementById('message').style.visibility = 'visible';
+        // document.getElementById('message').style.visibility = 'visible';
+        document.getElementById('cleared').classList.add('active');
+        document.getElementById('overlay').classList.add('active');
     }   
 }
 

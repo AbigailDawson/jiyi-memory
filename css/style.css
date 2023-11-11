@@ -72,7 +72,10 @@ heading {
     padding: 1vmin 0;
 }
 
-button {
+#reset,
+#play-again {
+    cursor: pointer;
+    outline: none;
     font-family: 'Paytone One', sans-serif;
     font-size: 1.4vmin;
     height: 4vmin;
@@ -170,3 +173,73 @@ button {
     border-radius: .5vmin;
 }
 
+.cleared {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* 50% of container, make invisible by default */
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 1vmin;
+    z-index: 10;
+    background-color: white;
+    color: black;
+    width: 50vmin;
+    max-width: 80%;
+    padding: 2vmin;
+}
+
+.cleared.active {
+    transform: translate(-50%, -50%) scale(1); /* makes cleared message visible when active class is applied */
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    color: black;
+    font-size: 4vmin;
+    padding-right: 1vmin;
+}
+
+.cleared-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vmin;
+    padding: 5vmin;
+}
+
+.cleared-title {
+    font-size: 5vmin;
+}
+
+.cleared-subtitle {
+    font-size: 2vmin;
+} 
+
+.cleared-btn {
+    margin-top: 5vmin;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
