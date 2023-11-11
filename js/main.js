@@ -169,6 +169,7 @@ function renderBoard() {
             } else if (card.matched !== true && card.flipped === true) {
                 cellEl.style.backgroundColor = 'var(--flipped-card-color)';
                 cellEl.innerText = card.text;
+                cellEl.setAttribute('class', 'animate');
             }
         })
     })   

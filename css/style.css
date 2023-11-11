@@ -84,7 +84,7 @@ heading {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, auto);
-    gap: .5vmin;
+    gap: 1vmin;
     padding: .5vmin;
     margin-top: 10vmin;
 }
@@ -96,7 +96,22 @@ heading {
     justify-content: center;
     align-items: center;
     font-size: 2vmin;
+    border-radius: 1vmin;
+    background: radial-gradient(
+        180deg,
+        var(--card-color) 0%,
+        var(--bg-color) 100%
+        );
 }
+
+.animate {
+    animation: fade-in 500ms;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
 .match-board {
     background-color: var(--match-board);
@@ -115,4 +130,6 @@ heading {
     justify-content: center;
     align-items: center;
     font-size: 1.5vmin;
+    border-radius: .5vmin;
 }
+
