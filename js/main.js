@@ -145,10 +145,10 @@ function renderMatches() {
         const matchId = `${index}`;
         const matchEl = document.getElementById(matchId);
         if (item !== 0) {
-            matchEl.style.backgroundColor = '#eee';
+            matchEl.style.backgroundColor = 'var(--flipped-card-color)';
             matchEl.innerText = item.text;
         } else if (item === 0) {
-            matchEl.style.backgroundColor = '#fff';
+            matchEl.style.backgroundColor = 'var(--card-color)';
             matchEl.innerText = '';
         }
     })
@@ -160,14 +160,14 @@ function renderBoard() {
             const cellId = `c${colIdx}r${rowIdx}`;
             const cellEl = document.getElementById(cellId);
             if (card.matched === true) { // if the cards are matched
-                cellEl.style.backgroundColor = '#eee';
+                cellEl.style.backgroundColor = 'var(--board)';
                 cellEl.innerText = '';
             } 
             if (card.flipped === false) {
-                cellEl.style.backgroundColor = '#a9def9';
+                cellEl.style.backgroundColor = 'var(--card-color)';
                 cellEl.innerText = '';
             } else if (card.matched !== true && card.flipped === true) {
-                cellEl.style.backgroundColor = '#fff';
+                cellEl.style.backgroundColor = 'var(--flipped-card-color)';
                 cellEl.innerText = card.text;
             }
         })

@@ -1,3 +1,13 @@
+:root {
+    --bg-color: #393939;
+    --board: #393939;
+    --card-color: #565656;
+    --flipped-card-color: #430707;
+    --header-color: #000;
+    --match-board: #393939;
+    --text-color: #fff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,10 +16,55 @@
 
 body {
     height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: 'Paytone One', sans-serif;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+heading {
+    /* border: 1px solid #fff; */
+    width: 100%;
+    display: flex;
     flex-direction: row;
-    gap: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+    background: linear-gradient(
+        180deg,
+        var(--header-color) 0%,
+        var(--bg-color) 100%
+        );
+    position: absolute;
+    top: 0;
+    padding: 2vmin;
+}
+
+.mini-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.title {
+    font-size: 5vmin;
+}
+
+.subtitle {
+    font-size: 1.5vmin;
+    letter-spacing: .2vmin;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5vmin;
 }
 
 .left,
@@ -20,38 +75,23 @@ body {
     align-items: center;
 }
 
-.left {
-    padding: 10vmin;
-}
-
-h1 {
-    font-size: 7vmin;
-}
-
-.left > p {
-    font-size: 2.5vmin;
-    text-align: center;
-    letter-spacing: .3vmin;
-    padding-top: 3vmin;
-}
-
 #message {
     visibility: hidden;
 }
 
 .board {
-    /* border: 1px solid #000; */
+    background-color: var(--board);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(7, auto);
-    gap: 15px;
-    padding-top: 10vmin;
+    grid-template-rows: repeat(5, auto);
+    gap: .5vmin;
+    padding: .5vmin;
+    margin-top: 10vmin;
 }
 
 .board > div {
-    width: 150px;
-    height: 100px;
-    border: 1px solid #000;
+    width: 15vmin;
+    height: 15vmin;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,17 +99,18 @@ h1 {
 }
 
 .match-board {
-    border: 1px solid #eee;
+    background-color: var(--match-board);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
-    gap: 10px;
+    gap: .5vmin;
+    width: auto;
 }
 
 .match-board > div {
-    width: 75px;
-    height: 50px;
-    border: 1px solid #eee;
+    width: 6vmin;
+    height: 6vmin;
+    justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;

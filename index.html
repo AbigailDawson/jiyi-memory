@@ -11,9 +11,16 @@
     <script defer src="/js/main.js"></script>
 </head>
 <body>
+    <heading>
+        <div class="mini-flx">
+            <h1 class="title">Memory</h1>
+            <p class="subtitle">Match the Chinese characters to their meaning!</p>
+        </div>
+        <p>Turns: <span id="turn-count"></span></p>
+        <p>Matches Remaining: <span id="remaining-count"></span></p>
+    </heading>
+    <section class="main">
     <div class="left">
-        <h1>Memory</h1>
-        <p>Match the Chinese characters to their meaning!</p>
         <p id="message">Board Cleared!</p>
         <div class="board">
             <div id="c0r0"></div>
@@ -44,8 +51,6 @@
     <div class="right">
         <div class="match-board-wrapper">
             <h2>Matches</h2>
-            <p>Turns: <span id="turn-count"></span></p>
-            <p>Matches Remaining: <span id="remaining-count"></span></p>
             <div class="match-board">
                 <div id="0"></div>
                 <div id="1"></div>
@@ -71,30 +76,6 @@
         </div>
         <button id="reset">Reset Board</button>
     </div>
+</section>
 </body>
 </html>
-
-<!-- <div id="a0b0"></div>
-                <div id="a1b0"></div>
-                <div id="a2b0"></div>
-                <div id="a3b0"></div>
-
-                <div id="a0b1"></div>
-                <div id="a1b1"></div>
-                <div id="a2b1"></div>
-                <div id="a3b1"></div>
-
-                <div id="a0b2"></div>
-                <div id="a1b2"></div>
-                <div id="a2b2"></div>
-                <div id="a3b2"></div>
-
-                <div id="a0b3"></div>
-                <div id="a1b3"></div>
-                <div id="a2b3"></div>
-                <div id="a3b3"></div>
-
-                <div id="a0b4"></div>
-                <div id="a1b4"></div>
-                <div id="a2b4"></div>
-                <div id="a3b4"></div> -->
