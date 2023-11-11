@@ -70,4 +70,8 @@ h1 {
     width: 75px;
     height: 50px;
     border: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vmin;
 }

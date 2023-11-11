@@ -57,19 +57,21 @@ let turns;
 let firstPick;
 let remaining;
 
-init();
+
 
 /*----- cached elements -----*/
 
 const boardEls = [...document.querySelectorAll('.board > div')];
 const boardEl = document.querySelector('.board');
-
+const matchEls = [...document.querySelectorAll('.match-board > div')];
 
 /*----- event listeners -----*/
 
 boardEl.addEventListener('click', handleCardFlip);
 
 /*----- functions -----*/
+
+init();
 
 document.getElementById('reset').addEventListener('click', init)
 
@@ -139,23 +141,22 @@ function render() {
 }
 
 function renderMatches() {
-    matches.forEach((item, idx) => {
-        const matchesCellId = idx;
-        const matchesCellEl = document.getElementById(matchesCellId);
-        console.log(idx, matchesCellEl)
-
-        // if (card.matched === true) { // if the cards are matched
-        //     cellEl.style.backgroundColor = '#eee';
-        //     cellEl.innerText = '';
-        // } 
-        // if (card.flipped === false) {
-        //     cellEl.style.backgroundColor = '#a9def9';
-        //     cellEl.innerText = '';
-        // } else if (card.matched !== true && card.flipped === true) {
-        //     cellEl.style.backgroundColor = '#fff';
-        //     cellEl.innerText = card.text;
-        // }
+    matches.forEach((matchedCard, index) => {
+        const matchId = `${index}`;
+        const matchEl = document.getElementById(matchId);
+        if (matchedCard) {
+            matchEl.style.backgroundColor = '#eee';
+            matchEl.innerText = matchedCard.text;
+        }
     })
+
+
+    // matchEls.forEach((item) => {
+    //     const matchEl = document.getElementById(item.id);
+    //     console.log(matchEl);
+
+    //     matchEl.style.backgroundColor = '#eee';
+    // })
 }
 
 function renderBoard() {
@@ -176,6 +177,8 @@ function renderBoard() {
             }
         })
     })
+    
+    
 }
 
 function renderMessage() {
@@ -194,10 +197,7 @@ function init() {
         [0, 0, 0, 0, 0]
     ]
 
-    matches = [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0  
-    ]
+    matches = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     
     // for each card object, assign a random board index
     deck.cards.forEach((card) => {
