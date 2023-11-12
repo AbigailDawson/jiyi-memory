@@ -1,5 +1,4 @@
-import { animalCards, hobbyCards } from './utils.mjs';
-
+import { animalCards, hobbyCards, schoolCards, travelCards, adjectiveCards, emotionCards } from './utils.mjs';
 // set cardDeck to equal whichever deck was chosen
 const pageTitle = document.querySelector('title');
 
@@ -47,7 +46,7 @@ function handleToggle(evt) {
         cardDeck.forEach((card) => {
             if (card.text.match(/[\u3400-\u9FBF]/)) {
                 const listItem = document.createElement('li');
-                listItem.innerText = card.text + Array(8).fill('\xa0').join('') + card.id;
+                listItem.innerText = card.text + Array(3).fill('\xa0').join('') + card.id;
                 vocabList.appendChild(listItem);
                 studyText.appendChild(vocabList);
             }
