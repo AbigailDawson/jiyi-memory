@@ -68,12 +68,20 @@ const matchEls = [...document.querySelectorAll('.match-board > div')];
 /*----- event listeners -----*/
 
 boardEl.addEventListener('click', handleCardFlip);
+document.getElementById('reset').addEventListener('click', init);
+document.getElementById('check').addEventListener('change', handleToggle);
 
 /*----- functions -----*/
 
 init();
 
-document.getElementById('reset').addEventListener('click', init)
+function handleToggle(evt) {
+    if (this.checked) {
+        console.log('study mode activated');
+    } else {
+        console.log('study mode off');
+    }
+}
 
 function handleCardFlip(evt) {
     evt.preventDefault();
