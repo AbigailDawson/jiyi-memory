@@ -213,7 +213,6 @@ function renderMessage() {
     document.getElementById('remaining-count').innerText = `${remaining}`;
     document.getElementById('turn-count').innerText = `${turns}`;
     if (remaining === 0) {
-        // document.getElementById('message').style.visibility = 'visible';
         document.getElementById('cleared').classList.add('active');
         document.getElementById('overlay').classList.add('active');
         document.getElementById('close-btn').addEventListener('click', function() {
