@@ -328,7 +328,7 @@ input:focus {
     transform: translate(-50%, -50%) scale(1); /* makes cleared message visible when active class is applied */
 }
 
-#close-btn {
+#study-close-btn {
     position: absolute;
     top: 0;
     right: 0;
@@ -372,5 +372,5 @@ input:focus {
 
 #overlay.active {
     opacity: 1;
-    pointer-events: all;
+    /* pointer-events: all; */
 }
