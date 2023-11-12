@@ -27,7 +27,6 @@ body {
 }
 
 heading {
-    /* border: 1px solid #fff; */
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -43,11 +42,20 @@ heading {
     padding: 2vmin;
 }
 
+.heading-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
 .mini-flx {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    padding: 0 3vmin 0 3vmin;
 }
 
 .title {
@@ -56,7 +64,7 @@ heading {
 
 .subtitle {
     font-family: 'Varela Round', sans-serif;
-    font-size: 1.6vmin;
+    font-size: 1.7vmin;
     letter-spacing: .3vmin;
     padding-top: 1.5vmin;
 }
@@ -80,7 +88,6 @@ heading {
     font-size: 1.4vmin;
     height: 4vmin;
     width: 12vmin;
-    padding: 1.2vmin 1.5vmin;
     border-radius: 1vmin;
     border: none;
     box-shadow: 0 0 .1vmin .1vmin rgba(255, 255, 255, .5);
@@ -102,7 +109,7 @@ heading {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10vmin;
+    margin-top: 12vmin;
 }
 
 #message {
@@ -163,7 +170,7 @@ heading {
 
 .match-board > div {
     width: 10vmin;
-    height: 7vmin;
+    height: 6.2vmin;
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -172,6 +179,8 @@ heading {
     font-size: 1.7vmin;
     border-radius: .5vmin;
 }
+
+/* ---- Styles for cleared board popup message ---- */
 
 .cleared {
     position: fixed;
@@ -228,6 +237,128 @@ heading {
 }
 
 #overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ---- Styles for Study Mode toggle ---- */
+
+.toggle-settings {
+    padding-left: 2vmin;
+}
+
+.toggle-text {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.5vmin;
+}
+
+input[type="checkbox"].toggle {
+    opacity: 0; /* make the checkbox invisible */
+    /* position: absolute; makes it so checkbox takes up no space in the DOM */
+    left: -90000px; /* remove checkbox from the page */
+    top: -90000px
+}
+
+input[type="checkbox"].toggle + label {
+    display: flex; /* needed to make label not an inline element so we can change size using em */
+    align-items: center;
+    position: relative;
+}
+
+input[type="checkbox"].toggle + label::before {
+    content: '';
+    width: 6.2vmin; /* use em to scale with size of text */
+    height: 3.1vmin;
+    background-color: var(--text-color);
+    border-radius: 2vmin;
+    margin-right: 1vmin;
+    transition: background-color, transform 200ms ease-in-out;
+}
+
+input[type="checkbox"].toggle + label::after {
+    content: '';
+    width: 2.9vmin; 
+    height: 2.9vmin; /* makes a circle shape */
+    background-color: var(--card-color);
+    border-radius: 2vmin;
+    margin-right: 1vmin;
+    position: absolute; /* positions circle relative to label */
+    left: .2vmin; /* positions circle slightly inset from edge of label */
+    transition: background-color, transform 200ms ease-in-out;
+}
+
+input[type="checkbox"].toggle:checked + label::after {
+    background-color: var(--flipped-card-color);
+    transform: translateX(100%);
+}
+
+input:focus {
+    border: 2px solid var(--flipped-card-color);
+}
+
+.study {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* 50% of container, make invisible by default */
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 1vmin;
+    z-index: 10;
+    background-color: white;
+    color: black;
+    width: 50vmin;
+    max-width: 80%;
+    padding: 2vmin;
+}
+
+.study.active {
+    transform: translate(-50%, -50%) scale(1); /* makes cleared message visible when active class is applied */
+}
+
+#close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    color: black;
+    font-size: 4vmin;
+    padding-right: 1vmin;
+}
+
+.study-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vmin;
+    padding: 5vmin;
+}
+
+.study-title {
+    font-size: 5vmin;
+}
+
+.study-text {
+    font-size: 2vmin;
+} 
+
+#study-overlay {
     position: fixed;
     opacity: 0;
     transition: 200ms ease-in-out;

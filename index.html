@@ -13,22 +13,30 @@
 </head>
 <body>
     <heading>
-        <div class="title-flx">
-            <h1 class="title">Memory</h1>
-            <p class="subtitle">Match the Chinese characters to their meaning!</p>
-        </div>
-        <div class="mini-flx">
-            <p>Turns:</p>
-            <p id="turn-count"></p>
-        </div>
-        <div class="mini-flx">
-            <p>Matches</p>
-            <p>Remaining:</p>
-            <p id="remaining-count"></p>
-        </div>
-        <div class="mini-flx">
-            <button id="reset">Reset Board</button>
-        </div>
+        <div class="heading-content">
+            <div class="title-flx">
+                <h1 class="title">Memory</h1>
+                <p class="subtitle">Match the Chinese characters to their meaning!</p>
+            </div>
+            <div class="mini-flx">
+                <div class="toggle-settings">
+                    <div class="toggle-text">Study Mode</div>
+                    <input type="checkbox" id="check" class="toggle">
+                    <label class="study-mode" for="check"></label>
+                </div>
+            </div>
+            <div class="mini-flx">
+                <p>Turns:</p>
+                <p id="turn-count"></p>
+            </div>
+            <div class="mini-flx">
+                <p>Matches</p>
+                <p>Remaining:</p>
+                <p id="remaining-count"></p>
+            </div>
+            
+            
+    </div>
     </heading>
     <section class="main">
     <div class="left">
@@ -82,8 +90,12 @@
             <div id="18"></div>
             <div id="19"></div>
         </div>
+        <div>
+            <button id="reset">Reset Board</button>
+        </div>
     </div>
 </section>
+
 <div class="cleared" id="cleared">
     <button id="close-btn">&times;</button>
     <div class="cleared-text">
@@ -93,5 +105,15 @@
     </div>
 </div>
 <div id="overlay"></div>
+
+<div class="study" id="study">
+    <button id="close-btn">&times;</button>
+    <div class="study-content">
+        <div class="study-title">Vocabulery</div>
+        <div class="study-text"></div>
+    </div>
+</div>
+<div id="study-overlay"></div>
+
 </body>
 </html>
