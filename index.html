@@ -15,7 +15,7 @@
     <heading>
         <div class="heading-content">
             <div class="title-flx">
-                <h1 class="title">Memory</h1>
+                <a href="/index.html" class="title">Memory</a>
                 <p class="subtitle">Match the Chinese characters to their meaning!</p>
             </div>
             <div class="mini-flx">
@@ -37,33 +37,90 @@
     </div>
     </heading>
     <section class="main">
-        <h1 class="main-title">Choose your game:</h1>
-        <div class="grid-container">
-            <a href="/pages/animals.html" class="grow">
-                <p>Animals</p>
-                <p>動物</p>
-            </a>
-            <a href="/pages/hobbies.html" class="grow">
-                <p>Hobbies</p>
-                <p>興趣</p>
-            </a>
-            <a href="/pages/school.html" class="grow">
-                <p>School</p>
-                <p>學校</p>
-            </a>
-            <a href="/pages/travel.html" class="grow">
-                <p>Travel</p>
-                <p>旅行</p>
-            </a>
-            <a href="/pages/adjectives.html" class="grow">
-                <p>Adjectives</p>
-                <p>形容詞</p>
-            </a>
-            <a href="/pages/emotions.html" class="grow">
-                <p>Emotions</p>
-                <p>感情</p>
-            </a>
+        <div class="left">
+            <h2>Decks</h2>
+            <button class="deck-btn grow" id="animals-btn">Animals</button>
+            <button class="deck-btn grow" id="hobbies-btn">Hobbies</button>
+            <button class="deck-btn grow" id="school-btn">School</button>
+            <button class="deck-btn grow" id="travel-btn">Travel</button>
+            <button class="deck-btn grow" id="adjectives-btn">Adjectives</button>
+            <button class="deck-btn grow" id="emotions-btn">Emotions</button>
         </div>
-    </section>
+        <div class="center">
+            <div class="board">
+                <div id="c0r0"></div>
+                <div id="c0r1"></div>
+                <div id="c0r2"></div>
+                <div id="c0r3"></div>
+                <div id="c0r4"></div>
+        
+                <div id="c1r0"></div>
+                <div id="c1r1"></div>
+                <div id="c1r2"></div>
+                <div id="c1r3"></div>
+                <div id="c1r4"></div>
+                
+                <div id="c2r0"></div>
+                <div id="c2r1"></div>
+                <div id="c2r2"></div>
+                <div id="c2r3"></div>
+                <div id="c2r4"></div>
+                
+                <div id="c3r0"></div>
+                <div id="c3r1"></div>
+                <div id="c3r2"></div>
+                <div id="c3r3"></div>
+                <div id="c3r4"></div>
+            </div>
+        </div>
+        <div class="right">
+            <h2>Matches</h2>
+            <div class="match-board">
+                <div id="0"></div>
+                <div id="1"></div>
+                <div id="2"></div>
+                <div id="3"></div>
+                <div id="4"></div>
+                <div id="5"></div>
+                <div id="6"></div>
+                <div id="7"></div>
+                <div id="8"></div>
+                <div id="9"></div>
+                <div id="10"></div>
+                <div id="11"></div>
+                <div id="12"></div>
+                <div id="13"></div>
+                <div id="14"></div>
+                <div id="15"></div>
+                <div id="16"></div>
+                <div id="17"></div>
+                <div id="18"></div>
+                <div id="19"></div>
+            </div>
+            <div>
+                <button id="reset">Reset Board</button>
+            </div>
+        </div>
+</section>
+
+<div class="cleared" id="cleared">
+    <button id="close-btn">&times;</button>
+    <div class="cleared-text">
+        <div class="cleared-title">Success!</div>
+        <div class="cleared-subtitle">You matched all the cards!</div>
+        <button id="play-again">Play Again</button>
+    </div>
+</div>
+<div id="overlay"></div>
+
+<div class="study" id="study">
+    <button id="study-close-btn">&times;</button>
+    <div class="study-content">
+        <div class="study-title">Vocabulary</div>
+        <div class="study-text"></div>
+    </div>
+</div>
+<div id="study-overlay"></div>
+
 </body>
 </html>
