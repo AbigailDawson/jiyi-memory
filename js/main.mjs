@@ -4,8 +4,27 @@ const pageTitle = document.querySelector('title');
 
 let cardDeck;
 
-if (pageTitle.innerText === 'Animals') {
-    cardDeck = animalCards;
+switch(pageTitle.innerText) {
+    case 'Animals': 
+        cardDeck = animalCards;
+    break;
+    case 'Hobbies':
+        cardDeck = hobbyCards;
+    break;
+    case 'School':
+        cardDeck = schoolCards;
+    break;
+    case 'Travel':
+        cardDeck = travelCards;
+    break;
+    case 'Adjectives':
+        cardDeck = adjectiveCards;
+    break;
+    case 'Emotions':
+        cardDeck = emotionCards;
+    break;
+    default:
+        cardDeck = animalCards;
 }
 
 /*----- state variables -----*/
