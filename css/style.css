@@ -138,6 +138,13 @@ heading {
     padding-bottom: 1vmin;
 }
 
+.deck-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .deck-btn {
     box-shadow: 0 0 .2vmin .1vmin rgba(255, 255, 255, .2);
     margin-top: 1.5vmin;
@@ -209,6 +216,7 @@ heading {
     font-family: 'Varela Round', sans-serif;
     font-size: 1.7vmin;
     border-radius: .5vmin;
+    background-color: var(--matches-color);
 }
 
 

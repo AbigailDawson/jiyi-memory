@@ -1,34 +1,8 @@
 import { animalCards, hobbyCards, schoolCards, travelCards, adjectiveCards, emotionCards } from './utils.mjs';
-// set cardDeck to equal whichever deck was chosen
-const pageTitle = document.querySelector('title');
-
-let cardDeck;
-
-switch(pageTitle.innerText) {
-    case 'Animals': 
-        cardDeck = animalCards;
-    break;
-    case 'Hobbies':
-        cardDeck = hobbyCards;
-    break;
-    case 'School':
-        cardDeck = schoolCards;
-    break;
-    case 'Travel':
-        cardDeck = travelCards;
-    break;
-    case 'Adjectives':
-        cardDeck = adjectiveCards;
-    break;
-    case 'Emotions':
-        cardDeck = emotionCards;
-    break;
-    default:
-        cardDeck = animalCards;
-}
 
 /*----- state variables -----*/
 
+let cardDeck;
 let board;
 let matches;
 let turns;
@@ -41,9 +15,12 @@ const boardEls = [...document.querySelectorAll('.board > div')];
 const boardEl = document.querySelector('.board');
 const matchEls = [...document.querySelectorAll('.match-board > div')];
 const studyCheckbox = document.getElementById('check');
+const deckBtns = [...document.querySelectorAll('.deck-btn')];
+const deckBtn = document.querySelector('.deck-btns');
 
 /*----- event listeners -----*/
 
+deckBtn.addEventListener('click', setDeck);
 boardEl.addEventListener('click', handleCardFlip);
 document.getElementById('reset').addEventListener('click', init);
 studyCheckbox.addEventListener('change', handleToggle);
@@ -51,6 +28,37 @@ studyCheckbox.addEventListener('change', handleToggle);
 /*----- functions -----*/
 
 init();
+
+function setDeck(evt) {
+    console.log(evt.target.innerText)
+    evt.preventDefault();
+
+    const idx = deckBtns.indexOf(evt.target);
+    if (idx === -1) return;  // ignore a click in between the buttons
+    
+    switch(evt.target.innerText) {
+        case 'Animals': 
+            cardDeck = animalCards;
+        break;
+        case 'Hobbies':
+            cardDeck = hobbyCards;
+        break;
+        case 'School':
+            cardDeck = schoolCards;
+        break;
+        case 'Travel':
+            cardDeck = travelCards;
+        break;
+        case 'Adjectives':
+            cardDeck = adjectiveCards;
+        break;
+        case 'Emotions':
+            cardDeck = emotionCards;
+        break;
+        default:
+            cardDeck = animalCards;
+    }
+}
 
 function handleToggle(evt) {
     evt.preventDefault();
@@ -199,6 +207,7 @@ function renderMessage() {
 }
 
 function init() {
+    cardDeck = animalCards;
     board = [
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
