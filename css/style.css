@@ -352,11 +352,17 @@ input:focus {
 
 .study-title {
     font-size: 5vmin;
+    padding-bottom: 1vmin;
 }
 
 .study-text {
-    font-size: 2vmin;
+    font-size: 3vmin;
+    line-height: 4.5vmin;
 } 
+
+.study-text > ul {
+    list-style: none;
+}
 
 #study-overlay {
     position: fixed;

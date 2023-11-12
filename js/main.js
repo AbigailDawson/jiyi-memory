@@ -78,25 +78,28 @@ init();
 
 function handleToggle(evt) {
     evt.preventDefault();
-    if (this.checked) {
+    if (studyCheckbox.checked = true) {
         console.log('study mode activated');
         document.getElementById('study').classList.add('active');
         document.getElementById('study-overlay').classList.add('active');
+        
+        const studyText = document.querySelector('.study-text');
+        const vocabList = document.createElement('ul');
 
         for (card of deck.cards) {
-            console.log(card);
-            const studyText = document.querySelector('.study-text');
-            const vocabList = document.createElement('ul');
-            const listItem = document.createElement('li');
-            listItem.innerText = card.text;
-            vocabList.appendChild(listItem);
-            studyText.appendChild(vocabList);
+            if (card.text.match(/[\u3400-\u9FBF]/)) {
+                const listItem = document.createElement('li');
+                listItem.innerText = card.text + Array(8).fill('\xa0').join('') + card.id;
+                vocabList.appendChild(listItem);
+                studyText.appendChild(vocabList);
+            }
         }
 
         document.getElementById('study-close-btn').addEventListener('click', function() {
             document.getElementById('study').classList.remove('active');
             document.getElementById('study-overlay').classList.remove('active');
             studyCheckbox.checked = false;
+            studyText.innerHTML = '';
         })
     } else {
         console.log('study mode off');
