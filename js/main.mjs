@@ -1,4 +1,27 @@
-import { animalCards, hobbyCards, schoolCards, travelCards, adjectiveCards, emotionCards } from './utils.mjs';
+import { animals, hobbies, school, travel, adjectives, emotions } from './utils.mjs';
+
+/*----- constants -----*/
+
+const DECK_COLORS = {
+    animalCards: {
+        cardColor: '#570216'
+    },
+    hobbyCards: {
+        cardColor: '#074307'
+    },
+    schoolCards: {
+        cardColor: '#074307'
+    },
+    travelCards: {
+        cardColor: '#2f0743'
+    },
+    adjectiveCards: {
+        cardColor: '#6d3b47'
+    },
+    emotionCards: {
+        cardColor: '#074343'
+    }
+}
 
 /*----- state variables -----*/
 
@@ -30,40 +53,43 @@ studyCheckbox.addEventListener('change', handleToggle);
 init();
 
 function setDeck(evt) {
-    console.log(evt.target.innerText)
     evt.preventDefault();
 
     const idx = deckBtns.indexOf(evt.target);
     if (idx === -1) return;  // ignore a click in between the buttons
     
-    switch(evt.target.innerText) {
-        case 'Animals': 
-            cardDeck = animalCards;
+    const deckName = evt.target.innerText.trim().toLowerCase();
+    switch(deckName) {
+        case 'animals': 
+            cardDeck = animals; // assigning the Cards instance, not the array
         break;
-        case 'Hobbies':
-            cardDeck = hobbyCards;
+        case 'hobbies':
+            cardDeck = hobbies;
         break;
-        case 'School':
-            cardDeck = schoolCards;
+        case 'school':
+            cardDeck = school;
         break;
-        case 'Travel':
-            cardDeck = travelCards;
+        case 'travel':
+            cardDeck = travel;
         break;
-        case 'Adjectives':
-            cardDeck = adjectiveCards;
+        case 'adjectives':
+            cardDeck = adjectives;
         break;
-        case 'Emotions':
-            cardDeck = emotionCards;
+        case 'emotions':
+            cardDeck = emotions;
         break;
         default:
-            cardDeck = animalCards;
+            cardDeck = animals;
     }
+    console.log(cardDeck)
+    console.log(cardDeck.name)
+
+    init();
 }
 
 function handleToggle(evt) {
     evt.preventDefault();
     if (studyCheckbox.checked = true) {
-        console.log('study mode activated');
         document.getElementById('study').classList.add('active');
         document.getElementById('study-overlay').classList.add('active');
         
@@ -175,17 +201,18 @@ function renderBoard() {
         colArr.forEach((card, rowIdx) => {
             const cellId = `c${colIdx}r${rowIdx}`;
             const cellEl = document.getElementById(cellId);
+            cellEl.style.backgroundColor = DECK_COLORS[cardDeck.name].cardColor;
             cellEl.removeAttribute('class', 'reveal-card');
             cellEl.classList.add('grow');
-            if (card.matched === true) { // if the cards are matched
+            if (card.matched === true) { // if the card is a match
                 cellEl.style.backgroundColor = 'var(--board)';
                 cellEl.removeAttribute('class', 'grow');
                 cellEl.innerText = '';
             } 
-            if (card.flipped === false) {
-                cellEl.style.backgroundColor = 'var(--card-color)';
+            if (card.flipped === false) { // if the card is facedown
+                cellEl.style.backgroundColor = DECK_COLORS[cardDeck.name].cardColor;
                 cellEl.innerText = '';
-            } else if (card.matched !== true && card.flipped === true) {
+            } else if (card.matched !== true && card.flipped === true) { // if the card has been flipped
                 cellEl.style.backgroundColor = 'var(--flipped-card-color)';
                 cellEl.innerText = card.text;
             }
@@ -207,7 +234,8 @@ function renderMessage() {
 }
 
 function init() {
-    cardDeck = animalCards;
+    cardDeck = animals;
+
     board = [
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
@@ -218,7 +246,7 @@ function init() {
     matches = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     
     // for each card object, assign a random board index
-    cardDeck.forEach((card) => {
+    cardDeck.cards.forEach((card) => {
         card.flipped = false;
         card.matched = false;
 

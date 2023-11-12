@@ -146,12 +146,20 @@ heading {
 }
 
 .deck-btn {
-    box-shadow: 0 0 .2vmin .1vmin rgba(255, 255, 255, .2);
+    height: 4vmin;
+    width: 15vmin;
     margin-top: 1.5vmin;
+    background-color: #8d8d8d;
+    box-shadow: 0 0 .2vmin .1vmin rgba(0, 0, 0, .2);
     border-radius: .5vmin;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.5vmin;
-    letter-spacing: .2vmin;
+    font-family: 'Paytone One', sans-serif;
+    font-size: 1.8vmin;
+    letter-spacing: .1vmin;
+}
+
+#animals-btn {
+    /* border: .2vmin solid #570216; */
+    color: #570216;
 }
 
 .board {
