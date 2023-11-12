@@ -1,7 +1,13 @@
 import { animalCards, hobbyCards } from './utils.mjs';
 
-/*----- constants -----*/
+// set cardDeck to equal whichever deck was chosen
+const pageTitle = document.querySelector('title');
 
+let cardDeck;
+
+if (pageTitle.innerText === 'Animals') {
+    cardDeck = animalCards;
+}
 
 /*----- state variables -----*/
 
@@ -38,8 +44,7 @@ function handleToggle(evt) {
         const studyText = document.querySelector('.study-text');
         const vocabList = document.createElement('ul');
 
-        console.log(animalCards)
-        animalCards.forEach((card) => {
+        cardDeck.forEach((card) => {
             if (card.text.match(/[\u3400-\u9FBF]/)) {
                 const listItem = document.createElement('li');
                 listItem.innerText = card.text + Array(8).fill('\xa0').join('') + card.id;
@@ -186,7 +191,7 @@ function init() {
     matches = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     
     // for each card object, assign a random board index
-    animalCards.forEach((card) => {
+    cardDeck.forEach((card) => {
         card.flipped = false;
         card.matched = false;
 
