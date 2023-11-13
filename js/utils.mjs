@@ -25,12 +25,36 @@ class Cards {
     }
 }
 
+export const auto = new Cards('auto', '#565656'); 
+auto.newCard('bird', 'bird', false, false);
+auto.newCard('art', 'art', false, false);
+auto.newCard('music', 'music', false, false);
+auto.newCard('teacher', 'teacher', false, false);
+auto.newCard('travel', 'travel', false, false);
+auto.newCard('airplane', 'airplane', false, false);
+auto.newCard('happy', 'happy', false, false);
+auto.newCard('cat', 'cat', false, false);
+auto.newCard('dog', 'dog', false, false);
+auto.newCard('sad', 'sad', false, false);
+
+auto.newCard('bird', '鳥', false, false);
+auto.newCard('art', '美術', false, false);
+auto.newCard('music', '音樂', false, false);
+auto.newCard('teacher', '老師', false, false);
+auto.newCard('travel', '旅遊', false, false);
+auto.newCard('airplane', '飛機', false, false);
+auto.newCard('happy', '高興', false, false);
+auto.newCard('cat', '貓', false, false);
+auto.newCard('dog', '狗', false, false);
+auto.newCard('sad', '難過', false, false);
+
+
 export const animals = new Cards('animalCards', '#b7b7a4'); 
 animals.newCard('horse', 'horse', false, false);
 animals.newCard('lion', 'lion', false, false);
 animals.newCard('bear', 'bear', false, false);
 animals.newCard('tiger', 'tiger', false, false);
-animals.newCard('rabbit', 'rabbig', false, false);
+animals.newCard('rabbit', 'rabbit', false, false);
 animals.newCard('bird', 'bird', false, false);
 animals.newCard('deer', 'deer', false, false);
 animals.newCard('cat', 'cat', false, false);

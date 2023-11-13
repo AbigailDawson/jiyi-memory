@@ -1,4 +1,4 @@
-import { animals, hobbies, school, travel, adjectives, emotions } from './utils.mjs';
+import { auto, animals, hobbies, school, travel, adjectives, emotions } from './utils.mjs';
 
 /*----- constants -----*/
 
