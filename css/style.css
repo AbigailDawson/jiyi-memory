@@ -148,6 +148,8 @@ heading {
 .deck-btn {
     height: 4vmin;
     width: 15vmin;
+    height: 4vmin;
+    width: 15vmin;
     margin-top: 1.5vmin;
     box-shadow: 0 0 .3vmin .2vmin rgba(0, 0, 0, .5);
     border-radius: .5vmin;

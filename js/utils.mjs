@@ -10,10 +10,9 @@ class Card {
 }
 
 class Cards {
-    constructor(name, color) {
-        this.name = name,
-        this.color = color,
-        this.cards = []
+    constructor(name) {
+        this.name = name;
+        this.cards = [];
     }
     newCard(id, text, flipped, matched) {
         let card = new Card(id, text, flipped, matched);
@@ -25,7 +24,7 @@ class Cards {
     }
 }
 
-export const animals = new Cards('animalCards', '#b7b7a4'); 
+let animals = new Cards(); 
 animals.newCard('horse', 'horse', false, false);
 animals.newCard('lion', 'lion', false, false);
 animals.newCard('bear', 'bear', false, false);
@@ -48,7 +47,7 @@ animals.newCard('cat', '貓', false, false);
 animals.newCard('dog', '狗', false, false);
 animals.newCard('snake', '蛇', false, false);
 
-const hobbies = new Cards('hobbyCards', '#b5838d'); 
+let hobbies = new Cards(); 
 hobbies.newCard('reading', 'reading', false, false);
 hobbies.newCard('weight lifting', 'weight lifting', false, false);
 hobbies.newCard('hiking', 'hiking', false, false);
@@ -71,7 +70,7 @@ hobbies.newCard('music', '音樂', false, false);
 hobbies.newCard('cooking', '做飯', false, false);
 hobbies.newCard('horseback riding', '騎馬', false, false);
 
-const school = new Cards('schoolCards');
+let school = new Cards();
 school.newCard('textbook', 'textbook', false, false);
 school.newCard('teacher', 'teacher', false, false);
 school.newCard('student', 'student', false, false);
@@ -94,7 +93,7 @@ school.newCard('pencil', '鉛筆', false, false);
 school.newCard('notebook', '本子', false, false);
 school.newCard('school', '學校', false, false);
 
-const travel = new Cards('travelCards');
+let travel = new Cards();
 travel.newCard('camping', 'camping', false, false);
 travel.newCard('sightseeing', 'sightseeing', false, false);
 travel.newCard('nature', 'nature', false, false);
@@ -117,7 +116,7 @@ travel.newCard('cruise ship', '遊輪', false, false);
 travel.newCard('airplane', '飛機', false, false);
 travel.newCard('plan', '計畫', false, false);
 
-const adjectives = new Cards('adjectiveCards');
+let adjectives = new Cards();
 adjectives.newCard('fast', 'fast', false, false);
 adjectives.newCard('slow', 'slow', false, false);
 adjectives.newCard('easy', 'easy', false, false);
@@ -140,7 +139,7 @@ adjectives.newCard('heavy', '重', false, false);
 adjectives.newCard('many', '多', false, false);
 adjectives.newCard('few', '少', false, false);
 
-const emotions = new Cards('emotionCards');
+let emotions = new Cards();
 emotions.newCard('happy', 'happy', false, false);
 emotions.newCard('sad', 'sad', false, false);
 emotions.newCard('angry', 'angry', false, false);
