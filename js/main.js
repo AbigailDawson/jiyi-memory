@@ -253,7 +253,7 @@ function renderMessage() {
 function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the auto deck. here, selectedDeck represents the expected input
 
     cardDeck = selectedDeck || auto;
-    
+
     board = [
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
@@ -286,3 +286,4 @@ function init(selectedDeck) { // take selectedDeck as a parameter, if no deck ha
 
     render();
 }
+
