@@ -1,27 +1,8 @@
 import { animals, hobbies, school, travel, adjectives, emotions } from './utils.mjs';
 
-/*----- constants -----*/
+console.log(animals.cards)
 
-const DECK_COLORS = {
-    animalCards: {
-        cardColor: '#570216'
-    },
-    hobbyCards: {
-        cardColor: '#074307'
-    },
-    schoolCards: {
-        cardColor: '#074307'
-    },
-    travelCards: {
-        cardColor: '#2f0743'
-    },
-    adjectiveCards: {
-        cardColor: '#6d3b47'
-    },
-    emotionCards: {
-        cardColor: '#074343'
-    }
-}
+/*----- constants -----*/
 
 /*----- state variables -----*/
 
@@ -60,7 +41,7 @@ function setDeck(evt) {
     
     switch(evt.target.innerText) {
         case 'Animals': 
-            cardDeck = animals; // assigning the Cards instance, not the array
+            cardDeck = animals.cards; // assigning the array
         break;
         case 'Hobbies':
             cardDeck = hobbies;
@@ -79,15 +60,15 @@ function setDeck(evt) {
         break;
         default:
             cardDeck = animals;
-            cardDeck = animals;
     }
-    console.log(`cardDeck at button click: ${cardDeck.name}`)
+    console.log('cardDeck at button click: ', cardDeck)
+
 
     init();
 }
 
 function handleToggle(evt) {
-    console.log(`cardDeck at toggle click: ${cardDeck.name}`)
+    console.log('cardDeck at toggle click: ', cardDeck)
     evt.preventDefault();
     if (studyCheckbox.checked = true) {
         document.getElementById('study').classList.add('active');
@@ -96,7 +77,7 @@ function handleToggle(evt) {
         const studyText = document.querySelector('.study-text');
         const vocabList = document.createElement('ul');
 
-        cardDeck.forEach((card) => {
+        cardDeck.cards.forEach((card) => {
             if (card.text.match(/[\u3400-\u9FBF]/)) {
                 const listItem = document.createElement('li');
                 listItem.innerText = card.text + Array(3).fill('\xa0').join('') + card.id;
@@ -195,12 +176,12 @@ function renderMatches() {
 }
 
 function renderBoard() {
-    console.log(`cardDeck at render board: ${cardDeck.name}`)
+    console.log('cardDeck at render board: ', cardDeck)
+
     board.forEach((colArr, colIdx) => {
         colArr.forEach((card, rowIdx) => {
             const cellId = `c${colIdx}r${rowIdx}`;
             const cellEl = document.getElementById(cellId);
-            cellEl.innerHTML = `<style="color: ${cardDeck.color}>`;
             cellEl.removeAttribute('class', 'reveal-card');
             cellEl.classList.add('grow');
             if (card.matched === true) { // if the card is a match
@@ -210,15 +191,15 @@ function renderBoard() {
                 cellEl.innerText = '';
             } 
             if (card.flipped === false) { // if the card is facedown
-                cellEl.innerHTML = `<style="color: ${cardDeck.color}>`;
+                cellEl.style.backgroundColor = 'var(--card-color)';
                 cellEl.innerText = '';
-            } else if (card.matched !== true && card.flipped === true) { // if the card has been flipped
             } else if (card.matched !== true && card.flipped === true) { // if the card has been flipped
                 cellEl.style.backgroundColor = 'var(--flipped-card-color)';
                 cellEl.innerText = card.text;
             }
-        })
-    })   
+            }
+        })   
+    })
 }
 
 function renderMessage() {
@@ -237,10 +218,7 @@ function renderMessage() {
 function init() {
 
     cardDeck = animals;
-
-    console.log(`cardDeck at init: ${cardDeck.name}`)
-    console.log(typeof cardDeck.name)
-
+    console.log('cardDeck at init: ', cardDeck)
 
     board = [
         [0, 0, 0, 0, 0],
