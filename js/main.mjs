@@ -124,6 +124,7 @@ function handleCardFlip(evt) {
     
     function checkMatch() {
         boardEl.style.pointerEvents = 'none'; // do not allow clicks while checkMatch is running
+        deckBtn.style.pointerEvents = 'none'; // do not allow clicks while checkMatch is running
         setTimeout(() => {
             if (clickedCard.id === firstPick.id) {
                 // set matched property of both cards to true
