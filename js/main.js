@@ -33,7 +33,7 @@ document.getElementById('start-modal').classList.add('active');
 boardEl.style.pointerEvents = 'none';
 document.getElementById('start-close-btn').addEventListener('click', function() {
     document.getElementById('start-modal').classList.remove('active');
-    boardEl.style.pointerEvents = 'all';
+    boardEl.style.pointerEvents = 'auto';
 })
 
 init();
@@ -48,7 +48,7 @@ function setDeck(evt) {
     if (idx === -1) return;  // ignore a click in between the buttons
 
     document.getElementById('start-modal').classList.remove('active'); // hide start modal
-    boardEl.style.pointerEvents = 'all'; // restore board click listeners
+    boardEl.style.pointerEvents = 'auto'; // restore board click listeners
 
 
     deckBtns.forEach((deckBtn) => {
@@ -162,8 +162,10 @@ function handleCardFlip(evt) {
             }
             firstPick = null; // reset firstPick to null
             render();
+
             boardEl.style.pointerEvents = 'auto';
             deckBtn.style.pointerEvents = 'auto';
+
         }, 1000)
     }
 }
@@ -195,7 +197,6 @@ function renderMatches() {
 }
 
 function renderBoard() {
-
     board.forEach((colArr, colIdx) => {
         colArr.forEach((card, rowIdx) => {
             const cellId = `c${colIdx}r${rowIdx}`;
