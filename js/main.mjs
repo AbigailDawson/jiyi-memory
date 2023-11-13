@@ -124,7 +124,7 @@ function handleCardFlip(evt) {
     
     function checkMatch() {
         boardEl.style.pointerEvents = 'none'; // do not allow clicks while checkMatch is running
-        // deckBtn.style.pointerEvents = 'none';
+        deckBtn.style.pointerEvents = 'none';
         setTimeout(() => {
             if (clickedCard.id === firstPick.id) {
                 // set matched property of both cards to true
@@ -147,6 +147,7 @@ function handleCardFlip(evt) {
             firstPick = null; // reset firstPick to null
             render();
             boardEl.style.pointerEvents = 'auto';
+            deckBtn.style.pointerEvents = 'auto';
         }, 1000)
     }
 }
