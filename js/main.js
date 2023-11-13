@@ -47,6 +47,10 @@ function setDeck(evt) {
     const idx = deckBtns.indexOf(evt.target);
     if (idx === -1) return;  // ignore a click in between the buttons
 
+    document.getElementById('start-modal').classList.remove('active'); // hide start modal
+    boardEl.style.pointerEvents = 'all'; // restore board click listeners
+
+
     deckBtns.forEach((deckBtn) => {
         deckBtn.classList.remove('active-deck');
     })
