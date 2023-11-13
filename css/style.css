@@ -270,7 +270,7 @@ heading {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0); /* 50% of container, make invisible by default */
+    /*transform: translate(-50%, -50%) scale(0);  50% of container, make invisible by default */
     transition: 200ms ease-in-out;
     border: 1px solid black;
     border-radius: 1vmin;
@@ -288,8 +288,8 @@ heading {
 
 #close-btn {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 1vmin;
+    right: 1vmin;
     cursor: pointer;
     border: none;
     outline: none;
@@ -385,7 +385,7 @@ input[type="checkbox"].toggle + label::after {
 }
 
 input[type="checkbox"].toggle:checked + label::after {
-    background-color: #83C5BE;
+    background-color: var(--bg-color);
     transform: translateX(100%);
 }
 
