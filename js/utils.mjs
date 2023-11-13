@@ -71,7 +71,7 @@ animals.newCard('cat', '貓', false, false);
 animals.newCard('dog', '狗', false, false);
 animals.newCard('snake', '蛇', false, false);
 
-export const hobbies = new Cards('hobbyCards', '#EDF6F9'); 
+export const hobbies = new Cards('hobbyCards', '#faf3dd'); 
 hobbies.newCard('reading', 'reading', false, false);
 hobbies.newCard('weight lifting', 'weight lifting', false, false);
 hobbies.newCard('hiking', 'hiking', false, false);
@@ -140,7 +140,7 @@ travel.newCard('cruise ship', '遊輪', false, false);
 travel.newCard('airplane', '飛機', false, false);
 travel.newCard('plan', '計畫', false, false);
 
-export const adjectives = new Cards('adjectiveCards', '#caf0f8');
+export const adjectives = new Cards('adjectiveCards', '#9ad1d4');
 adjectives.newCard('fast', 'fast', false, false);
 adjectives.newCard('slow', 'slow', false, false);
 adjectives.newCard('easy', 'easy', false, false);
@@ -163,7 +163,7 @@ adjectives.newCard('heavy', '重', false, false);
 adjectives.newCard('many', '多', false, false);
 adjectives.newCard('few', '少', false, false);
 
-export const emotions = new Cards('emotionCards', '#faf3dd');
+export const emotions = new Cards('emotionCards', '#b09e99');
 emotions.newCard('happy', 'happy', false, false);
 emotions.newCard('sad', 'sad', false, false);
 emotions.newCard('angry', 'angry', false, false);
