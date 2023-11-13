@@ -134,9 +134,7 @@ function handleCardFlip(evt) {
                 // loop thru matches array and place matched cards
                 for (let i = 0; i < matches.length; i++){
                     if (matches[i] === 0) {
-                        // console.log(`value at index ${i} is 0`)
                         matches.splice(i, 2, firstPick, clickedCard);
-                        console.log(matches);
                         break;
                     }
                 }
@@ -168,6 +166,8 @@ function renderMatches() {
             matchEl.innerText = item.text;
             if (item.text.match(/[\u3400-\u9FBF]/)) {
                 matchEl.style.fontSize = '2vmin'; 
+            } else {
+                matchEl.style.fontSize = '1.7vmin';
             }
         } else if (item === 0) {
             matchEl.style.backgroundColor = 'var(--matches-color)';
@@ -187,7 +187,10 @@ function renderBoard() {
             if (card.text.match(/[\u3400-\u9FBF]/)) {
                 cellEl.style.fontSize = '3vmin'; // make font size larger for Chinese characters
                 cellEl.style.fontWeight = '600';
+            } else {
+                cellEl.style.fontSize = '2.3vmin';
             }
+
             if (card.matched === true) { // if the card is a match
                 cellEl.style.backgroundColor = 'var(--board)';
                 cellEl.removeAttribute('class', 'grow');
@@ -195,7 +198,7 @@ function renderBoard() {
             } 
 
             if (card.flipped === false) { // if the card is facedown
-                cellEl.style.backgroundColor = cardDeck.color;
+                cellEl.style.background = cardDeck.color;
                 cellEl.innerText = '';
 
             } else if (card.matched !== true && card.flipped === true) { // if the card has been flipped
