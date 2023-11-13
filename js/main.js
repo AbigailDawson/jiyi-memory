@@ -62,6 +62,7 @@ function setDeck(evt) {
         default:
             cardDeck = auto;
     }
+
     init(cardDeck); // call init() passing in the cardDeck variable - if no deck has been chosen, init() will run from the call above with no deck parameter
 }
 
@@ -248,7 +249,7 @@ function renderMessage() {
 function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the auto deck. here, selectedDeck represents the expected input
 
     cardDeck = selectedDeck || auto;
-
+    
     board = [
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],

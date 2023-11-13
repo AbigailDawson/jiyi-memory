@@ -159,9 +159,19 @@ heading {
     width: 15vmin;
     border-radius: .5vmin;
     border: none;
-    box-shadow: 0 0 .2vmin .1vmin rgba(0, 0, 0, .5);
     margin-top: 1.5vmin;
     color: var(--button-text-color);
+    transition: 200ms ease-in-out;
+
+}
+
+.deck-btn:focus {
+    box-shadow: .2vmin .2vmin .5vmin .4vmin rgba(0, 0, 0, .3);
+    transform: scale(1.09);
+}
+
+.deck-btn:hover {
+    box-shadow: .2vmin .2vmin .5vmin .4vmin rgba(0, 0, 0, .3);
 }
 
 #animals-btn {
@@ -182,15 +192,6 @@ heading {
 #emotions-btn {
     background-color: #fff1e6;
 }
-
-.btn-grow {
-    transition: 200ms ease-in-out;
-}
-
-.btn-grow:hover {
-    transform: scale(1.09);
-}
-
 
 .board {
     background-color: var(--board);
