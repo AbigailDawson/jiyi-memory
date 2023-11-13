@@ -222,6 +222,15 @@ function renderMessage() {
         if (turns === 20) {
             document.querySelector('.cleared-title').innerText = 'Perfect Game!';
             document.querySelector('.cleared-subtitle').innerText = 'You matched all the cards on the first try! That\'s really quite an impressive feat. Congratulations!';
+        } else if (turns > 20 && turns <= 30) {
+            document.querySelector('.cleared-title').innerText = 'Almost Perfect!';
+            document.querySelector('.cleared-subtitle').innerText = 'You matched nearly all the cards on your first try! You either have some serious luck or some mad skills. Either way, great job!';
+        } else if (turns > 30 && turns <= 40) {
+            document.querySelector('.cleared-title').innerText = 'Success!';
+            document.querySelector('.cleared-subtitle').innerText = 'Excellent work! Your studies have paid off! Remember, you can always activate Study Mode to review the vocabulary and improve your score.';
+        } else if (turns > 40) {
+            document.querySelector('.cleared-title').innerText = 'Great Effort!';
+            document.querySelector('.cleared-subtitle').innerText = 'Great work! If you\'d like to get even faster at recognizing these words, try activating Study Mode before playing to review the vocabulary!';
         }
 
         document.getElementById('play-again').addEventListener('click', function() {
