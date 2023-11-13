@@ -24,8 +24,9 @@ const deckBtn = document.querySelector('.deck-btns');
 
 deckBtn.addEventListener('click', setDeck);
 boardEl.addEventListener('click', handleCardFlip);
-document.getElementById('reset').addEventListener('click', resetBoard);
 studyCheckbox.addEventListener('change', handleToggle);
+document.getElementById('reset').addEventListener('click', resetBoard);
+
 
 /*----- functions -----*/
 
@@ -33,6 +34,7 @@ init();
 
 function resetBoard() {
     init(cardDeck);
+    
 }
 
 function setDeck(evt) {
@@ -218,6 +220,11 @@ function renderMessage() {
     if (remaining === 0) {
         document.getElementById('cleared').classList.add('active');
         document.getElementById('overlay').classList.add('active');
+        document.getElementById('play-again').addEventListener('click', function() {
+            document.getElementById('cleared').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+            resetBoard();
+        });
         document.getElementById('close-btn').addEventListener('click', function() {
             document.getElementById('cleared').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');

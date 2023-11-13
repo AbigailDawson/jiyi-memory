@@ -266,11 +266,12 @@ heading {
 
 /* ---- Styles for cleared board popup message ---- */
 
-.cleared {
+#cleared {
     position: fixed;
     top: 50%;
     left: 50%;
-    /*transform: translate(-50%, -50%) scale(0);  50% of container, make invisible by default */
+    transform: translate(-50%, -50%) scale(0);  
+    /* ^ 50% of container, make invisible by default */
     transition: 200ms ease-in-out;
     border: 1px solid black;
     border-radius: 1vmin;
@@ -282,8 +283,9 @@ heading {
     padding: 2vmin;
 }
 
-.cleared.active {
-    transform: translate(-50%, -50%) scale(1); /* makes cleared message visible when active class is applied */
+#cleared.active {
+    transform: translate(-50%, -50%) scale(1); 
+    /* makes cleared message visible when active class is applied */
 }
 
 #close-btn {
