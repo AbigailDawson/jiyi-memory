@@ -48,7 +48,6 @@ auto.newCard('cat', '貓', false, false);
 auto.newCard('dog', '狗', false, false);
 auto.newCard('sad', '難過', false, false);
 
-
 export const animals = new Cards('animalCards', '#b7b7a4'); 
 animals.newCard('horse', 'horse', false, false);
 animals.newCard('lion', 'lion', false, false);

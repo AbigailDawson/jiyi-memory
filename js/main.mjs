@@ -57,10 +57,9 @@ function setDeck(evt) {
             cardDeck = emotions;
         break;
         default:
-            cardDeck = animals;
+            cardDeck = auto;
     }
-    console.log('clicked cardDeck.color is ', cardDeck.color)
-    init();
+    init(cardDeck); // call init() passing in the cardDeck variable - if no deck has been chosen, init() will run from the call above with no deck parameter
 }
 
 function handleToggle(evt) {
@@ -210,9 +209,9 @@ function renderMessage() {
     }   
 }
 
-function init() {
+function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the auto deck. here, selectedDeck represents the expected input
 
-    cardDeck = animals;
+    cardDeck = selectedDeck || auto;
 
     board = [
         [0, 0, 0, 0, 0],
