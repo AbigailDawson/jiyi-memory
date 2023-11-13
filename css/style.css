@@ -146,12 +146,23 @@ heading {
 }
 
 .deck-btn {
-    box-shadow: 0 0 .2vmin .1vmin rgba(255, 255, 255, .2);
+    height: 4vmin;
+    width: 15vmin;
     margin-top: 1.5vmin;
+    box-shadow: 0 0 .3vmin .2vmin rgba(0, 0, 0, .5);
     border-radius: .5vmin;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.5vmin;
-    letter-spacing: .2vmin;
+    font-family: 'Paytone One', sans-serif;
+    font-size: 1.8vmin;
+    letter-spacing: .1vmin;
+    color: var(--bg-color);
+}
+
+#animals-btn {
+    background-color: #b7b7a4;
+}
+
+#hobbies-btn {
+    background-color: #b5838d;
 }
 
 .board {
