@@ -28,6 +28,13 @@ document.getElementById('reset').addEventListener('click', resetBoard);
 
 /*----- functions -----*/
 
+document.getElementById('start-modal').classList.add('active');
+console.log('start modal opened')
+document.getElementById('start-close-btn').addEventListener('click', function() {
+    console.log('close button click heard')
+    document.getElementById('start-modal').classList.remove('active');
+})
+
 init();
 
 function resetBoard() {

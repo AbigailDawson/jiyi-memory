@@ -159,19 +159,18 @@ heading {
     width: 15vmin;
     border-radius: .5vmin;
     border: none;
-    margin-top: 1.5vmin;
+    margin-top: 1.6vmin;
     color: var(--button-text-color);
+    box-shadow: .2vmin .2vmin .5vmin .4vmin rgba(0, 0, 0, .3);
     transition: 200ms ease-in-out;
 }
 
 .deck-btn:hover {
-    box-shadow: .2vmin .2vmin .5vmin .4vmin rgba(0, 0, 0, .3);
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 .active-deck {
-    box-shadow: .2vmin .2vmin .5vmin .4vmin rgba(0, 0, 0, .3);
-    transform: scale(1.1);
+    transform: scale(1.2);
     background-color: var(--flipped-card-color)!important;
 }
 
@@ -266,7 +265,7 @@ heading {
 
 
 
-/* ---- Styles for cleared board popup message ---- */
+/* ---- Styles for cleared board modal ---- */
 
 #cleared {
     position: fixed;
@@ -401,6 +400,8 @@ input:focus {
     border: 2px solid #83C5BE;
 }
 
+/* ---- Styles for study mode modal ---- */
+
 .study {
     position: fixed;
     top: 50%;
@@ -418,7 +419,7 @@ input:focus {
 }
 
 .study.active {
-    transform: translate(-50%, -50%) scale(1); /* makes cleared message visible when active class is applied */
+    transform: translate(-50%, -50%) scale(1); /* makes message visible when active class is applied */
 }
 
 #study-close-btn {
@@ -474,4 +475,64 @@ input:focus {
 #study-overlay.active {
     opacity: 1;
     pointer-events: all;
+}
+
+/* ---- Styles for start modal ---- */
+
+#start-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* 50% of container, make invisible by default */
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 1vmin;
+    z-index: 10;
+    background-color: var(--flipped-card-color);
+    color: var(--button-text-color);
+    width: 50vmin;
+    max-width: 80%;
+    padding: 2vmin;
+}
+
+#start-modal.active {
+    transform: translate(-50%, -50%) scale(1); /* makes  message visible when active class is applied */
+}
+
+#start-close-btn {
+    position: absolute;
+    top: 2vmin;
+    right: 2vmin;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    color: #000;
+    font-size: 4vmin;
+    padding-right: 1vmin;
+}
+
+.start-modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vmin;
+    padding: 5vmin;
+}
+
+.start-modal-title {
+    font-size: 5vmin;
+    padding-bottom: 1vmin;
+}
+
+.start-modal-text {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 3vmin;
+    line-height: 4.7vmin;
+    text-align: center;
+} 
+
+.start-modal-text > ul {
+    list-style: none;
 }
