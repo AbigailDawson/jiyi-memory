@@ -1,5 +1,3 @@
-import { auto, animals, hobbies, school, travel, adjectives, emotions } from './utils.js';
-
 /*----- constants -----*/
 
 /*----- state variables -----*/
@@ -33,8 +31,7 @@ document.getElementById('reset').addEventListener('click', resetBoard);
 init();
 
 function resetBoard() {
-    init(cardDeck);
-    
+    init(cardDeck);   
 }
 
 function setDeck(evt) {

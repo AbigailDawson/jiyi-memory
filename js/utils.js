@@ -25,7 +25,7 @@ class Cards {
     }
 }
 
-export const auto = new Cards('auto', '#565656'); 
+const auto = new Cards('auto', '#565656'); 
 auto.newCard('bird', 'bird', false, false);
 auto.newCard('art', 'art', false, false);
 auto.newCard('music', 'music', false, false);
@@ -48,7 +48,7 @@ auto.newCard('cat', '貓', false, false);
 auto.newCard('dog', '狗', false, false);
 auto.newCard('sad', '難過', false, false);
 
-export const animals = new Cards('animalCards', '#b7b7a4'); 
+const animals = new Cards('animalCards', '#b7b7a4'); 
 animals.newCard('horse', 'horse', false, false);
 animals.newCard('lion', 'lion', false, false);
 animals.newCard('bear', 'bear', false, false);
@@ -71,7 +71,7 @@ animals.newCard('cat', '貓', false, false);
 animals.newCard('dog', '狗', false, false);
 animals.newCard('snake', '蛇', false, false);
 
-export const hobbies = new Cards('hobbyCards', '#a3a88f'); 
+const hobbies = new Cards('hobbyCards', '#a3a88f'); 
 hobbies.newCard('reading', 'reading', false, false);
 hobbies.newCard('weight lifting', 'weight lifting', false, false);
 hobbies.newCard('hiking', 'hiking', false, false);
@@ -94,7 +94,7 @@ hobbies.newCard('music', '音樂', false, false);
 hobbies.newCard('cooking', '做飯', false, false);
 hobbies.newCard('horseback riding', '騎馬', false, false);
 
-export const school = new Cards('schoolCards', '#ddbea9');
+const school = new Cards('schoolCards', '#ddbea9');
 school.newCard('textbook', 'textbook', false, false);
 school.newCard('teacher', 'teacher', false, false);
 school.newCard('student', 'student', false, false);
@@ -117,7 +117,7 @@ school.newCard('pencil', '鉛筆', false, false);
 school.newCard('notebook', '本子', false, false);
 school.newCard('school', '學校', false, false);
 
-export const travel = new Cards('travelCards', '#ce9d83');
+const travel = new Cards('travelCards', '#ce9d83');
 travel.newCard('camping', 'camping', false, false);
 travel.newCard('sightseeing', 'sightseeing', false, false);
 travel.newCard('nature', 'nature', false, false);
@@ -140,7 +140,7 @@ travel.newCard('cruise ship', '遊輪', false, false);
 travel.newCard('airplane', '飛機', false, false);
 travel.newCard('plan', '計畫', false, false);
 
-export const adjectives = new Cards('adjectiveCards', '#eddcd2');
+const adjectives = new Cards('adjectiveCards', '#eddcd2');
 adjectives.newCard('fast', 'fast', false, false);
 adjectives.newCard('slow', 'slow', false, false);
 adjectives.newCard('easy', 'easy', false, false);
@@ -163,7 +163,7 @@ adjectives.newCard('heavy', '重', false, false);
 adjectives.newCard('many', '多', false, false);
 adjectives.newCard('few', '少', false, false);
 
-export const emotions = new Cards('emotionCards', '#fff1e6');
+const emotions = new Cards('emotionCards', '#fff1e6');
 emotions.newCard('happy', 'happy', false, false);
 emotions.newCard('sad', 'sad', false, false);
 emotions.newCard('angry', 'angry', false, false);
