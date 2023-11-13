@@ -1,7 +1,5 @@
 import { animals, hobbies, school, travel, adjectives, emotions } from './utils.mjs';
 
-console.log(animals.cards)
-
 /*----- constants -----*/
 
 /*----- state variables -----*/
@@ -41,7 +39,7 @@ function setDeck(evt) {
     
     switch(evt.target.innerText) {
         case 'Animals': 
-            cardDeck = animals.cards; // assigning the array
+            cardDeck = animals; // animals is the object, cardDeck.cards is the array of card objects, animals.color is the color
         break;
         case 'Hobbies':
             cardDeck = hobbies;
@@ -61,14 +59,11 @@ function setDeck(evt) {
         default:
             cardDeck = animals;
     }
-    console.log('cardDeck at button click: ', cardDeck)
-
-
+    console.log('clicked cardDeck.color is ', cardDeck.color)
     init();
 }
 
 function handleToggle(evt) {
-    console.log('cardDeck at toggle click: ', cardDeck)
     evt.preventDefault();
     if (studyCheckbox.checked = true) {
         document.getElementById('study').classList.add('active');
@@ -176,27 +171,27 @@ function renderMatches() {
 }
 
 function renderBoard() {
-    console.log('cardDeck at render board: ', cardDeck)
-
     board.forEach((colArr, colIdx) => {
         colArr.forEach((card, rowIdx) => {
             const cellId = `c${colIdx}r${rowIdx}`;
             const cellEl = document.getElementById(cellId);
             cellEl.removeAttribute('class', 'reveal-card');
             cellEl.classList.add('grow');
-            if (card.matched === true) { // if the card is a match
+
             if (card.matched === true) { // if the card is a match
                 cellEl.style.backgroundColor = 'var(--board)';
                 cellEl.removeAttribute('class', 'grow');
                 cellEl.innerText = '';
             } 
+
             if (card.flipped === false) { // if the card is facedown
-                cellEl.style.backgroundColor = 'var(--card-color)';
+                cellEl.style.backgroundColor = cardDeck.color;
                 cellEl.innerText = '';
+
             } else if (card.matched !== true && card.flipped === true) { // if the card has been flipped
+                
                 cellEl.style.backgroundColor = 'var(--flipped-card-color)';
                 cellEl.innerText = card.text;
-            }
             }
         })   
     })
@@ -218,7 +213,6 @@ function renderMessage() {
 function init() {
 
     cardDeck = animals;
-    console.log('cardDeck at init: ', cardDeck)
 
     board = [
         [0, 0, 0, 0, 0],
