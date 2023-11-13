@@ -3,10 +3,10 @@
     --board: #393939;
     --card-color: #565656;
     --matches-color: #404040;
-    --flipped-card-color: #e3e3e3;
+    --flipped-card-color: #fffaf6;
     --header-color: #000;
     --text-color: #fff;
-    --card-text-color: #232323;
+    --button-text-color: #1b1b1b;
 }
 
 * {
@@ -159,37 +159,36 @@ heading {
     width: 15vmin;
     border-radius: .5vmin;
     border: none;
-    box-shadow: 0 0 .3vmin .2vmin rgba(0, 0, 0, .5);
+    box-shadow: 0 0 .2vmin .1vmin rgba(0, 0, 0, .5);
     margin-top: 1.5vmin;
-    color: var(--bg-color);
+    color: var(--button-text-color);
 }
 
 #animals-btn {
-    background-color: #83C5BE;
+    background-color: #b7b7a4;
 }
 #hobbies-btn {
-    background-color: #faf3dd;
+    background-color: #a3a88f;
 }
 #school-btn {
-    background-color: #FFDDD2;
+    background-color: #ddbea9;
 }
 #travel-btn {
-    background-color: #E29578;
+    background-color: #ce9d83;
 }
 #adjectives-btn {
-    background-color: #9ad1d4;
+    background-color: #edd2c2;
 }
 #emotions-btn {
-    background-color: #b09e99;
+    background-color: #fff1e6;
 }
 
-.deck-btn.btn-grow {
+.btn-grow {
     transition: 200ms ease-in-out;
 }
 
-.deck-btn.btn-grow:hover {
+.btn-grow:hover {
     transform: scale(1.09);
-    background-color: #fff;
 }
 
 
@@ -212,7 +211,7 @@ heading {
     font-size: 2.3vmin;
     border-radius: 1vmin;
     background-color: var(--card-color);
-    color: var(--card-text-color);
+    color: var(--button-text-color);
 }
 
 .grow {
@@ -260,7 +259,7 @@ heading {
     font-weight: 600;
     border-radius: .5vmin;
     background-color: var(--matches-color);
-    color: var(--card-text-color);
+    color: var(--button-text-color);
 }
 
 
