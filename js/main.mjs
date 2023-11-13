@@ -24,12 +24,16 @@ const deckBtn = document.querySelector('.deck-btns');
 
 deckBtn.addEventListener('click', setDeck);
 boardEl.addEventListener('click', handleCardFlip);
-document.getElementById('reset').addEventListener('click', init);
+document.getElementById('reset').addEventListener('click', resetBoard);
 studyCheckbox.addEventListener('change', handleToggle);
 
 /*----- functions -----*/
 
 init();
+
+function resetBoard() {
+    init(cardDeck);
+}
 
 function setDeck(evt) {
     evt.preventDefault();
