@@ -3,9 +3,10 @@
     --board: #393939;
     --card-color: #565656;
     --matches-color: #404040;
-    --flipped-card-color: #430707;
+    --flipped-card-color: #e3e3e3;
     --header-color: #000;
     --text-color: #fff;
+    --card-text-color: #232323;
 }
 
 * {
@@ -179,12 +180,14 @@ heading {
 .board > div {
     width: 14vmin;
     height: 14vmin;
+    padding: 2vmin;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3vmin;
+    font-size: 2.3vmin;
     border-radius: 1vmin;
     background-color: var(--card-color);
+    color: var(--card-text-color);
 }
 
 .grow {
@@ -228,8 +231,10 @@ heading {
     align-items: center;
     font-family: 'Varela Round', sans-serif;
     font-size: 1.7vmin;
+    font-weight: 600;
     border-radius: .5vmin;
     background-color: var(--matches-color);
+    color: var(--card-text-color);
 }
 
 

@@ -162,6 +162,9 @@ function renderMatches() {
             matchEl.classList.add('reveal-card');
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
             matchEl.innerText = item.text;
+            if (item.text.match(/[\u3400-\u9FBF]/)) {
+                matchEl.style.fontSize = '2vmin'; 
+            }
         } else if (item === 0) {
             matchEl.style.backgroundColor = 'var(--matches-color)';
             matchEl.innerText = '';
@@ -177,6 +180,10 @@ function renderBoard() {
             cellEl.removeAttribute('class', 'reveal-card');
             cellEl.classList.add('grow');
 
+            if (card.text.match(/[\u3400-\u9FBF]/)) {
+                cellEl.style.fontSize = '3vmin'; // make font size larger for Chinese characters
+                cellEl.style.fontWeight = '600';
+            }
             if (card.matched === true) { // if the card is a match
                 cellEl.style.backgroundColor = 'var(--board)';
                 cellEl.removeAttribute('class', 'grow');
