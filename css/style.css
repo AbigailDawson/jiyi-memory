@@ -162,11 +162,18 @@ heading {
     margin-top: 1.5vmin;
     color: var(--button-text-color);
     transition: 200ms ease-in-out;
-
 }
 
 .deck-btn:hover {
     box-shadow: .2vmin .2vmin .5vmin .4vmin rgba(0, 0, 0, .3);
+    transform: scale(1.09);
+    background-color: var(--flipped-card-color)!important;
+}
+
+.active-deck {
+    box-shadow: .2vmin .2vmin .5vmin .4vmin rgba(0, 0, 0, .3);
+    transform: scale(1.09);
+    background-color: var(--flipped-card-color)!important;
 }
 
 #animals-btn {

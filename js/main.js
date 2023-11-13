@@ -36,9 +36,13 @@ function resetBoard() {
 
 function setDeck(evt) {
     evt.preventDefault();
-
     const idx = deckBtns.indexOf(evt.target);
     if (idx === -1) return;  // ignore a click in between the buttons
+
+    deckBtns.forEach((deckBtn) => {
+        deckBtn.classList.remove('active-deck');
+    })
+    evt.target.classList.add('active-deck');
     
     switch(evt.target.innerText) {
         case 'Animals': 
