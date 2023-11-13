@@ -28,11 +28,12 @@ document.getElementById('reset').addEventListener('click', resetBoard);
 
 /*----- functions -----*/
 
+// startup modal
 document.getElementById('start-modal').classList.add('active');
-console.log('start modal opened')
+boardEl.style.pointerEvents = 'none';
 document.getElementById('start-close-btn').addEventListener('click', function() {
-    console.log('close button click heard')
     document.getElementById('start-modal').classList.remove('active');
+    boardEl.style.pointerEvents = 'all';
 })
 
 init();
@@ -190,6 +191,7 @@ function renderMatches() {
 }
 
 function renderBoard() {
+
     board.forEach((colArr, colIdx) => {
         colArr.forEach((card, rowIdx) => {
             const cellId = `c${colIdx}r${rowIdx}`;
