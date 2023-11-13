@@ -214,9 +214,16 @@ function renderBoard() {
 function renderMessage() {
     document.getElementById('remaining-count').innerText = `${remaining}`;
     document.getElementById('turn-count').innerText = `${turns}`;
+
     if (remaining === 0) {
         document.getElementById('cleared').classList.add('active');
         document.getElementById('overlay').classList.add('active');
+
+        if (turns === 20) {
+            document.querySelector('.cleared-title').innerText = 'Perfect Game!';
+            document.querySelector('.cleared-subtitle').innerText = 'You matched all the cards on the first try! That\'s really quite an impressive feat. Congratulations!';
+        }
+
         document.getElementById('play-again').addEventListener('click', function() {
             document.getElementById('cleared').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
