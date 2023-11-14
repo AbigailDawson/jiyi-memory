@@ -8,6 +8,7 @@ let matches;
 let turns;
 let firstPick;
 let remaining;
+let cardCount;
 
 /*----- cached elements -----*/
 
@@ -273,6 +274,8 @@ function openForm() {
 }
 
 function addCard() {
+    cardCount++;
+
     // get input values from form
     const engText = document.getElementById('card-id').value;
     const chText = document.getElementById('card-text').value;
@@ -282,7 +285,7 @@ function addCard() {
     const addedCard = document.createElement('li');
     addedCard.classList.add('card-list');
     addedCard.style.listStyle = 'none';
-    addedCard.innerText = engText + Array(3).fill('\xa0').join('') + chText;
+    addedCard.innerText = cardCount + '. '  + Array(3).fill('\xa0').join('') +  engText + Array(3).fill('\xa0').join('') + chText;
 
     document.querySelector('.card-list').appendChild(cardList);
     cardList.appendChild(addedCard);
@@ -291,10 +294,14 @@ function addCard() {
 
     custom.newCard(engText, chText, false, false);
     custom.newCard(engText, engText, false, false);
-    console.log(custom);
 
-    engText.value = '';
-    chText.value = '';
+    document.getElementById('card-id').value = '';
+    document.getElementById('card-text').value = '';
+
+    if (cardCount === 10) {
+        const playBtn = document.createElement('button');
+        playBtn.classList.add('')
+    }
 }
 
 function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the starter deck. here, selectedDeck represents the expected input
@@ -330,6 +337,7 @@ function init(selectedDeck) { // take selectedDeck as a parameter, if no deck ha
     turns = 0;
     firstPick = null;
     remaining = 10;
+    cardCount = 0;
 
     render();
 }
