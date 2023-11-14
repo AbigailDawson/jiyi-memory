@@ -286,15 +286,27 @@ function addCard() {
     const engText = document.getElementById('card-id').value;
     const chText = document.getElementById('card-text').value;
 
-    // display card on page
-    const cardList = document.createElement('畫l');
-    const addedCard = document.createElement('li');
-    addedCard.classList.add('card-list');
-    addedCard.style.listStyle = 'none';
-    addedCard.innerText = cardCount + '. '  + Array(3).fill('\xa0').join('') +  engText + Array(3).fill('\xa0').join('') + chText;
+    // display card on list
+    const cardList = document.querySelector('.card-list')
+    const listLine = document.createElement('div');
+    listLine.classList.add('list-line');
 
-    document.querySelector('.card-list').appendChild(cardList);
-    cardList.appendChild(addedCard);
+    const listNum = document.createElement('div');
+    listNum.classList.add('num');
+    listNum.innerText = `${cardCount}.`
+    
+    const listBlockEng = document.createElement('div');
+    const listBlockCh = document.createElement('div');
+    listBlockEng.classList.add('list-block');
+    listBlockCh.classList.add('list-block');
+    listBlockEng.innerText = engText
+    listBlockCh.innerText = chText;
+    
+    listLine.appendChild(listNum);
+    listLine.appendChild(listBlockEng);
+    listLine.appendChild(listBlockCh);
+
+    cardList.appendChild(listLine);
 
     custom.newCard(engText, chText, false, false);
     custom.newCard(engText, engText, false, false);

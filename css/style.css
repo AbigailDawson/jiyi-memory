@@ -622,21 +622,43 @@ input[type='text'] {
     gap: .5vmin;
 }
 
-.list-block {
-    background-color: #ebeae8;
-    font-family: 'Varela Round', sans-serif;
+.num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Paytone One', sans-serif;
+    color: var(--bg-color);
     font-size: 1.5vmin;
+    font-weight: 600;
+    width: 3vmin;   
+    height: 3vmin;
+}
+
+.list-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ebeae8;
+    color: var(--bg-color);
+    font-family: 'Paytone One', sans-serif;
+    font-size: 1.5vmin;
+    font-weight: 600;
     width: 15vmin;   
     height: 3vmin;
     border-radius: 1vmin;
 }
 
-.remove-btn {
+/* .remove-btn {
     cursor: pointer;
     border: none;
     outline: none;
-    background: none;
-    color: var(--card-color);
-    font-size: 2vmin;
-    padding-right: 1vmin;
-}
+    display: flex;
+    font-family: 'Paytone One', sans-serif;
+    color: #a00909;
+    font-size: 1.7vmin;
+    font-weight: 600;
+    width: 3vmin;   
+    height: 3vmin;
+    padding: 0 0 0 .5vmin;
+} */
