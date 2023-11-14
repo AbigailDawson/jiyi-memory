@@ -300,8 +300,6 @@ function addCard() {
     document.querySelector('.card-list').appendChild(cardList);
     cardList.appendChild(addedCard);
 
-    let custom = new Cards('custom', '#fff');
-
     custom.newCard(engText, chText, false, false);
     custom.newCard(engText, engText, false, false);
 
@@ -318,6 +316,9 @@ function addCard() {
         playBtn.addEventListener('click', setDeck);
     }
 }
+
+let custom = new Cards('custom', '#fff');
+
 
 function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the starter deck. here, selectedDeck represents the expected input
 

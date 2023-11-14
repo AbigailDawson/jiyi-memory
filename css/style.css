@@ -523,10 +523,10 @@ input:focus {
 }
 
 .create-modal-text {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     gap: 2vmin;
     padding-top: 1vmin;
 }
@@ -612,5 +612,5 @@ input[type='text'] {
     font-size: 2vmin;
     line-height: 2.5vmin;
     margin-top: 1vmin;
-    text-align: center;
+    text-align: left;
 } 
