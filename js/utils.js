@@ -25,7 +25,7 @@ class Cards {
     }
 }
 
-const starter = new Cards('starter', '#565656'); 
+const starter = new Cards('starter', '#a8dadc'); 
 starter.newCard('big', 'big', false, false);
 starter.newCard('small', 'small', false, false);
 starter.newCard('person', 'person', false, false);
@@ -48,7 +48,7 @@ starter.newCard('water', '水', false, false);
 starter.newCard('rain', '雨', false, false);
 starter.newCard('heart', '心', false, false);
 
-const numbers = new Cards('numbers', '#565656');
+const numbers = new Cards('numbers', '#e0fbfc');
 numbers.newCard('1', '1', false, false);
 numbers.newCard('2', '2', false, false);
 numbers.newCard('3', '3', false, false);
@@ -72,7 +72,7 @@ numbers.newCard('9', '九', false, false);
 numbers.newCard('10', '十', false, false);
 
 
-const animals = new Cards('animalCards', '#b7b7a4'); 
+const animals = new Cards('animalCards', '#fcd5ce'); 
 animals.newCard('horse', 'horse', false, false);
 animals.newCard('lion', 'lion', false, false);
 animals.newCard('bear', 'bear', false, false);
@@ -95,7 +95,7 @@ animals.newCard('cat', '貓', false, false);
 animals.newCard('dog', '狗', false, false);
 animals.newCard('snake', '蛇', false, false);
 
-const hobbies = new Cards('hobbyCards', '#a3a88f'); 
+const hobbies = new Cards('hobbyCards', '#fad2e1'); 
 hobbies.newCard('reading', 'reading', false, false);
 hobbies.newCard('weight lifting', 'weight lifting', false, false);
 hobbies.newCard('hiking', 'hiking', false, false);
@@ -118,7 +118,7 @@ hobbies.newCard('music', '音樂', false, false);
 hobbies.newCard('cooking', '做飯', false, false);
 hobbies.newCard('horseback riding', '騎馬', false, false);
 
-const school = new Cards('schoolCards', '#ddbea9');
+const school = new Cards('schoolCards', '#fde2e4');
 school.newCard('textbook', 'textbook', false, false);
 school.newCard('teacher', 'teacher', false, false);
 school.newCard('student', 'student', false, false);
@@ -141,7 +141,7 @@ school.newCard('pencil', '鉛筆', false, false);
 school.newCard('notebook', '本子', false, false);
 school.newCard('school', '學校', false, false);
 
-const travel = new Cards('travelCards', '#ce9d83');
+const travel = new Cards('travelCards', '#f9dcc4');
 travel.newCard('camping', 'camping', false, false);
 travel.newCard('sightseeing', 'sightseeing', false, false);
 travel.newCard('nature', 'nature', false, false);
@@ -164,7 +164,7 @@ travel.newCard('cruise ship', '遊輪', false, false);
 travel.newCard('airplane', '飛機', false, false);
 travel.newCard('plan', '計畫', false, false);
 
-const adjectives = new Cards('adjectiveCards', '#eddcd2');
+const adjectives = new Cards('adjectiveCards', '#cbf3f0');
 adjectives.newCard('fast', 'fast', false, false);
 adjectives.newCard('slow', 'slow', false, false);
 adjectives.newCard('easy', 'easy', false, false);
