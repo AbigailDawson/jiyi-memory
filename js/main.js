@@ -271,7 +271,6 @@ function renderMessage() {
 }
 
 function openForm() {
-    console.log('Create Deck button click heard');
     document.getElementById('create-modal').classList.add('active');
     document.getElementById('create-overlay').classList.add('active');
     document.getElementById('create-close-btn').addEventListener('click', function() {
@@ -307,7 +306,6 @@ function addCard() {
     document.getElementById('card-id').focus();
 
     if (cardCount === 10) {
-        console.log(cardDeck, ' once cardCount = 10, before play! button is clicked')
         const playBtn = document.createElement('button');
         playBtn.classList.add('add-card');
         playBtn.innerText = 'Play!'

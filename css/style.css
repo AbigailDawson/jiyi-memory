@@ -114,7 +114,8 @@ heading {
 }
 
 .center,
-.right {
+.right,
+.left {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -123,14 +124,10 @@ heading {
 }
 
 .left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: var(--matches-color);
     border-radius: 2vmin;
     width: 20vmin;
-    height: 60vmin;
+    height: auto;
     padding: 2vmin;
 }
 
@@ -200,6 +197,11 @@ heading {
 }
 #emotions-btn {
     background-color: #fff1e6;
+}
+#create-deck {
+    background-color: #b7efd0;
+    margin-top: 4vmin;
+    padding: 3vmin 0 3vmin 0;
 }
 
 .board {
