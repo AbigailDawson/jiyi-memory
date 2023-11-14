@@ -28,14 +28,6 @@ document.getElementById('reset').addEventListener('click', resetBoard);
 
 /*----- functions -----*/
 
-// startup modal
-// document.getElementById('start-modal').classList.add('active');
-// boardEl.style.pointerEvents = 'none';
-// document.getElementById('start-close-btn').addEventListener('click', function() {
-//     document.getElementById('start-modal').classList.remove('active');
-//     boardEl.style.pointerEvents = 'auto';
-// })
-
 document.getElementById('starter-btn').classList.add('active-deck');
 
 init();
@@ -48,10 +40,6 @@ function setDeck(evt) {
     evt.preventDefault();
     const idx = deckBtns.indexOf(evt.target);
     if (idx === -1) return;  // ignore a click in between the buttons
-
-    // document.getElementById('start-modal').classList.remove('active'); // hide start modal
-    // boardEl.style.pointerEvents = 'auto'; // restore board click listeners
-
 
     deckBtns.forEach((deckBtn) => {
         deckBtn.classList.remove('active-deck');
@@ -87,7 +75,6 @@ function setDeck(evt) {
 
     init(cardDeck); // call init() passing in the cardDeck variable - if no deck has been chosen, init() will run from the call above with no deck parameter
 }
-
 
 function handleToggle(evt) {
     evt.preventDefault();
