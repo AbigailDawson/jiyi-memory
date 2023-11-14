@@ -81,9 +81,6 @@ function setDeck(evt) {
         case 'Numbers':
             cardDeck = numbers;
         break;
-        case 'Play!': // only accessible thru Create Deck feature
-            cardDeck = custom;
-        break;
         default:
             cardDeck = starter;
     }
@@ -303,17 +300,24 @@ function addCard() {
     custom.newCard(engText, chText, false, false);
     custom.newCard(engText, engText, false, false);
 
+    cardDeck = custom;
+
     document.getElementById('card-id').value = '';
     document.getElementById('card-text').value = '';
     document.getElementById('card-id').focus();
 
     if (cardCount === 10) {
-        console.log(custom);
+        console.log(cardDeck, ' once cardCount = 10, before play! button is clicked')
         const playBtn = document.createElement('button');
         playBtn.classList.add('add-card');
         playBtn.innerText = 'Play!'
+        playBtn.addEventListener('click', function(evt) {
+            evt.preventDefault();
+            document.getElementById('create-modal').classList.remove('active');
+            document.getElementById('create-overlay').classList.remove('active');
+            init(custom);
+        });
         cardList.appendChild(playBtn);
-        playBtn.addEventListener('click', setDeck);
     }
 }
 
@@ -321,7 +325,6 @@ let custom = new Cards('custom', '#fff');
 
 
 function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the starter deck. here, selectedDeck represents the expected input
-
     cardDeck = selectedDeck || starter;
 
     board = [
