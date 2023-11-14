@@ -478,12 +478,12 @@ input:focus {
 }
 
 /* ---- Styles for start modal ---- */
-
+/* 
 #start-modal {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0); /* 50% of container, make invisible by default */
+    transform: translate(-50%, -50%) scale(0);
     transition: 200ms ease-in-out;
     border: 1px solid black;
     border-radius: 1vmin;
@@ -496,7 +496,7 @@ input:focus {
 }
 
 #start-modal.active {
-    transform: translate(-50%, -50%) scale(1); /* makes  message visible when active class is applied */
+    transform: translate(-50%, -50%) scale(1); 
 }
 
 #start-close-btn {
@@ -524,6 +524,7 @@ input:focus {
 .start-modal-title {
     font-size: 5vmin;
     padding-bottom: 1vmin;
+    text-align: center;
 }
 
 .start-modal-text {
@@ -535,4 +536,4 @@ input:focus {
 
 .start-modal-text > ul {
     list-style: none;
-}
+} */

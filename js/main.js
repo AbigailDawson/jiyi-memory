@@ -29,12 +29,12 @@ document.getElementById('reset').addEventListener('click', resetBoard);
 /*----- functions -----*/
 
 // startup modal
-document.getElementById('start-modal').classList.add('active');
-boardEl.style.pointerEvents = 'none';
-document.getElementById('start-close-btn').addEventListener('click', function() {
-    document.getElementById('start-modal').classList.remove('active');
-    boardEl.style.pointerEvents = 'auto';
-})
+// document.getElementById('start-modal').classList.add('active');
+// boardEl.style.pointerEvents = 'none';
+// document.getElementById('start-close-btn').addEventListener('click', function() {
+//     document.getElementById('start-modal').classList.remove('active');
+//     boardEl.style.pointerEvents = 'auto';
+// })
 
 init();
 
@@ -47,13 +47,14 @@ function setDeck(evt) {
     const idx = deckBtns.indexOf(evt.target);
     if (idx === -1) return;  // ignore a click in between the buttons
 
-    document.getElementById('start-modal').classList.remove('active'); // hide start modal
-    boardEl.style.pointerEvents = 'auto'; // restore board click listeners
+    // document.getElementById('start-modal').classList.remove('active'); // hide start modal
+    // boardEl.style.pointerEvents = 'auto'; // restore board click listeners
 
 
     deckBtns.forEach((deckBtn) => {
         deckBtn.classList.remove('active-deck');
     })
+    
     evt.target.classList.add('active-deck');
     
     switch(evt.target.innerText) {
@@ -78,8 +79,10 @@ function setDeck(evt) {
         default:
             cardDeck = auto;
     }
+    
 
     init(cardDeck); // call init() passing in the cardDeck variable - if no deck has been chosen, init() will run from the call above with no deck parameter
+    document.getElementById('starter-btn').classList.remove('active-deck');
 }
 
 function handleToggle(evt) {
@@ -267,6 +270,9 @@ function renderMessage() {
 function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the auto deck. here, selectedDeck represents the expected input
 
     cardDeck = selectedDeck || auto;
+    if (cardDeck = auto) {
+        document.getElementById('starter-btn').classList.add('active-deck');
+    } 
 
     board = [
         [0, 0, 0, 0, 0],
