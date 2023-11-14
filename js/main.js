@@ -194,6 +194,7 @@ function renderMatches() {
                 matchEl.style.fontSize = '2vmin'; 
             } else {
                 matchEl.style.fontSize = '1.7vmin';
+                matchEl.style.fontWeight = '600';
             }
         } else if (item === 0) {
             matchEl.style.backgroundColor = 'var(--matches-color)';
@@ -212,24 +213,25 @@ function renderBoard() {
 
             if (card.text.match(/[\u3400-\u9FBF]/)) {
                 cellEl.style.fontSize = '3vmin'; // make font size larger for Chinese characters
-                cellEl.style.fontWeight = '600';
             } else {
                 cellEl.style.fontSize = '2.3vmin';
             }
 
             if (card.matched === true) { // if the card is a match
-                cellEl.style.backgroundColor = 'var(--board)';
+                cellEl.style.backgroundColor = 'var(--card-color)';
+                cellEl.style.boxShadow = 'none';
                 cellEl.removeAttribute('class', 'grow');
                 cellEl.innerText = '';
             } 
 
             if (card.flipped === false) { // if the card is facedown
                 cellEl.style.background = cardDeck.color;
+                cellEl.style.boxShadow = '.2vmin .2vmin .5vmin .3vmin rgba(0, 0, 0, .4)';
                 cellEl.innerText = '';
 
             } else if (card.matched !== true && card.flipped === true) { // if the card has been flipped
-                
                 cellEl.style.backgroundColor = 'var(--flipped-card-color)';
+                cellEl.style.boxShadow = '.2vmin .2vmin .5vmin .3vmin rgba(0, 0, 0, .4)';
                 cellEl.innerText = card.text;
             }
         })   
