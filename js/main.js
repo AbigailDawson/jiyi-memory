@@ -277,6 +277,16 @@ function addCard() {
     const engText = document.getElementById('card-id').value;
     const chText = document.getElementById('card-text').value;
 
+    // display card on page
+    const cardList = document.createElement('畫l');
+    const addedCard = document.createElement('li');
+    addedCard.classList.add('card-list');
+    addedCard.style.listStyle = 'none';
+    addedCard.innerText = engText + Array(3).fill('\xa0').join('') + chText;
+
+    document.querySelector('.card-list').appendChild(cardList);
+    cardList.appendChild(addedCard);
+
     let custom = new Cards('custom', '#fff');
 
     custom.newCard(engText, chText, false, false);

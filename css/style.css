@@ -606,3 +606,11 @@ input[type='text'] {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
+
+.card-list {
+    font-family: 'Paytone One', sans-serif;
+    font-size: 2.5vmin;
+    line-height: 3vmin;
+    margin-top: 1vmin;
+    text-align: center;
+} 
