@@ -567,19 +567,12 @@ input:focus {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 1vmin;
+    margin-top: 4vmin;
 }
 
 .form-fields {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.input-grp {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -610,9 +603,40 @@ input[type='text'] {
 }
 
 .card-list {
-    font-family: 'Paytone One', sans-serif;
-    font-size: 2vmin;
-    line-height: 2.5vmin;
-    margin-top: 1vmin;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 42vmin;
+    gap: .5vmin;
+    margin-top: 3vmin;
+    margin-bottom: 2vmin;
 } 
+
+.list-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: .5vmin;
+}
+
+.list-block {
+    background-color: #ebeae8;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.5vmin;
+    width: 15vmin;   
+    height: 3vmin;
+    border-radius: 1vmin;
+}
+
+.remove-btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    color: var(--card-color);
+    font-size: 2vmin;
+    padding-right: 1vmin;
+}
