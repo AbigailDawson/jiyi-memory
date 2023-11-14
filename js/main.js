@@ -307,6 +307,7 @@ function addCard() {
 
     document.getElementById('card-id').value = '';
     document.getElementById('card-text').value = '';
+    document.getElementById('card-id').focus();
 
     if (cardCount === 10) {
         console.log(custom);
