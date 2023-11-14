@@ -282,6 +282,8 @@ function openForm(evt) {
         document.getElementById('create-modal').classList.remove('active');
         document.getElementById('create-overlay').classList.remove('active');
     });
+
+    document.getElementById('card-id').focus();
 }
 
 function addCard() {
