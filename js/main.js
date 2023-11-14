@@ -28,6 +28,12 @@ document.getElementById('reset').addEventListener('click', resetBoard);
 document.getElementById('create-deck').addEventListener('click', openForm);
 
 // allow for enter key to click button while form input is selected
+document.getElementById('card-text').addEventListener('keyup', function(evt) {
+    if (evt.key === 'Enter') {
+        evt.preventDefault();
+        document.getElementById('add-card').click();
+    }
+});
 
 /*----- functions -----*/
 
