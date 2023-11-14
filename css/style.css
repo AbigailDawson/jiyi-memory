@@ -583,7 +583,13 @@ input[type='text'] {
     padding: 1vmin;
     margin: 0 .7vmin 0 0;
     width: 15vmin;
+    border: .2vmin solid #b7efd0;
     border-radius: 1vmin;
+}
+
+input:focus {
+    outline: none;
+    border: .3vmin solid #b7efd0;
 }
 
 .color-picker {
