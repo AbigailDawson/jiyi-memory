@@ -24,6 +24,7 @@ deckBtn.addEventListener('click', setDeck);
 boardEl.addEventListener('click', handleCardFlip);
 studyCheckbox.addEventListener('change', handleToggle);
 document.getElementById('reset').addEventListener('click', resetBoard);
+document.getElementById('create-deck').addEventListener('click', openForm);
 
 
 /*----- functions -----*/
@@ -259,6 +260,31 @@ function renderMessage() {
             document.getElementById('overlay').classList.remove('active');
         })
     }   
+}
+
+function openForm() {
+    console.log('Create Deck button click heard');
+    document.getElementById('create-modal').classList.add('active');
+    document.getElementById('create-overlay').classList.add('active');
+    document.getElementById('create-close-btn').addEventListener('click', function() {
+        document.getElementById('create-modal').classList.remove('active');
+        document.getElementById('create-overlay').classList.remove('active');
+    });
+}
+
+function createDeck() {
+    // get input values from form
+    const engText = document.getElementById('card-id').value;
+    const chText = document.getElementById('card-text').value;
+
+    let custom = new Cards('custom', '#fff');
+
+    custom.newCard(engText, chText, false, false);
+    custom.newCard(engText, engText, false, false);
+    console.log(custom);
+
+    engText.value = '';
+    chText.value = '';
 }
 
 function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the starter deck. here, selectedDeck represents the expected input

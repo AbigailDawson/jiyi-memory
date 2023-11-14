@@ -485,3 +485,80 @@ input:focus {
     opacity: 1;
     pointer-events: all;
 }
+
+/* ---- Styles for create deck modal ---- */
+
+#create-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);  
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 1vmin;
+    z-index: 10;
+    background-color: white;
+    color: black;
+    width: 50vmin;
+    max-width: 80%;
+    padding: 2vmin;
+}
+
+#create-modal.active {
+    transform: translate(-50%, -50%) scale(1); 
+}
+
+#create-close-btn {
+    position: absolute;
+    top: 1vmin;
+    right: 1vmin;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    color: black;
+    font-size: 4vmin;
+    padding-right: 1vmin;
+}
+
+.create-modal-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vmin;
+    padding: 5vmin;
+}
+
+.create-modal-title {
+    font-size: 5vmin;
+    text-align: center;
+}
+
+.create-modal-subtitle {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 2.3vmin;
+    line-height: 3.2vmin;
+    text-align: center;
+} 
+
+/* #play-again {
+    margin-top: 5vmin;
+} */
+
+#create-overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#create-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}

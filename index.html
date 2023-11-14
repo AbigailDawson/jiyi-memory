@@ -42,17 +42,18 @@
             <h2>Decks</h2>
             <div class="deck-btns">
                 <button class="deck-btn btn-grow" id="starter-btn">Start Here!</button>
-            <h3>Beginner</h3>
+                <h3>Beginner</h3>
                 <button class="deck-btn btn-grow" id="numbers-btn">Numbers</button>
                 <button class="deck-btn btn-grow" id="adjectives-btn">Adjectives</button>
-            <h3>Intermediate</h3>
+                <h3>Intermediate</h3>
                 <button class="deck-btn btn-grow" id="animals-btn">Animals</button>
                 <button class="deck-btn btn-grow" id="hobbies-btn">Hobbies</button>
                 <button class="deck-btn btn-grow" id="school-btn">School</button>
-            <h3>Advanced</h3>
+                <h3>Advanced</h3>
                 <button class="deck-btn btn-grow" id="travel-btn">Travel</button>
                 <button class="deck-btn btn-grow" id="emotions-btn">Emotions</button> 
             </div>
+            <button id="create-deck">Create Deck</button> 
         </div>
         <div class="center">
             <div class="board">
@@ -129,6 +130,27 @@
     </div>
 </div>
 <div id="study-overlay"></div>
+
+<div class="create-modal" id="create-modal">
+    <button id="create-close-btn">&times;</button>
+    <div class="create-modal-text">
+        <div class="create-modal-title">Create a deck</div>
+        <div class="create-modal-subtitle">Enter 10 words to play with</div>
+        <form id="create-deck-form">
+            <div class="input-grp">
+                <label for="card-id">English: </label>
+                <input type ="text" id="card-id" name="card-id">
+            </div>
+            <div class="input-grp">
+                <label for="card-text">Chinese: </label>
+                <input type ="text" id="card-text" name="card-text">
+            </div>
+            <button type="button" id="add-card" onClick="createDeck()">Add Card</button>
+        </form>
+        <!-- <button class="grow" id="play-again">Play Again</button> -->
+    </div>
+</div>
+<div id="create-overlay"></div>
 
 </body>
 </html>
