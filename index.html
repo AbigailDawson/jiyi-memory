@@ -135,17 +135,20 @@
     <button id="create-close-btn">&times;</button>
     <div class="create-modal-text">
         <div class="create-modal-title">Create a deck</div>
-        <div class="create-modal-subtitle">Enter 10 words to play with</div>
+        <div class="create-modal-subtitle">Enter 10 words to play with!</div>
         <form id="create-deck-form">
-            <div class="input-grp">
-                <label for="card-id">English: </label>
-                <input type ="text" id="card-id" name="card-id">
+            <div class="form-fields">
+                <div class="input-grp">
+                    <label for="card-id"></label>
+                    <input type="text" id="card-id" name="card-id" placeholder="English">
+                </div>
+                <div class="input-grp">
+                    <label for="card-text"></label>
+                    <input type="text" id="card-text" name="card-text" placeholder="Chinese">
+                </div>
+                <button type="button" id="add-card" onClick="addCard()">Add Card</button>
             </div>
-            <div class="input-grp">
-                <label for="card-text">Chinese: </label>
-                <input type ="text" id="card-text" name="card-text">
-            </div>
-            <button type="button" id="add-card" onClick="createDeck()">Add Card</button>
+            
         </form>
         <!-- <button class="grow" id="play-again">Play Again</button> -->
     </div>

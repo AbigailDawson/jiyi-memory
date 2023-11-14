@@ -272,7 +272,7 @@ function openForm() {
     });
 }
 
-function createDeck() {
+function addCard() {
     // get input values from form
     const engText = document.getElementById('card-id').value;
     const chText = document.getElementById('card-text').value;

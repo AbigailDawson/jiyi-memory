@@ -501,6 +501,7 @@ input:focus {
     color: black;
     width: 50vmin;
     max-width: 80%;
+    height: 63vmin;
     padding: 2vmin;
 }
 
@@ -527,7 +528,7 @@ input:focus {
     justify-content: center;
     align-items: center;
     gap: 2vmin;
-    padding: 5vmin;
+    padding-top: 1vmin;
 }
 
 .create-modal-title {
@@ -541,10 +542,6 @@ input:focus {
     line-height: 3.2vmin;
     text-align: center;
 } 
-
-/* #play-again {
-    margin-top: 5vmin;
-} */
 
 #create-overlay {
     position: fixed;
@@ -561,4 +558,51 @@ input:focus {
 #create-overlay.active {
     opacity: 1;
     pointer-events: all;
+}
+
+#create-deck-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1vmin;
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-grp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type='text'] {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.5vmin;
+    padding: 1vmin;
+    margin: 0 .7vmin 0 0;
+    width: 15vmin;
+    border-radius: 1vmin;
+}
+
+#add-card {
+    cursor: pointer;
+    outline: none;
+    font-family: 'Paytone One', sans-serif;
+    font-size: 1.4vmin;
+    letter-spacing: .1vmin;
+    height: 3.6vmin;
+    width: 10vmin;
+    margin-left: 1vmin;
+    border-radius: 1vmin;
+    border: none;
+    box-shadow: 0 0 .3vmin .2vmin rgba(255, 255, 255, .2);
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
