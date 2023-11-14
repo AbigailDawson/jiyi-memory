@@ -325,9 +325,13 @@ function addCard() {
     document.getElementById('card-id').focus();
 
     if (cardCount === 10) {
+        document.getElementById('card-id').setAttribute('disabled', 'disabled');
+        document.getElementById('card-text').setAttribute('disabled', 'disabled');
+
         const playBtn = document.createElement('button');
         playBtn.classList.add('add-card');
         playBtn.innerText = 'Play!'
+        playBtn.style.marginTop = '2vmin';
         playBtn.addEventListener('click', function(evt) {
             evt.preventDefault();
             document.getElementById('create-modal').classList.remove('active');
