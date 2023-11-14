@@ -270,7 +270,12 @@ function renderMessage() {
     }   
 }
 
-function openForm() {
+function openForm(evt) {
+    deckBtns.forEach((deckBtn) => {
+        deckBtn.classList.remove('active-deck');
+    })
+    evt.target.classList.add('active-deck');
+
     document.getElementById('create-modal').classList.add('active');
     document.getElementById('create-overlay').classList.add('active');
     document.getElementById('create-close-btn').addEventListener('click', function() {

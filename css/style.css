@@ -594,7 +594,7 @@ input[type='text'] {
     letter-spacing: .1vmin;
     height: 3.6vmin;
     width: 10vmin;
-    margin-left: 1vmin;
+    margin: 2vmin 0 0 1vmin;
     border-radius: 1vmin;
     border: none;
     box-shadow: 0 0 .3vmin .2vmin rgba(255, 255, 255, .2);
