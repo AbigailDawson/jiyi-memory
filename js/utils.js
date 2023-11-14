@@ -48,6 +48,30 @@ starter.newCard('water', '水', false, false);
 starter.newCard('rain', '雨', false, false);
 starter.newCard('heart', '心', false, false);
 
+const numbers = new Cards('numbers', '#565656');
+numbers.newCard('1', '1', false, false);
+numbers.newCard('2', '2', false, false);
+numbers.newCard('3', '3', false, false);
+numbers.newCard('4', '4', false, false);
+numbers.newCard('5', '5', false, false);
+numbers.newCard('6', '6', false, false);
+numbers.newCard('7', '7', false, false);
+numbers.newCard('8', '8', false, false);
+numbers.newCard('9', '9', false, false);
+numbers.newCard('10', '10', false, false);
+
+numbers.newCard('1', '一', false, false);
+numbers.newCard('2', '二', false, false);
+numbers.newCard('3', '三', false, false);
+numbers.newCard('4', '西', false, false);
+numbers.newCard('5', '五', false, false);
+numbers.newCard('6', '六', false, false);
+numbers.newCard('7', '七', false, false);
+numbers.newCard('8', '八', false, false);
+numbers.newCard('9', '九', false, false);
+numbers.newCard('10', '十', false, false);
+
+
 const animals = new Cards('animalCards', '#b7b7a4'); 
 animals.newCard('horse', 'horse', false, false);
 animals.newCard('lion', 'lion', false, false);

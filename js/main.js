@@ -48,6 +48,9 @@ function setDeck(evt) {
     evt.target.classList.add('active-deck');
     
     switch(evt.target.innerText) {
+        case 'Start Here!':
+            cardDeck = starter;
+        break;
         case 'Animals': 
             cardDeck = animals; // animals is the object, cardDeck.cards is the array of card objects, animals.color is the color
         break;
@@ -66,8 +69,8 @@ function setDeck(evt) {
         case 'Emotions':
             cardDeck = emotions;
         break;
-        case 'Start Here!':
-            cardDeck = starter;
+        case 'Numbers':
+            cardDeck = numbers;
         break;
         default:
             cardDeck = starter;
