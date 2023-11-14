@@ -300,7 +300,10 @@ function addCard() {
 
     if (cardCount === 10) {
         const playBtn = document.createElement('button');
-        playBtn.classList.add('')
+        playBtn.classList.add('add-card');
+        playBtn.addEventListener('click', setDeck);
+
+        cardList.appendChild(playBtn);
     }
 }
 
