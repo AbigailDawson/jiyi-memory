@@ -328,6 +328,20 @@ function addCard() {
         document.getElementById('card-id').setAttribute('disabled', 'disabled');
         document.getElementById('card-text').setAttribute('disabled', 'disabled');
 
+        const colorPicker = document.createElement('div');
+        colorPicker.classList.add('color-picker')
+        const colorPickerLabel = document.createElement('label');
+        colorPickerLabel.setAttribute('for', 'color-picker');
+        colorPickerLabel.classList.add('color-picker');
+        colorPickerLabel.innerText = 'Choose a color for your deck: '
+        const colorPickerInput = document.createElement('input');
+        colorPickerInput.setAttribute('type', 'color');
+        colorPickerInput.setAttribute('id', 'color-picker');
+        colorPickerInput.setAttribute('value', '#b7efd0');
+        colorPicker.appendChild(colorPickerLabel);
+        colorPicker.appendChild(colorPickerInput);
+        cardList.appendChild(colorPicker);
+
         const playBtn = document.createElement('button');
         playBtn.classList.add('add-card');
         playBtn.innerText = 'Play!'
@@ -342,7 +356,7 @@ function addCard() {
     }
 }
 
-let custom = new Cards('custom', '#fff');
+let custom = new Cards('custom', '#b7efd0');
 
 
 function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the starter deck. here, selectedDeck represents the expected input

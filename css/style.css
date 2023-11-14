@@ -586,6 +586,30 @@ input[type='text'] {
     border-radius: 1vmin;
 }
 
+.color-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5vmin;
+    margin-top: 1vmin;
+}
+
+.color-picker > label {
+    font-size: 1.4vmin;
+    letter-spacing: .1vmin;
+    color: var(--bg-color);
+}
+
+.color-picker > input[type="color"] {
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    margin-left: .5vmin;
+    width: 5vmin;
+    height: 3vmin;
+}
+
 .add-card {
     cursor: pointer;
     outline: none;
@@ -609,7 +633,7 @@ input[type='text'] {
     width: 42vmin;
     gap: .5vmin;
     margin-top: 3vmin;
-    margin-bottom: 2vmin;
+    margin-bottom: 1vmin;
 } 
 
 .list-line {
