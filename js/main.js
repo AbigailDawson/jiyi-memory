@@ -27,6 +27,7 @@ studyCheckbox.addEventListener('change', handleToggle);
 document.getElementById('reset').addEventListener('click', resetBoard);
 document.getElementById('create-deck').addEventListener('click', openForm);
 
+// allow for enter key to click button while form input is selected
 
 /*----- functions -----*/
 
@@ -73,6 +74,9 @@ function setDeck(evt) {
         break;
         case 'Numbers':
             cardDeck = numbers;
+        break;
+        case 'Play!': // only accessible thru Create Deck feature
+            cardDeck = custom;
         break;
         default:
             cardDeck = starter;
@@ -299,11 +303,12 @@ function addCard() {
     document.getElementById('card-text').value = '';
 
     if (cardCount === 10) {
+        console.log(custom);
         const playBtn = document.createElement('button');
         playBtn.classList.add('add-card');
-        playBtn.addEventListener('click', setDeck);
-
+        playBtn.innerText = 'Play!'
         cardList.appendChild(playBtn);
+        playBtn.addEventListener('click', setDeck);
     }
 }
 
