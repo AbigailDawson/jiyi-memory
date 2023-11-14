@@ -36,6 +36,8 @@ document.getElementById('reset').addEventListener('click', resetBoard);
 //     boardEl.style.pointerEvents = 'auto';
 // })
 
+document.getElementById('starter-btn').classList.add('active-deck');
+
 init();
 
 function resetBoard() {
@@ -76,14 +78,16 @@ function setDeck(evt) {
         case 'Emotions':
             cardDeck = emotions;
         break;
+        case 'Start Here!':
+            cardDeck = starter;
+        break;
         default:
-            cardDeck = auto;
+            cardDeck = starter;
     }
-    
 
     init(cardDeck); // call init() passing in the cardDeck variable - if no deck has been chosen, init() will run from the call above with no deck parameter
-    document.getElementById('starter-btn').classList.remove('active-deck');
 }
+
 
 function handleToggle(evt) {
     evt.preventDefault();
@@ -267,12 +271,9 @@ function renderMessage() {
     }   
 }
 
-function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the auto deck. here, selectedDeck represents the expected input
+function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the starter deck. here, selectedDeck represents the expected input
 
-    cardDeck = selectedDeck || auto;
-    if (cardDeck = auto) {
-        document.getElementById('starter-btn').classList.add('active-deck');
-    } 
+    cardDeck = selectedDeck || starter;
 
     board = [
         [0, 0, 0, 0, 0],

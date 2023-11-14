@@ -25,28 +25,28 @@ class Cards {
     }
 }
 
-const auto = new Cards('auto', '#565656'); 
-auto.newCard('bird', 'bird', false, false);
-auto.newCard('art', 'art', false, false);
-auto.newCard('music', 'music', false, false);
-auto.newCard('teacher', 'teacher', false, false);
-auto.newCard('travel', 'travel', false, false);
-auto.newCard('airplane', 'airplane', false, false);
-auto.newCard('happy', 'happy', false, false);
-auto.newCard('cat', 'cat', false, false);
-auto.newCard('dog', 'dog', false, false);
-auto.newCard('sad', 'sad', false, false);
+const starter = new Cards('starter', '#565656'); 
+starter.newCard('big', 'big', false, false);
+starter.newCard('small', 'small', false, false);
+starter.newCard('person', 'person', false, false);
+starter.newCard('fire', 'fire', false, false);
+starter.newCard('sun', 'sun', false, false);
+starter.newCard('moon', 'moon', false, false);
+starter.newCard('mountain', 'mountain', false, false);
+starter.newCard('water', 'water', false, false);
+starter.newCard('rain', 'rain', false, false);
+starter.newCard('heart', 'heart', false, false);
 
-auto.newCard('bird', '鳥', false, false);
-auto.newCard('art', '美術', false, false);
-auto.newCard('music', '音樂', false, false);
-auto.newCard('teacher', '老師', false, false);
-auto.newCard('travel', '旅遊', false, false);
-auto.newCard('airplane', '飛機', false, false);
-auto.newCard('happy', '高興', false, false);
-auto.newCard('cat', '貓', false, false);
-auto.newCard('dog', '狗', false, false);
-auto.newCard('sad', '難過', false, false);
+starter.newCard('big', '大', false, false);
+starter.newCard('small', '小', false, false);
+starter.newCard('person', '人', false, false);
+starter.newCard('fire', '火', false, false);
+starter.newCard('sun', '日', false, false);
+starter.newCard('moon', '月', false, false);
+starter.newCard('mountain', '山', false, false);
+starter.newCard('water', '水', false, false);
+starter.newCard('rain', '雨', false, false);
+starter.newCard('heart', '心', false, false);
 
 const animals = new Cards('animalCards', '#b7b7a4'); 
 animals.newCard('horse', 'horse', false, false);
