@@ -324,6 +324,7 @@ function addCard() {
     document.getElementById('card-text').value = '';
     document.getElementById('card-id').focus();
 
+
     if (cardCount === 10) {
         document.getElementById('card-id').setAttribute('disabled', 'disabled');
         document.getElementById('card-text').setAttribute('disabled', 'disabled');
@@ -348,6 +349,7 @@ function addCard() {
         playBtn.style.marginTop = '2vmin';
         playBtn.addEventListener('click', function(evt) {
             evt.preventDefault();
+            custom.color = colorPickerInput.value;
             document.getElementById('create-modal').classList.remove('active');
             document.getElementById('create-overlay').classList.remove('active');
             init(custom);
