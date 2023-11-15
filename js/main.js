@@ -210,12 +210,10 @@ function renderBoard() {
 
             if (card.flipped === false) {
                 cellEl.style.background = cardDeck.color;
-                cellEl.style.boxShadow = '.2vmin .2vmin .5vmin .3vmin rgba(0, 0, 0, .4)';
                 cellEl.innerText = '';
 
             } else if (card.matched !== true && card.flipped === true) {
                 cellEl.style.backgroundColor = 'var(--flipped-card-color)';
-                cellEl.style.boxShadow = '.2vmin .2vmin .5vmin .3vmin rgba(0, 0, 0, .4)';
                 cellEl.innerText = card.text;
             }
         })   
@@ -341,10 +339,10 @@ function addCard() {
     // Displays cards on list
     const cardList = document.querySelector('.card-list')
     const listLine = document.createElement('div');
-    listLine.classList.add('list-line');
+    listLine.classList.add('list-line', 'flx-ctr');
 
     const listNum = document.createElement('div');
-    listNum.classList.add('num');
+    listNum.classList.add('num', 'flx-ctr');
     listNum.innerText = `${cardCount}.`
     
     const listBlockEng = document.createElement('div');
@@ -374,23 +372,26 @@ function addCard() {
         document.getElementById('card-text').setAttribute('disabled', 'disabled');
 
         const colorPicker = document.createElement('div');
-        colorPicker.classList.add('color-picker')
+        colorPicker.classList.add('color-picker', 'flx-ctr')
+
         const colorPickerLabel = document.createElement('label');
         colorPickerLabel.setAttribute('for', 'color-picker');
-        colorPickerLabel.classList.add('color-picker');
+        colorPickerLabel.classList.add('color-picker', 'flx-ctr');
         colorPickerLabel.innerText = 'Choose a color for your deck: '
+        
         const colorPickerInput = document.createElement('input');
         colorPickerInput.setAttribute('type', 'color');
         colorPickerInput.setAttribute('id', 'color-picker');
         colorPickerInput.setAttribute('value', '#b7efd0');
+        
         colorPicker.appendChild(colorPickerLabel);
         colorPicker.appendChild(colorPickerInput);
         cardList.appendChild(colorPicker);
 
         const playBtn = document.createElement('button');
-        playBtn.classList.add('add-card');
+        playBtn.classList.add('play-btn');
         playBtn.innerText = 'Play!'
-        playBtn.style.marginTop = '2vmin';
+
         playBtn.addEventListener('click', function(evt) {
             evt.preventDefault();
             custom.color = colorPickerInput.value;

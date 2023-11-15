@@ -117,18 +117,7 @@ heading {
 .center,
 .right,
 .left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin-top: 12vmin;
-}
-
-.left-block {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .left-block {
@@ -145,20 +134,12 @@ heading {
 }
 
 .deck-btns > h3 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin-top: 1.5vmin;
     letter-spacing: .1vmin;
     color: var(--text-color);
 }
 
 .deck-btn {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
     outline: none;
     font-family: 'Paytone One', sans-serif;
@@ -223,16 +204,17 @@ heading {
 }
 
 .board > div {
-    width: 14vmin;
-    height: 14vmin;
-    padding: 2vmin;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 14vmin;
+    height: 14vmin;
+    padding: 2vmin;
     font-size: 2.3vmin;
     border-radius: 1vmin;
     background-color: var(--card-color);
     color: var(--button-text-color);
+    box-shadow: .2vmin .2vmin .5vmin .3vmin rgba(0, 0, 0, .4);
 }
 
 .grow {
@@ -280,22 +262,6 @@ heading {
     padding: 2vmin 0 2vmin 0;
 }
 
-.match-board > div {
-    width: 10vmin;
-    height: 5.5vmin;
-    padding: 1vmin;
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 1.7vmin;
-    font-weight: 600;
-    border-radius: .5vmin;
-    background-color: var(--matches-color);
-    color: var(--button-text-color);
-}
-
 .my-list-desc {
     font-family: 'Varela Round', sans-serif;
     text-align: center;
@@ -303,6 +269,21 @@ heading {
     letter-spacing: .1vmin;
     width: 25vmin;
     margin-top: 1.2vmin;
+}
+
+.match-board > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vmin;
+    height: 5.5vmin;
+    padding: 1vmin;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.7vmin;
+    font-weight: 600;
+    border-radius: .5vmin;
+    background-color: var(--matches-color);
+    color: var(--button-text-color);
 }
 
 #my-list-btn {
@@ -339,15 +320,11 @@ heading {
 }
 
 .modal-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 2vmin;
     padding: 5vmin;
 }
 
-/* ---- Styles for cleared board modal ---- */
+/* ---- Cleared Board Modal ---- */
 
 #cleared-modal {
     background-color: white;
@@ -395,7 +372,7 @@ heading {
     pointer-events: all;
 }
 
-/* ---- Styles for Study Mode toggle ---- */
+/* ---- Study Mode Toggle ---- */
 
 .toggle-settings {
     padding-left: 2vmin;
@@ -408,20 +385,20 @@ heading {
 }
 
 input[type="checkbox"].toggle {
-    opacity: 0; /* make the checkbox invisible */
-    left: -90000px; /* remove checkbox from the page */
+    opacity: 0;
+    left: -90000px;
     top: -90000px
 }
 
 input[type="checkbox"].toggle + label {
-    display: flex; /* needed to make label not an inline element so we can change size using em */
+    display: flex;
     align-items: center;
     position: relative;
 }
 
 input[type="checkbox"].toggle + label::before {
     content: '';
-    width: 6.2vmin; /* use em to scale with size of text */
+    width: 6.2vmin;
     height: 3.2vmin;
     background-color: var(--text-color);
     border-radius: 2vmin;
@@ -432,12 +409,12 @@ input[type="checkbox"].toggle + label::before {
 input[type="checkbox"].toggle + label::after {
     content: '';
     width: 2.9vmin; 
-    height: 2.9vmin; /* makes a circle shape */
+    height: 2.9vmin;
     background-color: var(--card-color);
     border-radius: 2vmin;
     margin-right: 1vmin;
-    position: absolute; /* positions circle relative to label */
-    left: .2vmin; /* positions circle slightly inset from edge of label */
+    position: absolute; 
+    left: .2vmin; 
     transition: background-color, transform 200ms ease-in-out;
 }
 
@@ -450,7 +427,7 @@ input:focus {
     border: 2px solid #83C5BE;
 }
 
-/* ---- Styles for study mode modal ---- */
+/* ---- Study Mode Modal ---- */
 
 #study-modal {
     background-color: var(--matches-color);
@@ -481,7 +458,7 @@ input:focus {
     list-style: none;
 }
 
-/* ---- Styles for My List modal ---- */
+/* ---- My List Modal ---- */
 
 #my-list-modal {
     background-color: var(--matches-color);
@@ -512,7 +489,7 @@ input:focus {
     list-style: none;
 }
 
-/* ---- Styles for create deck modal ---- */
+/* ---- Create Deck Modal ---- */
 
 #create-modal {
     background-color: white;
@@ -546,10 +523,6 @@ input:focus {
 } 
 
 #create-deck-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin-top: 4vmin;
 }
 
@@ -576,10 +549,6 @@ input:focus {
 }
 
 .color-picker {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: .5vmin;
     margin-top: 1vmin;
 }
@@ -599,7 +568,8 @@ input:focus {
     height: 3vmin;
 }
 
-.add-card {
+.add-card,
+.play-btn {
     cursor: pointer;
     outline: none;
     font-family: 'Paytone One', sans-serif;
@@ -614,11 +584,11 @@ input:focus {
     color: var(--text-color);
 }
 
+.play-btn {
+    margin-top: 2vmin;
+}
+
 .card-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 42vmin;
     gap: .5vmin;
     margin-top: 3vmin;
@@ -635,9 +605,6 @@ input:focus {
 }
 
 .num {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-family: 'Paytone One', sans-serif;
     color: var(--bg-color);
     font-size: 1.5vmin;
@@ -647,10 +614,6 @@ input:focus {
 }
 
 .list-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     background-color: #ebeae8;
     color: var(--bg-color);
     font-family: 'Paytone One', sans-serif;
@@ -660,17 +623,3 @@ input:focus {
     height: 3vmin;
     border-radius: 1vmin;
 }
-
-/* .remove-btn {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    display: flex;
-    font-family: 'Paytone One', sans-serif;
-    color: #a00909;
-    font-size: 1.7vmin;
-    font-weight: 600;
-    width: 3vmin;   
-    height: 3vmin;
-    padding: 0 0 0 .5vmin;
-} */

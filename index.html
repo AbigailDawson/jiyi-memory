@@ -39,29 +39,29 @@
         </div>
     </heading>
     <section class="main">
-        <div class="left">
-            <div class="left-block">
+        <div class="left flx-ctr">
+            <div class="left-block flx-ctr">
                 <h2>Decks</h2>
-                <div class="deck-btns">
+                <div class="deck-btns flx-ctr">
                     <button class="deck-btn btn-grow" id="starter-btn">Start Here!</button>
-                    <h3>Beginner</h3>
+                    <h3 class="flx-ctr">Beginner</h3>
                     <button class="deck-btn btn-grow" id="numbers-btn">Numbers</button>
                     <button class="deck-btn btn-grow" id="adjectives-btn">Adjectives</button>
-                    <h3>Intermediate</h3>
+                    <h3 class="flx-ctr">Intermediate</h3>
                     <button class="deck-btn btn-grow" id="animals-btn">Animals</button>
                     <button class="deck-btn btn-grow" id="hobbies-btn">Hobbies</button>
                     <button class="deck-btn btn-grow" id="school-btn">School</button>
-                    <h3>Advanced</h3>
+                    <h3 class="flx-ctr">Advanced</h3>
                     <button class="deck-btn btn-grow" id="travel-btn">Travel</button>
                     <button class="deck-btn btn-grow" id="emotions-btn">Emotions</button> 
                 </div>
-            <button class="deck-btn btn-grow" id="create-deck">Create Deck</button> 
+            <button class="deck-btn flx-ctr btn-grow" id="create-deck">Create Deck</button> 
             </div>
         <div>
             <button class="grow" id="reset">Reset Board</button>
         </div>
     </div>
-        <div class="center">
+        <div class="center flx-ctr">
             <div class="board">
                 <div id="c0r0"></div>
                 <div id="c0r1"></div>
@@ -88,7 +88,7 @@
                 <div id="c3r4"></div>
             </div>
         </div>
-        <div class="right">
+        <div class="right flx-ctr">
             <h2>Matches</h2>
             <p class="my-list-desc">Click on any Chinese character below to add to your study list!</p>
             <div class="match-board">
@@ -113,7 +113,7 @@
                 <div id="18"></div>
                 <div id="19"></div>
             </div>
-            <div class="flex-ctr">
+            <div class="flx-ctr">
                 <button class="grow" id="my-list-btn">My Study List</button>
             </div>
         </div>
@@ -123,7 +123,7 @@
 
 <div class="modal" id="cleared-modal">
     <button class="close-btn" id="cleared-close-btn">&times;</button>
-    <div class="modal-content">
+    <div class="modal-content flx-ctr">
         <div class="cleared-title">Success!</div>
         <div class="cleared-subtitle">You matched all the cards!</div>
         <button class="grow" id="play-again">Play Again</button>
@@ -132,7 +132,7 @@
 
 <div class="modal" id="study-modal">
     <button class="close-btn" id="study-close-btn">&times;</button>
-    <div class="modal-content">
+    <div class="modal-content flx-ctr">
         <div class="study-title">Vocabulary</div>
         <div class="study-text"></div>
     </div>
@@ -140,7 +140,7 @@
 
 <div class="modal" id="my-list-modal">
     <button class="close-btn" id="my-list-close-btn">&times;</button>
-    <div class="modal-content">
+    <div class="modal-content flx-ctr">
         <div class="my-list-title">My Study List</div>
         <div class="my-list-text"></div>
     </div>
@@ -151,7 +151,7 @@
     <div class="create-modal-text">
         <div class="create-modal-title">Create a deck</div>
         <div class="create-modal-subtitle">Enter 10 words to play with!</div>
-        <form id="create-deck-form">
+        <form class="flx-ctr" id="create-deck-form">
             <div class="form-fields">
                 <div class="input-grp">
                     <label for="card-id"></label>
@@ -163,7 +163,7 @@
                 </div>
                 <button type="button" class="add-card" id="add-card" onClick="addCard()">Add Card</button>
             </div>
-            <div class="card-list">
+            <div class="card-list flx-ctr">
             </div>
             </div>
         </form>
