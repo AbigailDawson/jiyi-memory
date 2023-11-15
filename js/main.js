@@ -195,7 +195,7 @@ function renderMatches() {
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
             matchEl.innerText = item.text;
 
-            if (item.text.match(/[\u3400-\u9FBF]/)) {
+            if (item.text.match(/[\u3400-\u9FBF]/) && !savedCards.includes(item)) {
                 matchEl.style.fontSize = '2vmin'; 
                 matchEl.style.border = `.4vmin solid ${cardDeck.color}`;
                 matchEl.style.cursor = 'pointer';
@@ -208,7 +208,7 @@ function renderMatches() {
                         matchEl.style.border = 'none';
                         matchEl.style.cursor = 'auto';
                         matchEl.classList.remove('mild-grow');
-                    }
+                    } 
                 })
 
             } else {
@@ -391,13 +391,15 @@ function openList(evt) {
     document.getElementById('my-list-modal').classList.add('active');
     document.getElementById('my-list-overlay').classList.add('active');
 
-    // const myListText = document.querySelector('.my-list-text');
-    // const myList = document.createElement('ul');
-    // const newListItem = document.createElement('li');
-    // newListItem.innerText = item.text + Array(3).fill('\xa0').join('') + item.id;
-    // myList.appendChild(newListItem);
-    // myListText.innerHTML = '';
-    // myListText.appendChild(myList);
+    const myListText = document.querySelector('.my-list-text');
+    const myList = document.createElement('ul');
+
+    savedCards.forEach((card) => {
+        const newListItem = document.createElement('li');
+        newListItem.innerText = card.text + Array(3).fill('\xa0').join('') + card.id;
+        myList.appendChild(newListItem);
+        myListText.appendChild(myList);
+    });
 
     document.getElementById('my-list-close-btn').addEventListener('click', function() {
         document.getElementById('my-list-modal').classList.remove('active');
