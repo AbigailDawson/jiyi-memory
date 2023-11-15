@@ -183,6 +183,10 @@ function render() {
     renderMatches();
 }
 
+const myListText = document.querySelector('.my-list-text');
+const myList = document.createElement('ul');
+const myListItem = document.createElement('li');
+
 function renderMatches() {
     matches.forEach((item, index) => {
         const matchId = `${index}`;
@@ -192,16 +196,17 @@ function renderMatches() {
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
             matchEl.innerText = item.text;
 
-            // matchEl.addEventListener('click', function(evt) {
-            //     console.log('match click heard');
-            //     console.log(item);
-            // })
-
             if (item.text.match(/[\u3400-\u9FBF]/)) {
                 matchEl.style.fontSize = '2vmin'; 
                 matchEl.style.border = `.4vmin solid ${cardDeck.color}`;
                 matchEl.style.cursor = 'pointer';
                 matchEl.classList.add('grow');
+
+                matchEl.addEventListener('click', function(evt) {
+                    myListItem.innerText = item.text + Array(3).fill('\xa0').join('') + item.id;
+                    myList.appendChild(myListItem);
+                    myListText.appendChild(myList);
+                })
 
             } else {
                 matchEl.style.fontSize = '1.7vmin';
@@ -377,6 +382,8 @@ function openList(evt) {
     evt.preventDefault();
     document.getElementById('my-list-modal').classList.add('active');
     document.getElementById('my-list-overlay').classList.add('active');
+
+
 
     document.getElementById('my-list-close-btn').addEventListener('click', function() {
         document.getElementById('my-list-modal').classList.remove('active');
