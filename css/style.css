@@ -333,11 +333,25 @@ heading {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);  
-    /* ^ 50% of container, make invisible by default */
     transition: 200ms ease-in-out;
     border: 1px solid black;
     border-radius: 1vmin;
     z-index: 10;
+    width: 50vmin;
+    max-width: 80%;
+    padding: 2vmin;
+}
+
+.close-btn {
+    position: absolute;
+    top: 2vmin;
+    right: 2vmin;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 4vmin;
+    padding-right: 1vmin;
 }
 
 /* ---- Styles for cleared board modal ---- */
@@ -345,27 +359,14 @@ heading {
 #cleared-modal {
     background-color: white;
     color: black;
-    width: 50vmin;
-    max-width: 80%;
-    padding: 2vmin;
 }
 
 #cleared-modal.active {
     transform: translate(-50%, -50%) scale(1); 
-    /* makes cleared message visible when active class is applied */
 }
 
-#close-btn {
-    position: absolute;
-    top: 1vmin;
-    right: 1vmin;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
+#cleared-close-btn {
     color: black;
-    font-size: 4vmin;
-    padding-right: 1vmin;
 }
 
 .cleared-text {
@@ -470,26 +471,14 @@ input:focus {
 #study-modal {
     background-color: var(--matches-color);
     color: var(--text-color);
-    width: 50vmin;
-    max-width: 80%;
-    padding: 2vmin;
 }
 
 #study-modal.active {
-    transform: translate(-50%, -50%) scale(1); /* makes message visible when active class is applied */
+    transform: translate(-50%, -50%) scale(1); 
 }
 
 #study-close-btn {
-    position: absolute;
-    top: 2vmin;
-    right: 2vmin;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
     color: white;
-    font-size: 4vmin;
-    padding-right: 1vmin;
 }
 
 .study-content {
@@ -522,26 +511,14 @@ input:focus {
 #my-list-modal {
     background-color: var(--matches-color);
     color: var(--text-color);
-    width: 50vmin;
-    max-width: 80%;
-    padding: 2vmin;
 }
 
 #my-list-modal.active {
-    transform: translate(-50%, -50%) scale(1); /* makes message visible when active class is applied */
+    transform: translate(-50%, -50%) scale(1);
 }
 
 #my-list-close-btn {
-    position: absolute;
-    top: 2vmin;
-    right: 2vmin;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
     color: white;
-    font-size: 4vmin;
-    padding-right: 1vmin;
 }
 
 .my-list-content {
@@ -574,10 +551,7 @@ input:focus {
 #create-modal {
     background-color: white;
     color: black;
-    width: 50vmin;
-    max-width: 80%;
     height: auto;
-    padding: 2vmin;
 }
 
 #create-modal.active {
@@ -585,16 +559,7 @@ input:focus {
 }
 
 #create-close-btn {
-    position: absolute;
-    top: 1vmin;
-    right: 1vmin;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background: none;
     color: black;
-    font-size: 4vmin;
-    padding-right: 1vmin;
 }
 
 .create-modal-text {

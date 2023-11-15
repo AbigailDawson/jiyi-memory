@@ -300,7 +300,7 @@ function renderMessage() {
             document.getElementById('overlay').classList.remove('active');
             resetBoard();
         });
-        document.getElementById('close-btn').addEventListener('click', function() {
+        document.getElementById('cleared-close-btn').addEventListener('click', function() {
             document.getElementById('cleared-modal').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
         })
