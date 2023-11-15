@@ -185,26 +185,45 @@ function render() {
     renderMatches();
 }
 
+function saveCard(evt) {
+    evt.preventDefault;
+    const clickedMatchId = evt.target.id;
+    const clickedMatchIdx = parseInt(clickedMatchId);
+
+    const clickedMatch = matches[clickedMatchIdx];
+
+    if (savedCards.includes(clickedMatch)) {
+        console.log('item already saved');
+        return;
+    } 
+    
+    console.log('saving item');
+    savedCards.push(clickedMatch);
+
+    evt.target.style.border = 'none';
+    evt.target.style.cursor = 'auto';
+    evt.target.classList.remove('mild-grow');
+    evt.target.removeEventListener('click', saveCard);
+}
+    
 function renderMatches() {
     matches.forEach((item, index) => {
+        
         const matchId = `${index}`;
         const matchEl = document.getElementById(matchId);
         
-
+        // if there is no card in that spot:
         if(item === 0) {
             matchEl.style.backgroundColor = 'var(--matches-color)';
             matchEl.innerText = '';
             matchEl.style.border = 'none';
             matchEl.style.cursor = 'auto';
             matchEl.classList.remove('mild-grow');
-            
-            matchEl.removeEventListener('click', function() {
-                evt.preventDefault();
-                savedCards.push(item);
-            })
+            // matchEl.removeEventListener('click', saveCard);
 
+            // OTHERWISE, is there IS a card in that spot:
         } else if (item !== 0) {
-            matchEl.classList.add('reveal-card');
+            matchEl.classList.add('reveal-card'); // show the card 
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
             matchEl.innerText = item.text;
 
@@ -213,33 +232,59 @@ function renderMatches() {
                 matchEl.style.border = `.4vmin solid ${cardDeck.color}`;
                 matchEl.style.cursor = 'pointer';
                 matchEl.classList.add('mild-grow');
+                // add evt listener that will run the saveCard function
+                matchEl.addEventListener('click', saveCard);
+                
+            } else if (item.text.match(/[\u3400-\u9FBF]/) && savedCards.includes(item)) {
+                // matchEls.forEach((el) => {
+                    matchEl.removeEventListener('click', saveCard);
+                    matchEl.style.border = 'none';
+                    matchEl.style.cursor = 'auto';
+                    matchEl.classList.remove('mild-grow');
+                // })
+            }
 
-                matchEl.addEventListener('click', function(evt) {
-                    evt.preventDefault();
-                    if (!savedCards.includes(item)) {
-                        savedCards.push(item);
-                        matchEl.style.border = 'none';
-                        matchEl.style.cursor = 'auto';
-                        matchEl.classList.remove('mild-grow');
-                    } 
-                })
-
-            } 
-            // else {
-            //     matchEl.style.fontSize = '1.7vmin';
-            //     matchEl.style.fontWeight = '600';
-            // }
-        // } else if (item === 0) {
-        //     matchEl.style.backgroundColor = 'var(--matches-color)';
-        //     matchEl.innerText = '';
             
-        //     matchEl.removeEventListener('click', function() {
-        //         evt.preventDefault();
-        //         savedCards.push(item);
-        //     });
+
         }
     })
 }
+
+            // if the card is chinese AND has ALREADY BEEN SAVED:
+            // if (item.text.match(/[\u3400-\u9FBF]/) && savedCards.includes(item)) {
+            //     console.log(item.text, ' has already been saved')
+            //     // remove styles and remove event listener (if there is one)
+            //     matchEl.style.border = 'none';
+            //     matchEl.style.cursor = 'auto';
+            //     matchEl.classList.remove('mild-grow');
+            //     // matchEl.removeEventListener('click', saveCard);
+            // } 
+            // // if the card is chinese and HAS NOT BEEN SAVED:
+            // else if (item.text.match(/[\u3400-\u9FBF]/) && !savedCards.includes(item)) {
+            //     // style so it looks clickable
+            //     matchEl.style.fontSize = '2vmin'; 
+            //     matchEl.style.border = `.4vmin solid ${cardDeck.color}`;
+            //     matchEl.style.cursor = 'pointer';
+            //     matchEl.classList.add('mild-grow');
+            //     // add evt listener that will run the saveCard function
+            //     matchEl.addEventListener('click', saveCard);
+                
+            //     function saveCard(evt) {
+            //         evt.preventDefault();
+            //         if (savedCards.includes(item)) {
+            //             console.log('item already saved')
+            //             return;
+            //         } else {
+            //             console.log('saving item')
+            //             savedCards.push(item); // push into array
+            //             // remove styles
+            //             matchEl.style.border = 'none';
+            //             matchEl.style.cursor = 'auto';
+            //             matchEl.classList.remove('mild-grow');
+            //             // remove event listener
+            //             matchEl.removeEventListener('click', saveCard);
+            //         } 
+
 
 function renderBoard() {
     board.forEach((colArr, colIdx) => {
