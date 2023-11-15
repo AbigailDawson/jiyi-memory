@@ -28,7 +28,6 @@ const createCloseBtn = document.getElementById('create-close-btn');
 const myListCloseBtn = document.getElementById('my-list-close-btn');
 const overlay = document.getElementById('overlay');
 
-
 deckBtn.addEventListener('click', setDeck);
 boardEl.addEventListener('click', handleCardFlip);
 studyCheckbox.addEventListener('change', handleToggle);
@@ -119,6 +118,7 @@ function handleToggle(evt) {
             if (card.text.match(/[\u3400-\u9FBF]/)) {
                 const listItem = document.createElement('li');
                 listItem.innerText = card.text + Array(3).fill('\xa0').join('') + card.id;
+                listItem.style.fontFamily = '\'Noto Serif TC\', serif';
                 vocabList.appendChild(listItem);
                 studyText.appendChild(vocabList);
             }
@@ -288,7 +288,7 @@ function renderMessage() {
     document.getElementById('turn-count').innerText = `${turns}`;
 
     const msgTitle = document.querySelector('.cleared-title');
-    const msgText = querySelector('.cleared-subtitle');
+    const msgText = document.querySelector('.cleared-subtitle');
 
     if (remaining === 0) {
         clearedModal.classList.add('active');
@@ -429,6 +429,11 @@ function openList(evt) {
     savedCards.forEach((card) => {
         const newListItem = document.createElement('li');
         newListItem.innerText = card.text + Array(3).fill('\xa0').join('') + card.id;
+        
+        if (newListItem.innerText.match(/[\u4E00-\u9FFF]/)) {
+            newListItem.style.fontFamily = '\'Noto Serif TC\', serif';
+        }
+
         myList.appendChild(newListItem);
         myListText.appendChild(myList);
     });
