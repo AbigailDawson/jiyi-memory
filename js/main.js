@@ -6,7 +6,7 @@ let firstPick;
 let remaining;
 let cardCount;
 
-let savedCards = [];
+const savedCards = [];
 
 // Creates new custom card deck if player uses Create Deck feature (see addCard() funtion)
 let custom = new Cards('custom', '#b7efd0');
@@ -34,50 +34,31 @@ function resetBoard() {
     init(cardDeck);   
 }
 
+const deckOptions = {
+    'Start Here!': starter,
+    'Numbers': numbers,
+    'Adjectives': adjectives,
+    'Animals': animals,
+    'Hobbies': hobbies,
+    'School': school,
+    'Travel': travel,
+    'Emotions': emotions,
+}
+
 function setDeck(evt) {
     evt.preventDefault();
-    const idx = deckBtns.indexOf(evt.target);
-    if (idx === -1) return;
+    const targetBtn = evt.target.closest('.deck-btn');
+    if (!targetBtn) return;
 
-    deckBtns.forEach((deckBtn) => {
-        deckBtn.classList.remove('active-deck');
-    })
-    
+    const selectedDeck = deckOptions[evt.target.innerText] || starter;
+    deckBtns.forEach((deckBtn) => deckBtn.classList.remove('active-deck'));
     evt.target.classList.add('active-deck');
-    
-    switch(evt.target.innerText) {
-        case 'Start Here!':
-            cardDeck = starter;
-        break;
-        case 'Animals': 
-            cardDeck = animals;
-        break;
-        case 'Hobbies':
-            cardDeck = hobbies;
-        break;
-        case 'School':
-            cardDeck = school;
-        break;
-        case 'Travel':
-            cardDeck = travel;
-        break;
-        case 'Adjectives':
-            cardDeck = adjectives;
-        break;
-        case 'Emotions':
-            cardDeck = emotions;
-        break;
-        case 'Numbers':
-            cardDeck = numbers;
-        break;
-        default:
-            cardDeck = starter;
-    }
 
-    init(cardDeck);
+    init(selectedDeck);
 }
 
 function init(selectedDeck) {
+
     cardDeck = selectedDeck || starter;
 
     board = [
@@ -214,9 +195,8 @@ function renderBoard() {
 
             cellEl.classList.remove('reveal-card');
             cellEl.classList.add('grow');
-            cellEl.style.fontSize = '2.3vmin';
 
-            if (card.text.match(/[\u4E00-\u9FFF]/)) cellEl.style.fontSize = '3vmin';
+            cellEl.style.fontSize = card.text.match(/[\u4E00-\u9FFF]/) ? '3vmin' : '2.3vmin';
 
             if (card.matched === true) {
                 cellEl.style.backgroundColor = 'var(--card-color)';

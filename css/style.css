@@ -415,7 +415,6 @@ heading {
 
 input[type="checkbox"].toggle {
     opacity: 0; /* make the checkbox invisible */
-    /* position: absolute; makes it so checkbox takes up no space in the DOM */
     left: -90000px; /* remove checkbox from the page */
     top: -90000px
 }
