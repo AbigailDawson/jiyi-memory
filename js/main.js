@@ -26,6 +26,7 @@ boardEl.addEventListener('click', handleCardFlip);
 studyCheckbox.addEventListener('change', handleToggle);
 document.getElementById('reset').addEventListener('click', resetBoard);
 document.getElementById('create-deck').addEventListener('click', openForm);
+document.getElementById('my-list-btn').addEventListener('click', openList);
 
 // allow for enter key to click button while form input is selected
 document.getElementById('card-text').addEventListener('keyup', function(evt) {
@@ -362,6 +363,16 @@ function addCard() {
 
 let custom = new Cards('custom', '#b7efd0');
 
+function openList(evt) {
+    evt.preventDefault();
+    document.getElementById('my-list-modal').classList.add('active');
+    document.getElementById('my-list-overlay').classList.add('active');
+
+    document.getElementById('my-list-close-btn').addEventListener('click', function() {
+        document.getElementById('my-list-modal').classList.remove('active');
+        document.getElementById('my-list-overlay').classList.remove('active');
+    })
+}
 
 function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the starter deck. here, selectedDeck represents the expected input
     cardDeck = selectedDeck || starter;

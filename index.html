@@ -113,10 +113,12 @@
             </div>
             <div class="flex-ctr">
                 <p class="my-list-desc">Click on any match above to add to your list!</p>
-                <button class="grow" id="my-list">My Study List</button>
+                <button class="grow" id="my-list-btn">My Study List</button>
             </div>
         </div>
 </section>
+
+<!-- MODALS -->
 
 <div class="cleared" id="cleared">
     <button id="close-btn">&times;</button>
@@ -136,6 +138,15 @@
     </div>
 </div>
 <div id="study-overlay"></div>
+
+<div class="my-list-modal" id="my-list-modal">
+    <button id="my-list-close-btn">&times;</button>
+    <div class="my-list-content">
+        <div class="my-list-title">My Study List</div>
+        <div class="my-list-text"></div>
+    </div>
+</div>
+<div id="my-list-overlay"></div>
 
 <div class="create-modal" id="create-modal">
     <button id="create-close-btn">&times;</button>

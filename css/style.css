@@ -91,7 +91,7 @@ heading {
 
 #reset,
 #play-again,
-#my-list {
+#my-list-btn {
     cursor: pointer;
     outline: none;
     font-family: 'Paytone One', sans-serif;
@@ -296,7 +296,7 @@ heading {
     margin-bottom: 1.2vmin;
 }
 
-#my-list {
+#my-list-btn {
     height: 3.5vmin;
     width: 13vmin;
 }
@@ -520,6 +520,84 @@ input:focus {
     opacity: 1;
     pointer-events: all;
 }
+
+/* ---- Styles for My List modal ---- */
+
+.my-list-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* 50% of container, make invisible by default */
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 1vmin;
+    z-index: 10;
+    background-color: var(--matches-color);
+    color: var(--text-color);
+    width: 50vmin;
+    max-width: 80%;
+    padding: 2vmin;
+}
+
+.my-list-modal.active {
+    transform: translate(-50%, -50%) scale(1); /* makes message visible when active class is applied */
+}
+
+#my-list-close-btn {
+    position: absolute;
+    top: 2vmin;
+    right: 2vmin;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 4vmin;
+    padding-right: 1vmin;
+}
+
+.my-list-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vmin;
+    padding: 5vmin;
+}
+
+.my-list-title {
+    font-size: 4vmin;
+    padding-bottom: 1vmin;
+}
+
+.my-list-text {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 2vmin;
+    line-height: 3vmin;
+    text-align: center;
+} 
+
+.my-list-text > ul {
+    list-style: none;
+}
+
+#my-list-overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#my-list-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
 
 /* ---- Styles for create deck modal ---- */
 
