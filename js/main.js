@@ -113,7 +113,7 @@ function handleToggle(evt) {
             }
         })
 
-        document.getElementById('study-close-btn').addEventListener('click', function() {
+        document.getElementById('study-close-btn').addEventListener('click', function(evt) {
             document.getElementById('study-modal').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
             studyCheckbox.checked = false;
@@ -195,6 +195,7 @@ function renderBoard() {
 
             cellEl.classList.remove('reveal-card');
             cellEl.classList.add('grow');
+            cellEl.style.cursor = 'pointer';
 
             if (card.text.match(/[\u4E00-\u9FFF]/)) {
                 cellEl.style.fontFamily = '\'Noto Serif TC\', serif';
@@ -258,7 +259,7 @@ function renderMatches() {
 }
 
 function saveCard(evt) {
-    evt.preventDefault;
+    evt.preventDefault();
     const clickedMatchId = evt.target.id;
     const clickedMatchIdx = parseInt(clickedMatchId);
     const clickedMatch = matches[clickedMatchIdx];
