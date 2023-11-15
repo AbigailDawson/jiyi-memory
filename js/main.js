@@ -6,7 +6,7 @@ let firstPick;
 let remaining;
 let cardCount;
 
-const savedCards = [];
+let savedCards = [];
 
 // Creates new custom card deck if player uses Create Deck feature (see addCard() funtion)
 let custom = new Cards('custom', '#b7efd0');
