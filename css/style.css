@@ -354,6 +354,15 @@ heading {
     padding-right: 1vmin;
 }
 
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vmin;
+    padding: 5vmin;
+}
+
 /* ---- Styles for cleared board modal ---- */
 
 #cleared-modal {
@@ -367,15 +376,6 @@ heading {
 
 #cleared-close-btn {
     color: black;
-}
-
-.cleared-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2vmin;
-    padding: 5vmin;
 }
 
 .cleared-title {
@@ -481,15 +481,6 @@ input:focus {
     color: white;
 }
 
-.study-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2vmin;
-    padding: 5vmin;
-}
-
 .study-title {
     font-size: 5vmin;
     padding-bottom: 1vmin;
@@ -519,15 +510,6 @@ input:focus {
 
 #my-list-close-btn {
     color: white;
-}
-
-.my-list-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2vmin;
-    padding: 5vmin;
 }
 
 .my-list-title {
@@ -563,10 +545,7 @@ input:focus {
 }
 
 .create-modal-text {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
+
     gap: 2vmin;
     padding-top: 1vmin;
 }
