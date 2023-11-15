@@ -10,6 +10,8 @@ let firstPick;
 let remaining;
 let cardCount;
 
+let savedCards = [];
+
 /*----- cached elements -----*/
 
 const boardEls = [...document.querySelectorAll('.board > div')];
@@ -183,14 +185,25 @@ function render() {
     renderMatches();
 }
 
-let savedCards = [];
-
 function renderMatches() {
     matches.forEach((item, index) => {
         const matchId = `${index}`;
         const matchEl = document.getElementById(matchId);
+        
 
-        if (item !== 0) {
+        if(item === 0) {
+            matchEl.style.backgroundColor = 'var(--matches-color)';
+            matchEl.innerText = '';
+            matchEl.style.border = 'none';
+            matchEl.style.cursor = 'auto';
+            matchEl.classList.remove('mild-grow');
+            
+            matchEl.removeEventListener('click', function() {
+                evt.preventDefault();
+                savedCards.push(item);
+            })
+
+        } else if (item !== 0) {
             matchEl.classList.add('reveal-card');
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
             matchEl.innerText = item.text;
@@ -211,18 +224,19 @@ function renderMatches() {
                     } 
                 })
 
-            } else {
-                matchEl.style.fontSize = '1.7vmin';
-                matchEl.style.fontWeight = '600';
-            }
-        } else if (item === 0) {
-            matchEl.style.backgroundColor = 'var(--matches-color)';
-            matchEl.innerText = '';
+            } 
+            // else {
+            //     matchEl.style.fontSize = '1.7vmin';
+            //     matchEl.style.fontWeight = '600';
+            // }
+        // } else if (item === 0) {
+        //     matchEl.style.backgroundColor = 'var(--matches-color)';
+        //     matchEl.innerText = '';
             
-            matchEl.removeEventListener('click', function() {
-                evt.preventDefault();
-                savedCards.push(item);
-            });
+        //     matchEl.removeEventListener('click', function() {
+        //         evt.preventDefault();
+        //         savedCards.push(item);
+        //     });
         }
     })
 }
@@ -402,6 +416,7 @@ function openList(evt) {
     });
 
     document.getElementById('my-list-close-btn').addEventListener('click', function() {
+        savedCards = [];
         document.getElementById('my-list-modal').classList.remove('active');
         document.getElementById('my-list-overlay').classList.remove('active');
     })
@@ -440,6 +455,8 @@ function init(selectedDeck) { // take selectedDeck as a parameter, if no deck ha
     firstPick = null;
     remaining = 10;
     cardCount = 0;
+    
+    
 
     render();
 }
