@@ -191,8 +191,18 @@ function renderMatches() {
             matchEl.classList.add('reveal-card');
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
             matchEl.innerText = item.text;
+
+            // matchEl.addEventListener('click', function(evt) {
+            //     console.log('match click heard');
+            //     console.log(item);
+            // })
+
             if (item.text.match(/[\u3400-\u9FBF]/)) {
                 matchEl.style.fontSize = '2vmin'; 
+                matchEl.style.border = `.4vmin solid ${cardDeck.color}`;
+                matchEl.style.cursor = 'pointer';
+                matchEl.classList.add('grow');
+
             } else {
                 matchEl.style.fontSize = '1.7vmin';
                 matchEl.style.fontWeight = '600';
