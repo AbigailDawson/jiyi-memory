@@ -248,6 +248,15 @@ heading {
     box-shadow: 0 0 .2vmin .2vmin rgba(255, 255, 255, 0.5);
 }
 
+.mild-grow {
+    transition: 200ms ease-in-out;
+}
+
+.mild-grow:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 .2vmin .2vmin rgba(255, 255, 255, 0.5);
+}
+
 .reveal-card {
     animation: fade-in 500ms;
 }
@@ -259,6 +268,10 @@ heading {
 
 .hide-card {
     transition: var(--card-color) 500ms;
+}
+
+.right > h2 {
+    letter-spacing: .2vmin;
 }
 
 .match-board {
@@ -273,7 +286,7 @@ heading {
 
 .match-board > div {
     width: 10vmin;
-    height: 6vmin;
+    height: 5.5vmin;
     padding: 1vmin;
     justify-self: center;
     display: flex;
@@ -292,8 +305,8 @@ heading {
     text-align: center;
     font-size: 1.2vmin;
     letter-spacing: .1vmin;
-    width: 17vmin;
-    margin-bottom: 1.2vmin;
+    width: 25vmin;
+    margin-top: 1.2vmin;
 }
 
 #my-list-btn {

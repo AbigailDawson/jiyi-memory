@@ -183,14 +183,13 @@ function render() {
     renderMatches();
 }
 
-const myListText = document.querySelector('.my-list-text');
-const myList = document.createElement('ul');
-const myListItem = document.createElement('li');
+let savedCards = [];
 
 function renderMatches() {
     matches.forEach((item, index) => {
         const matchId = `${index}`;
         const matchEl = document.getElementById(matchId);
+
         if (item !== 0) {
             matchEl.classList.add('reveal-card');
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
@@ -200,12 +199,16 @@ function renderMatches() {
                 matchEl.style.fontSize = '2vmin'; 
                 matchEl.style.border = `.4vmin solid ${cardDeck.color}`;
                 matchEl.style.cursor = 'pointer';
-                matchEl.classList.add('grow');
+                matchEl.classList.add('mild-grow');
 
                 matchEl.addEventListener('click', function(evt) {
-                    myListItem.innerText = item.text + Array(3).fill('\xa0').join('') + item.id;
-                    myList.appendChild(myListItem);
-                    myListText.appendChild(myList);
+                    evt.preventDefault();
+                    if (!savedCards.includes(item)) {
+                        savedCards.push(item);
+                        matchEl.style.border = 'none';
+                        matchEl.style.cursor = 'auto';
+                        matchEl.classList.remove('mild-grow');
+                    }
                 })
 
             } else {
@@ -215,6 +218,11 @@ function renderMatches() {
         } else if (item === 0) {
             matchEl.style.backgroundColor = 'var(--matches-color)';
             matchEl.innerText = '';
+            
+            matchEl.removeEventListener('click', function() {
+                evt.preventDefault();
+                savedCards.push(item);
+            });
         }
     })
 }
@@ -383,7 +391,13 @@ function openList(evt) {
     document.getElementById('my-list-modal').classList.add('active');
     document.getElementById('my-list-overlay').classList.add('active');
 
-
+    // const myListText = document.querySelector('.my-list-text');
+    // const myList = document.createElement('ul');
+    // const newListItem = document.createElement('li');
+    // newListItem.innerText = item.text + Array(3).fill('\xa0').join('') + item.id;
+    // myList.appendChild(newListItem);
+    // myListText.innerHTML = '';
+    // myListText.appendChild(myList);
 
     document.getElementById('my-list-close-btn').addEventListener('click', function() {
         document.getElementById('my-list-modal').classList.remove('active');
