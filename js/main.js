@@ -18,6 +18,17 @@ const studyCheckbox = document.getElementById('check');
 const deckBtns = [...document.querySelectorAll('.deck-btn')];
 const deckBtn = document.querySelector('.deck-btns');
 
+const clearedModal = document.getElementById('cleared-modal');
+const createModal = document.getElementById('create-modal');
+const myListModal = document.getElementById('my-list-modal');
+const studyModal = document.getElementById('study-modal');
+const studyCloseBtn = document.getElementById('study-close-btn');
+const clearedCloseBtn = document.getElementById('cleared-close-btn');
+const createCloseBtn = document.getElementById('create-close-btn');
+const myListCloseBtn = document.getElementById('my-list-close-btn');
+const overlay = document.getElementById('overlay');
+
+
 deckBtn.addEventListener('click', setDeck);
 boardEl.addEventListener('click', handleCardFlip);
 studyCheckbox.addEventListener('change', handleToggle);
@@ -98,8 +109,8 @@ function init(selectedDeck) {
 function handleToggle(evt) {
     evt.preventDefault();
     if (studyCheckbox.checked = true) {
-        document.getElementById('study-modal').classList.add('active');
-        document.getElementById('overlay').classList.add('active');
+        studyModal.classList.add('active');
+        overlay.classList.add('active');
         
         const studyText = document.querySelector('.study-text');
         const vocabList = document.createElement('ul');
@@ -113,9 +124,9 @@ function handleToggle(evt) {
             }
         })
 
-        document.getElementById('study-close-btn').addEventListener('click', function(evt) {
-            document.getElementById('study-modal').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
+        studyCloseBtn.addEventListener('click', function(evt) {
+            studyModal.classList.remove('active');
+            overlay.classList.remove('active');
             studyCheckbox.checked = false;
             studyText.innerHTML = '';
         })
@@ -276,32 +287,35 @@ function renderMessage() {
     document.getElementById('remaining-count').innerText = `${remaining}`;
     document.getElementById('turn-count').innerText = `${turns}`;
 
+    const msgTitle = document.querySelector('.cleared-title');
+    const msgText = querySelector('.cleared-subtitle');
+
     if (remaining === 0) {
-        document.getElementById('cleared-modal').classList.add('active');
-        document.getElementById('overlay').classList.add('active');
+        clearedModal.classList.add('active');
+        overlay.classList.add('active');
 
         if (turns === 20) {
-            document.querySelector('.cleared-title').innerText = 'Perfect Game!';
-            document.querySelector('.cleared-subtitle').innerText = 'You matched all the cards on the first try! That\'s really quite an impressive feat. Congratulations!';
+            msgTitle.innerText = 'Perfect Game!';
+            msgText.innerText = 'You matched all the cards on the first try! That\'s really quite an impressive feat. Congratulations!';
         } else if (turns > 20 && turns <= 30) {
-            document.querySelector('.cleared-title').innerText = 'Almost Perfect!';
-            document.querySelector('.cleared-subtitle').innerText = 'You matched nearly all the cards on your first try! You either have some serious luck or some mad skills. Either way, great job!';
+            msgTitle.innerText = 'Almost Perfect!';
+            msgText.innerText = 'You matched nearly all the cards on your first try! You either have some serious luck or some mad skills. Either way, great job!';
         } else if (turns > 30 && turns <= 40) {
-            document.querySelector('.cleared-title').innerText = 'Success!';
-            document.querySelector('.cleared-subtitle').innerText = 'Excellent work! Your studies have paid off! Remember, you can always activate Study Mode to review the vocabulary and improve your score.';
+            msgTitle.innerText = 'Success!';
+            msgText.innerText = 'Excellent work! Your studies have paid off! Remember, you can always activate Study Mode to review the vocabulary and improve your score.';
         } else if (turns > 40) {
-            document.querySelector('.cleared-title').innerText = 'Great Effort!';
-            document.querySelector('.cleared-subtitle').innerText = 'Great work! If you\'d like to get even faster at recognizing these words, try activating Study Mode before playing to review the vocabulary!';
+            msgTitle.innerText = 'Great Effort!';
+            msgText.innerText = 'Great work! If you\'d like to get even faster at recognizing these words, try activating Study Mode before playing to review the vocabulary!';
         }
 
         document.getElementById('play-again').addEventListener('click', function() {
-            document.getElementById('cleared-modal').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
+            clearedModal.classList.remove('active');
+            overlay.classList.remove('active');
             resetBoard();
         });
-        document.getElementById('cleared-close-btn').addEventListener('click', function() {
-            document.getElementById('cleared-modal').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
+        clearedCloseBtn.addEventListener('click', function() {
+            clearedModal.classList.remove('active');
+            overlay.classList.remove('active');
         })
     }   
 }
@@ -312,11 +326,11 @@ function openForm(evt) {
     })
     evt.target.classList.add('active-deck');
 
-    document.getElementById('create-modal').classList.add('active');
-    document.getElementById('overlay').classList.add('active');
-    document.getElementById('create-close-btn').addEventListener('click', function() {
-        document.getElementById('create-modal').classList.remove('active');
-        document.getElementById('overlay').classList.remove('active');
+    createModal.classList.add('active');
+    overlay.classList.add('active');
+    createCloseBtn.addEventListener('click', function() {
+        createModal.classList.remove('active');
+        overlay.classList.remove('active');
     });
 
     document.getElementById('card-id').focus();
@@ -396,8 +410,8 @@ function addCard() {
         playBtn.addEventListener('click', function(evt) {
             evt.preventDefault();
             custom.color = colorPickerInput.value;
-            document.getElementById('create-modal').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
+            createModal.classList.remove('active');
+            overlay.classList.remove('active');
             init(custom);
         });
         cardList.appendChild(playBtn);
@@ -406,8 +420,8 @@ function addCard() {
 
 function openList(evt) {
     evt.preventDefault();
-    document.getElementById('my-list-modal').classList.add('active');
-    document.getElementById('overlay').classList.add('active');
+    myListModal.classList.add('active');
+    overlay.classList.add('active');
 
     const myListText = document.querySelector('.my-list-text');
     const myList = document.createElement('ul');
@@ -419,9 +433,9 @@ function openList(evt) {
         myListText.appendChild(myList);
     });
 
-    document.getElementById('my-list-close-btn').addEventListener('click', function() {
+    myListCloseBtn.addEventListener('click', function() {
         savedCards = [];
-        document.getElementById('my-list-modal').classList.remove('active');
-        document.getElementById('overlay').classList.remove('active');
+        myListModal.classList.remove('active');
+        overlay.classList.remove('active');
     })
 }
