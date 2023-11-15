@@ -99,7 +99,7 @@ function handleToggle(evt) {
     evt.preventDefault();
     if (studyCheckbox.checked = true) {
         document.getElementById('study').classList.add('active');
-        document.getElementById('study-overlay').classList.add('active');
+        document.getElementById('overlay').classList.add('active');
         
         const studyText = document.querySelector('.study-text');
         const vocabList = document.createElement('ul');
@@ -115,7 +115,7 @@ function handleToggle(evt) {
 
         document.getElementById('study-close-btn').addEventListener('click', function() {
             document.getElementById('study').classList.remove('active');
-            document.getElementById('study-overlay').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
             studyCheckbox.checked = false;
             studyText.innerHTML = '';
         })
@@ -314,10 +314,10 @@ function openForm(evt) {
     evt.target.classList.add('active-deck');
 
     document.getElementById('create-modal').classList.add('active');
-    document.getElementById('create-overlay').classList.add('active');
+    document.getElementById('overlay').classList.add('active');
     document.getElementById('create-close-btn').addEventListener('click', function() {
         document.getElementById('create-modal').classList.remove('active');
-        document.getElementById('create-overlay').classList.remove('active');
+        document.getElementById('overlay').classList.remove('active');
     });
 
     document.getElementById('card-id').focus();
@@ -395,7 +395,7 @@ function addCard() {
             evt.preventDefault();
             custom.color = colorPickerInput.value;
             document.getElementById('create-modal').classList.remove('active');
-            document.getElementById('create-overlay').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
             init(custom);
         });
         cardList.appendChild(playBtn);
@@ -405,7 +405,7 @@ function addCard() {
 function openList(evt) {
     evt.preventDefault();
     document.getElementById('my-list-modal').classList.add('active');
-    document.getElementById('my-list-overlay').classList.add('active');
+    document.getElementById('overlay').classList.add('active');
 
     const myListText = document.querySelector('.my-list-text');
     const myList = document.createElement('ul');
@@ -420,6 +420,6 @@ function openList(evt) {
     document.getElementById('my-list-close-btn').addEventListener('click', function() {
         savedCards = [];
         document.getElementById('my-list-modal').classList.remove('active');
-        document.getElementById('my-list-overlay').classList.remove('active');
+        document.getElementById('overlay').classList.remove('active');
     })
 }

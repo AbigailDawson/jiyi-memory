@@ -521,23 +521,6 @@ input:focus {
     list-style: none;
 }
 
-#study-overlay {
-    position: fixed;
-    opacity: 0;
-    transition: 200ms ease-in-out;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, .5);
-    pointer-events: none;
-}
-
-#study-overlay.active {
-    opacity: 1;
-    pointer-events: all;
-}
-
 /* ---- Styles for My List modal ---- */
 
 .my-list-modal {
@@ -598,24 +581,6 @@ input:focus {
     list-style: none;
 }
 
-#my-list-overlay {
-    position: fixed;
-    opacity: 0;
-    transition: 200ms ease-in-out;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, .5);
-    pointer-events: none;
-}
-
-#my-list-overlay.active {
-    opacity: 1;
-    pointer-events: all;
-}
-
-
 /* ---- Styles for create deck modal ---- */
 
 #create-modal {
@@ -672,23 +637,6 @@ input:focus {
     line-height: 3.2vmin;
     text-align: center;
 } 
-
-#create-overlay {
-    position: fixed;
-    opacity: 0;
-    transition: 200ms ease-in-out;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, .5);
-    pointer-events: none;
-}
-
-#create-overlay.active {
-    opacity: 1;
-    pointer-events: all;
-}
 
 #create-deck-form {
     display: flex;
