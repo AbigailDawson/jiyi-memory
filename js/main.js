@@ -98,7 +98,7 @@ function init(selectedDeck) {
 function handleToggle(evt) {
     evt.preventDefault();
     if (studyCheckbox.checked = true) {
-        document.getElementById('study').classList.add('active');
+        document.getElementById('study-modal').classList.add('active');
         document.getElementById('overlay').classList.add('active');
         
         const studyText = document.querySelector('.study-text');
@@ -114,7 +114,7 @@ function handleToggle(evt) {
         })
 
         document.getElementById('study-close-btn').addEventListener('click', function() {
-            document.getElementById('study').classList.remove('active');
+            document.getElementById('study-modal').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
             studyCheckbox.checked = false;
             studyText.innerHTML = '';
@@ -278,7 +278,7 @@ function renderMessage() {
     document.getElementById('turn-count').innerText = `${turns}`;
 
     if (remaining === 0) {
-        document.getElementById('cleared').classList.add('active');
+        document.getElementById('cleared-modal').classList.add('active');
         document.getElementById('overlay').classList.add('active');
 
         if (turns === 20) {
@@ -296,12 +296,12 @@ function renderMessage() {
         }
 
         document.getElementById('play-again').addEventListener('click', function() {
-            document.getElementById('cleared').classList.remove('active');
+            document.getElementById('cleared-modal').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
             resetBoard();
         });
         document.getElementById('close-btn').addEventListener('click', function() {
-            document.getElementById('cleared').classList.remove('active');
+            document.getElementById('cleared-modal').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
         })
     }   

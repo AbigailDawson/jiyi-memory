@@ -326,10 +326,9 @@ heading {
     justify-content: center;
 }
 
+/* ---- Shared Modal Styles ---- */
 
-/* ---- Styles for cleared board modal ---- */
-
-#cleared {
+.modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -339,6 +338,11 @@ heading {
     border: 1px solid black;
     border-radius: 1vmin;
     z-index: 10;
+}
+
+/* ---- Styles for cleared board modal ---- */
+
+#cleared-modal {
     background-color: white;
     color: black;
     width: 50vmin;
@@ -346,7 +350,7 @@ heading {
     padding: 2vmin;
 }
 
-#cleared.active {
+#cleared-modal.active {
     transform: translate(-50%, -50%) scale(1); 
     /* makes cleared message visible when active class is applied */
 }
@@ -463,15 +467,7 @@ input:focus {
 
 /* ---- Styles for study mode modal ---- */
 
-.study {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0); /* 50% of container, make invisible by default */
-    transition: 200ms ease-in-out;
-    border: 1px solid black;
-    border-radius: 1vmin;
-    z-index: 10;
+#study-modal {
     background-color: var(--matches-color);
     color: var(--text-color);
     width: 50vmin;
@@ -479,7 +475,7 @@ input:focus {
     padding: 2vmin;
 }
 
-.study.active {
+#study-modal.active {
     transform: translate(-50%, -50%) scale(1); /* makes message visible when active class is applied */
 }
 
@@ -523,15 +519,7 @@ input:focus {
 
 /* ---- Styles for My List modal ---- */
 
-.my-list-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0); /* 50% of container, make invisible by default */
-    transition: 200ms ease-in-out;
-    border: 1px solid black;
-    border-radius: 1vmin;
-    z-index: 10;
+#my-list-modal {
     background-color: var(--matches-color);
     color: var(--text-color);
     width: 50vmin;
@@ -539,7 +527,7 @@ input:focus {
     padding: 2vmin;
 }
 
-.my-list-modal.active {
+#my-list-modal.active {
     transform: translate(-50%, -50%) scale(1); /* makes message visible when active class is applied */
 }
 
@@ -584,14 +572,6 @@ input:focus {
 /* ---- Styles for create deck modal ---- */
 
 #create-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);  
-    transition: 200ms ease-in-out;
-    border: 1px solid black;
-    border-radius: 1vmin;
-    z-index: 10;
     background-color: white;
     color: black;
     width: 50vmin;
