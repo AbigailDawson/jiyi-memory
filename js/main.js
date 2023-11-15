@@ -362,11 +362,12 @@ function addCard() {
     
     const listBlockEng = document.createElement('div');
     const listBlockCh = document.createElement('div');
-    listBlockEng.classList.add('list-block');
-    listBlockCh.classList.add('list-block');
+    listBlockEng.classList.add('list-block', 'flx-ctr');
+    listBlockCh.classList.add('list-block', 'flx-ctr');
     listBlockEng.innerText = engText
     listBlockCh.innerText = chText;
-    
+    listBlockCh.style.fontFamily = '\'Noto Serif TC\', serif';
+
     listLine.appendChild(listNum);
     listLine.appendChild(listBlockEng);
     listLine.appendChild(listBlockCh);
