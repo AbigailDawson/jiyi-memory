@@ -1,7 +1,3 @@
-/*----- constants -----*/
-
-/*----- state variables -----*/
-
 let cardDeck;
 let board;
 let matches;
@@ -12,7 +8,8 @@ let cardCount;
 
 let savedCards = [];
 
-/*----- cached elements -----*/
+// Creates new custom card deck if player uses Create Deck feature (see addCard() funtion)
+let custom = new Cards('custom', '#b7efd0');
 
 const boardEls = [...document.querySelectorAll('.board > div')];
 const boardEl = document.querySelector('.board');
@@ -21,8 +18,6 @@ const studyCheckbox = document.getElementById('check');
 const deckBtns = [...document.querySelectorAll('.deck-btn')];
 const deckBtn = document.querySelector('.deck-btns');
 
-/*----- event listeners -----*/
-
 deckBtn.addEventListener('click', setDeck);
 boardEl.addEventListener('click', handleCardFlip);
 studyCheckbox.addEventListener('change', handleToggle);
@@ -30,16 +25,7 @@ document.getElementById('reset').addEventListener('click', resetBoard);
 document.getElementById('create-deck').addEventListener('click', openForm);
 document.getElementById('my-list-btn').addEventListener('click', openList);
 
-// allow for enter key to click button while form input is selected
-document.getElementById('card-text').addEventListener('keyup', function(evt) {
-    if (evt.key === 'Enter') {
-        evt.preventDefault();
-        document.getElementById('add-card').click();
-    }
-});
-
-/*----- functions -----*/
-
+// Makes the starter deck active on page load, before init() is called
 document.getElementById('starter-btn').classList.add('active-deck');
 
 init();
@@ -51,7 +37,7 @@ function resetBoard() {
 function setDeck(evt) {
     evt.preventDefault();
     const idx = deckBtns.indexOf(evt.target);
-    if (idx === -1) return;  // ignore a click in between the buttons
+    if (idx === -1) return;
 
     deckBtns.forEach((deckBtn) => {
         deckBtn.classList.remove('active-deck');
@@ -64,7 +50,7 @@ function setDeck(evt) {
             cardDeck = starter;
         break;
         case 'Animals': 
-            cardDeck = animals; // animals is the object, cardDeck.cards is the array of card objects, animals.color is the color
+            cardDeck = animals;
         break;
         case 'Hobbies':
             cardDeck = hobbies;
@@ -88,7 +74,44 @@ function setDeck(evt) {
             cardDeck = starter;
     }
 
-    init(cardDeck); // call init() passing in the cardDeck variable - if no deck has been chosen, init() will run from the call above with no deck parameter
+    init(cardDeck);
+}
+
+function init(selectedDeck) {
+    cardDeck = selectedDeck || starter;
+
+    board = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ]
+
+    matches = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    
+    // Assigns a random board index for each card object
+    cardDeck.cards.forEach((card) => {
+        card.flipped = false;
+        card.matched = false;
+
+        let rndRowIdx = Math.floor(Math.random() * board.length);
+        let rndColIdx = Math.floor(Math.random() * board[0].length);
+
+        while(board[rndRowIdx][rndColIdx] !== 0) {
+            rndRowIdx = Math.floor(Math.random() * board.length);
+            rndColIdx = Math.floor(Math.random() * board[0].length);    
+        }
+
+        board[rndRowIdx][rndColIdx] = card;
+
+    });
+
+    turns = 0;
+    firstPick = null;
+    remaining = 10;
+    cardCount = 0;
+
+    render();
 }
 
 function handleToggle(evt) {
@@ -121,43 +144,40 @@ function handleToggle(evt) {
 function handleCardFlip(evt) {
     evt.preventDefault();
     const cellIdx = boardEls.indexOf(evt.target);
-
-    // gaurd - don't listen to a click between the cards
     if (cellIdx === -1) return;    
 
-    // get clicked card object from event target
+    // Gets clicked card object from evt.target
     const cardIdx = String(evt.target.id).split('');
     const cardColIdx = cardIdx[1];
     const cardRowIdx = cardIdx[3];
     let clickedCard = board[cardColIdx][cardRowIdx];
-    
-    // update state depending on whether this is the 1st or 2nd card being flipped
-    if (clickedCard.flipped === false && firstPick === null) { // if this is the first card being flipped:
-        clickedCard.flipped = true; // flip card
-        firstPick = clickedCard; // store in firstPick variable
+
+    // First flip
+    if (clickedCard.flipped === false && firstPick === null) {
+        clickedCard.flipped = true;
+        firstPick = clickedCard;
         render();
 
-    } else if (clickedCard.flipped === false && firstPick !== null) { // if this is the second card being flipped:
-        clickedCard.flipped = true; // flip card
+    // Second flip
+    } else if (clickedCard.flipped === false && firstPick !== null) {
+        clickedCard.flipped = true;
         turns += 1;
         render();
         checkMatch();
-        
-    } else if (clickedCard.flipped === true) { // if the card being clicked has already been flipped (not sure if needed)
-        return; 
     }
     
     function checkMatch() {
-        boardEl.style.pointerEvents = 'none'; // do not allow clicks while checkMatch is running
+        // Ignores clicks while checking for match
+        boardEl.style.pointerEvents = 'none'; 
         deckBtn.style.pointerEvents = 'none';
+
         setTimeout(() => {
             if (clickedCard.id === firstPick.id) {
-                // set matched property of both cards to true
                 clickedCard.matched = true;
                 firstPick.matched = true;
                 remaining -= 1;
 
-                // loop thru matches array and place matched cards
+                // Assign matched card objects a place in matches array
                 for (let i = 0; i < matches.length; i++){
                     if (matches[i] === 0) {
                         matches.splice(i, 2, firstPick, clickedCard);
@@ -169,7 +189,8 @@ function handleCardFlip(evt) {
                 clickedCard.flipped = false;
                 firstPick.flipped = false;
             }
-            firstPick = null; // reset firstPick to null
+
+            firstPick = null;
             render();
 
             boardEl.style.pointerEvents = 'auto';
@@ -181,29 +202,41 @@ function handleCardFlip(evt) {
 
 function render() {
     renderBoard();
-    renderMessage();
     renderMatches();
+    renderMessage();
 }
 
-function saveCard(evt) {
-    evt.preventDefault;
-    const clickedMatchId = evt.target.id;
-    const clickedMatchIdx = parseInt(clickedMatchId);
+function renderBoard() {
+    board.forEach((colArr, colIdx) => {
+        colArr.forEach((card, rowIdx) => {
+            const cellId = `c${colIdx}r${rowIdx}`;
+            const cellEl = document.getElementById(cellId);
 
-    const clickedMatch = matches[clickedMatchIdx];
+            cellEl.classList.remove('reveal-card');
+            cellEl.classList.add('grow');
+            cellEl.style.fontSize = '2.3vmin';
 
-    if (savedCards.includes(clickedMatch)) {
-        console.log('item already saved');
-        return;
-    } 
-    
-    console.log('saving item');
-    savedCards.push(clickedMatch);
+            if (card.text.match(/[\u4E00-\u9FFF]/)) cellEl.style.fontSize = '3vmin';
 
-    evt.target.style.border = 'none';
-    evt.target.style.cursor = 'auto';
-    evt.target.classList.remove('mild-grow');
-    evt.target.removeEventListener('click', saveCard);
+            if (card.matched === true) {
+                cellEl.style.backgroundColor = 'var(--card-color)';
+                cellEl.style.boxShadow = 'none';
+                cellEl.removeAttribute('class', 'grow');
+                cellEl.innerText = '';
+            } 
+
+            if (card.flipped === false) {
+                cellEl.style.background = cardDeck.color;
+                cellEl.style.boxShadow = '.2vmin .2vmin .5vmin .3vmin rgba(0, 0, 0, .4)';
+                cellEl.innerText = '';
+
+            } else if (card.matched !== true && card.flipped === true) {
+                cellEl.style.backgroundColor = 'var(--flipped-card-color)';
+                cellEl.style.boxShadow = '.2vmin .2vmin .5vmin .3vmin rgba(0, 0, 0, .4)';
+                cellEl.innerText = card.text;
+            }
+        })   
+    })
 }
     
 function renderMatches() {
@@ -212,113 +245,47 @@ function renderMatches() {
         const matchId = `${index}`;
         const matchEl = document.getElementById(matchId);
         
-        // if there is no card in that spot:
         if(item === 0) {
             matchEl.style.backgroundColor = 'var(--matches-color)';
             matchEl.innerText = '';
             matchEl.style.border = 'none';
             matchEl.style.cursor = 'auto';
             matchEl.classList.remove('mild-grow');
-            // matchEl.removeEventListener('click', saveCard);
 
-            // OTHERWISE, is there IS a card in that spot:
         } else if (item !== 0) {
-            matchEl.classList.add('reveal-card'); // show the card 
+            matchEl.classList.add('reveal-card');
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
             matchEl.innerText = item.text;
 
-            if (item.text.match(/[\u3400-\u9FBF]/) && !savedCards.includes(item)) {
+            if (item.text.match(/[\u4E00-\u9FFF]/) && !savedCards.includes(item)) {
                 matchEl.style.fontSize = '2vmin'; 
                 matchEl.style.border = `.4vmin solid ${cardDeck.color}`;
                 matchEl.style.cursor = 'pointer';
                 matchEl.classList.add('mild-grow');
-                // add evt listener that will run the saveCard function
                 matchEl.addEventListener('click', saveCard);
                 
             } else if (item.text.match(/[\u3400-\u9FBF]/) && savedCards.includes(item)) {
-                // matchEls.forEach((el) => {
                     matchEl.removeEventListener('click', saveCard);
                     matchEl.style.border = 'none';
                     matchEl.style.cursor = 'auto';
                     matchEl.classList.remove('mild-grow');
-                // })
             }
-
-            
-
         }
     })
 }
 
-            // if the card is chinese AND has ALREADY BEEN SAVED:
-            // if (item.text.match(/[\u3400-\u9FBF]/) && savedCards.includes(item)) {
-            //     console.log(item.text, ' has already been saved')
-            //     // remove styles and remove event listener (if there is one)
-            //     matchEl.style.border = 'none';
-            //     matchEl.style.cursor = 'auto';
-            //     matchEl.classList.remove('mild-grow');
-            //     // matchEl.removeEventListener('click', saveCard);
-            // } 
-            // // if the card is chinese and HAS NOT BEEN SAVED:
-            // else if (item.text.match(/[\u3400-\u9FBF]/) && !savedCards.includes(item)) {
-            //     // style so it looks clickable
-            //     matchEl.style.fontSize = '2vmin'; 
-            //     matchEl.style.border = `.4vmin solid ${cardDeck.color}`;
-            //     matchEl.style.cursor = 'pointer';
-            //     matchEl.classList.add('mild-grow');
-            //     // add evt listener that will run the saveCard function
-            //     matchEl.addEventListener('click', saveCard);
-                
-            //     function saveCard(evt) {
-            //         evt.preventDefault();
-            //         if (savedCards.includes(item)) {
-            //             console.log('item already saved')
-            //             return;
-            //         } else {
-            //             console.log('saving item')
-            //             savedCards.push(item); // push into array
-            //             // remove styles
-            //             matchEl.style.border = 'none';
-            //             matchEl.style.cursor = 'auto';
-            //             matchEl.classList.remove('mild-grow');
-            //             // remove event listener
-            //             matchEl.removeEventListener('click', saveCard);
-            //         } 
+function saveCard(evt) {
+    evt.preventDefault;
+    const clickedMatchId = evt.target.id;
+    const clickedMatchIdx = parseInt(clickedMatchId);
+    const clickedMatch = matches[clickedMatchIdx];
 
+    savedCards.push(clickedMatch);
 
-function renderBoard() {
-    board.forEach((colArr, colIdx) => {
-        colArr.forEach((card, rowIdx) => {
-            const cellId = `c${colIdx}r${rowIdx}`;
-            const cellEl = document.getElementById(cellId);
-            cellEl.removeAttribute('class', 'reveal-card');
-            cellEl.classList.add('grow');
-
-            if (card.text.match(/[\u3400-\u9FBF]/)) {
-                cellEl.style.fontSize = '3vmin'; // make font size larger for Chinese characters
-            } else {
-                cellEl.style.fontSize = '2.3vmin';
-            }
-
-            if (card.matched === true) { // if the card is a match
-                cellEl.style.backgroundColor = 'var(--card-color)';
-                cellEl.style.boxShadow = 'none';
-                cellEl.removeAttribute('class', 'grow');
-                cellEl.innerText = '';
-            } 
-
-            if (card.flipped === false) { // if the card is facedown
-                cellEl.style.background = cardDeck.color;
-                cellEl.style.boxShadow = '.2vmin .2vmin .5vmin .3vmin rgba(0, 0, 0, .4)';
-                cellEl.innerText = '';
-
-            } else if (card.matched !== true && card.flipped === true) { // if the card has been flipped
-                cellEl.style.backgroundColor = 'var(--flipped-card-color)';
-                cellEl.style.boxShadow = '.2vmin .2vmin .5vmin .3vmin rgba(0, 0, 0, .4)';
-                cellEl.innerText = card.text;
-            }
-        })   
-    })
+    evt.target.style.border = 'none';
+    evt.target.style.cursor = 'auto';
+    evt.target.classList.remove('mild-grow');
+    evt.target.removeEventListener('click', saveCard);
 }
 
 function renderMessage() {
@@ -371,14 +338,22 @@ function openForm(evt) {
     document.getElementById('card-id').focus();
 }
 
+// Allows use of enter key to click button while input field is selected
+document.getElementById('card-text').addEventListener('keyup', function(evt) {
+    if (evt.key === 'Enter') {
+        evt.preventDefault();
+        document.getElementById('add-card').click();
+    }
+});
+
 function addCard() {
     cardCount++;
 
-    // get input values from form
+    // Gets values from input fields
     const engText = document.getElementById('card-id').value;
     const chText = document.getElementById('card-text').value;
 
-    // display card on list
+    // Displays cards on list
     const cardList = document.querySelector('.card-list')
     const listLine = document.createElement('div');
     listLine.classList.add('list-line');
@@ -408,7 +383,6 @@ function addCard() {
     document.getElementById('card-id').value = '';
     document.getElementById('card-text').value = '';
     document.getElementById('card-id').focus();
-
 
     if (cardCount === 10) {
         document.getElementById('card-id').setAttribute('disabled', 'disabled');
@@ -443,8 +417,6 @@ function addCard() {
     }
 }
 
-let custom = new Cards('custom', '#b7efd0');
-
 function openList(evt) {
     evt.preventDefault();
     document.getElementById('my-list-modal').classList.add('active');
@@ -466,43 +438,3 @@ function openList(evt) {
         document.getElementById('my-list-overlay').classList.remove('active');
     })
 }
-
-function init(selectedDeck) { // take selectedDeck as a parameter, if no deck has been selected, default to the starter deck. here, selectedDeck represents the expected input
-    cardDeck = selectedDeck || starter;
-
-    board = [
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0]
-    ]
-
-    matches = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    
-    // for each card object, assign a random board index
-    cardDeck.cards.forEach((card) => {
-        card.flipped = false;
-        card.matched = false;
-
-        let rndRowIdx = Math.floor(Math.random() * board.length);
-        let rndColIdx = Math.floor(Math.random() * board[0].length);
-
-        while(board[rndRowIdx][rndColIdx] !== 0) {
-            rndRowIdx = Math.floor(Math.random() * board.length);
-            rndColIdx = Math.floor(Math.random() * board[0].length);    
-        }
-
-        board[rndRowIdx][rndColIdx] = card;
-
-    });
-
-    turns = 0;
-    firstPick = null;
-    remaining = 10;
-    cardCount = 0;
-    
-    
-
-    render();
-}
-
