@@ -235,8 +235,11 @@ function renderMatches() {
         
         if(item === 0) {
             matchEl.style.backgroundColor = 'var(--matches-color)';
+            matchEl.style.border = 'none';
+            matchEl.style.cursor = 'auto';
+            matchEl.classList.remove('mild-grow');
             matchEl.innerText = '';
-
+            
         } else if (item !== 0) {
             matchEl.classList.add('reveal-card');
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
