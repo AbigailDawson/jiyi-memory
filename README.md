@@ -8,11 +8,11 @@ As someone who has spent years devoted to the study of foreign languages, I have
 
 Whether it's a foreign language, a musical instrument, a technical skill or just information you need to know for a test, almost everyone has something they want to learn. And for some, the best way to learn is through play. As long as you're having fun playing the game, the learning will come naturally - you might not even notice it happening!
 
-I designed **[記憶 Memory](link)** to be a template for a learning tool. My game uses traditional Chinese characters, but this template could be adapted to any subject matter.
+I designed **[記憶 Memory](https://abigaildawson.github.io/jiyi-memory/)** to be a template for a learning tool. My game uses traditional Chinese characters, but this template could be adapted to any subject matter.
 
 ## <div align="center">Getting Started</div>
 
-Let's play **[記憶 Memory](link)**!
+Let's play **[記憶 Memory](https://abigaildawson.github.io/jiyi-memory/)**!
 
 The game begins with a starter deck of miscellaneous beginner cards featuring easy Chinese characters. 
 
