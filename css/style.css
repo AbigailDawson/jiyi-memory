@@ -207,9 +207,11 @@ heading {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: 14vmin;
     height: 14vmin;
     padding: 2vmin;
+    font-family: 'Paytone One', sans-serif;
     font-size: 2.3vmin;
     border-radius: 1vmin;
     background-color: var(--card-color);

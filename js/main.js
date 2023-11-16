@@ -118,7 +118,7 @@ function handleToggle(evt) {
             if (card.text.match(/[\u3400-\u9FBF]/)) {
                 const listItem = document.createElement('li');
                 listItem.innerText = card.text + Array(3).fill('\xa0').join('') + card.id;
-                listItem.style.fontFamily = '\'Noto Serif TC\', serif';
+                listItem.style.fontFamily = 'Noto Serif TC';
                 vocabList.appendChild(listItem);
                 studyText.appendChild(vocabList);
             }
@@ -208,9 +208,12 @@ function renderBoard() {
             cellEl.classList.add('grow');
             cellEl.style.cursor = 'pointer';
 
-            if (card.text.match(/[\u4E00-\u9FFF]/)) {
-                cellEl.style.fontFamily = '\'Noto Serif TC\', serif';
+            if (cellEl.innerText.match(/[\u4E00-\u9FFF]/)) {
+                cellEl.style.fontFamily = 'Noto Serif TC';
                 cellEl.style.fontSize = '3vmin';
+            } else {
+                cellEl.style.fontFamily = 'Paytone One';
+                cellEl.style.fontSize = '2.3vmin';
             }
 
             if (card.matched === true) {
@@ -251,7 +254,7 @@ function renderMatches() {
             matchEl.innerText = item.text;
 
             if (item.text.match(/[\u4E00-\u9FFF]/) && !savedCards.includes(item)) {
-                matchEl.style.fontFamily = '\'Noto Serif TC\', serif';
+                matchEl.style.fontFamily = 'Noto Serif TC';
                 matchEl.style.fontSize = '2vmin';
                 matchEl.style.border = `.4vmin solid ${cardDeck.color}`;
                 matchEl.style.cursor = 'pointer';
@@ -259,7 +262,7 @@ function renderMatches() {
                 matchEl.addEventListener('click', saveCard);
                 
             } else if (item.text.match(/[\u3400-\u9FBF]/) && savedCards.includes(item)) {
-                    matchEl.style.fontFamily = '\'Noto Serif TC\', serif';
+                    matchEl.style.fontFamily = 'Noto Serif TC';
                     matchEl.removeEventListener('click', saveCard);
                     matchEl.style.border = 'none';
                     matchEl.style.cursor = 'auto';
@@ -366,7 +369,7 @@ function addCard() {
     listBlockCh.classList.add('list-block', 'flx-ctr');
     listBlockEng.innerText = engText
     listBlockCh.innerText = chText;
-    listBlockCh.style.fontFamily = '\'Noto Serif TC\', serif';
+    listBlockCh.style.fontFamily = 'Noto Serif TC';
 
     listLine.appendChild(listNum);
     listLine.appendChild(listBlockEng);
@@ -432,7 +435,9 @@ function openList(evt) {
         newListItem.innerText = card.text + Array(3).fill('\xa0').join('') + card.id;
         
         if (newListItem.innerText.match(/[\u4E00-\u9FFF]/)) {
-            newListItem.style.fontFamily = '\'Noto Serif TC\', serif';
+            newListItem.style.fontFamily = 'Noto Serif TC';
+        } else {
+            newListItem.style.fontFamily = 'Paytone One';
         }
 
         myList.appendChild(newListItem);
