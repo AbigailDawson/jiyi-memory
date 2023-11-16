@@ -236,44 +236,32 @@ function renderMatches() {
         if(item === 0) {
             matchEl.style.backgroundColor = 'var(--matches-color)';
             matchEl.innerText = '';
-            matchEl.style.border = 'none';
-            matchEl.style.cursor = 'auto';
-            matchEl.classList.remove('mild-grow');
 
         } else if (item !== 0) {
             matchEl.classList.add('reveal-card');
             matchEl.style.backgroundColor = 'var(--flipped-card-color)';
             matchEl.innerText = item.text;
 
-            if (item.text.match(/[\u4E00-\u9FFF]/) && !savedCards.includes(item)) {
+            if (item.saved === false && item.text.match(/[\u4E00-\u9FFF]/)) {
                 matchEl.style.fontSize = '2vmin';
                 matchEl.style.border = `.4vmin solid ${cardDeck.color}`;
                 matchEl.style.cursor = 'pointer';
                 matchEl.classList.add('mild-grow');
-                matchEl.addEventListener('click', saveCard);
+
+                matchEl.addEventListener('click', function(evt) {
+                    item.saved = true;
+                    matchEl.style.border = 'none';
+                    matchEl.style.cursor = 'auto';
+                    matchEl.classList.remove('mild-grow');
+                });
                 
-            } else if (item.text.match(/[\u3400-\u9FBF]/) && savedCards.includes(item)) {
-                    matchEl.removeEventListener('click', saveCard);
+            } else if (item.saved === true && item.text.match(/[\u3400-\u9FBF]/)) {
                     matchEl.style.border = 'none';
                     matchEl.style.cursor = 'auto';
                     matchEl.classList.remove('mild-grow');
             }
         }
     })
-}
-
-function saveCard(evt) {
-    evt.preventDefault();
-    const clickedMatchId = evt.target.id;
-    const clickedMatchIdx = parseInt(clickedMatchId);
-    const clickedMatch = matches[clickedMatchIdx];
-
-    savedCards.push(clickedMatch);
-
-    evt.target.style.border = 'none';
-    evt.target.style.cursor = 'auto';
-    evt.target.classList.remove('mild-grow');
-    evt.target.removeEventListener('click', saveCard);
 }
 
 function renderMessage() {
@@ -418,24 +406,35 @@ function openList(evt) {
     overlay.classList.add('active');
 
     const myListText = document.querySelector('.my-list-text');
-    const myList = document.createElement('ul');
+    const existingList = myListText.querySelector('ul'); // gets existing list if there is one
 
-    savedCards.forEach((card) => {
-        const newListItem = document.createElement('li');
-        newListItem.innerText = card.text + Array(3).fill('\xa0').join('') + card.id;
-        
-        if (newListItem.innerText.match(/[\u4E00-\u9FFF]/)) {
-            newListItem.style.fontFamily = 'Noto Serif TC';
-        } else {
-            newListItem.style.fontFamily = 'Paytone One';
-        }
+    if(existingList) {
+        myListText.removeChild(existingList);
+    }
 
-        myList.appendChild(newListItem);
-        myListText.appendChild(myList);
+    const newList = document.createElement('ul');
+
+    Object.values(deckOptions).forEach((deck) => {
+        deck.cards.forEach((card) => {
+            if (card.saved === true) {
+
+                const listItem = document.createElement('li');
+                listItem.innerText = card.text + Array(3).fill('\xa0').join('') + card.id;
+
+                if (listItem.innerText.match(/[\u4E00-\u9FFF]/)) {
+                    listItem.style.fontFamily = 'Noto Serif TC';
+                } else {
+                    listItem.style.fontFamily = 'Paytone One';
+                } 
+                newList.appendChild(listItem);
+
+            }
+        })
     });
 
+    myListText.appendChild(newList);
+
     myListCloseBtn.addEventListener('click', function() {
-        savedCards = [];
         myListModal.classList.remove('active');
         overlay.classList.remove('active');
     })
