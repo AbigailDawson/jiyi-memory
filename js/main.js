@@ -208,14 +208,6 @@ function renderBoard() {
             cellEl.classList.add('grow');
             cellEl.style.cursor = 'pointer';
 
-            if (cellEl.innerText.match(/[\u4E00-\u9FFF]/)) {
-                cellEl.style.fontFamily = 'Noto Serif TC';
-                cellEl.style.fontSize = '3vmin';
-            } else {
-                cellEl.style.fontFamily = 'Paytone One';
-                cellEl.style.fontSize = '2.3vmin';
-            }
-
             if (card.matched === true) {
                 cellEl.style.backgroundColor = 'var(--card-color)';
                 cellEl.style.boxShadow = 'none';
@@ -254,7 +246,6 @@ function renderMatches() {
             matchEl.innerText = item.text;
 
             if (item.text.match(/[\u4E00-\u9FFF]/) && !savedCards.includes(item)) {
-                matchEl.style.fontFamily = 'Noto Serif TC';
                 matchEl.style.fontSize = '2vmin';
                 matchEl.style.border = `.4vmin solid ${cardDeck.color}`;
                 matchEl.style.cursor = 'pointer';
@@ -262,7 +253,6 @@ function renderMatches() {
                 matchEl.addEventListener('click', saveCard);
                 
             } else if (item.text.match(/[\u3400-\u9FBF]/) && savedCards.includes(item)) {
-                    matchEl.style.fontFamily = 'Noto Serif TC';
                     matchEl.removeEventListener('click', saveCard);
                     matchEl.style.border = 'none';
                     matchEl.style.cursor = 'auto';
