@@ -1,6 +1,5 @@
 :root {
     --bg-color: #393939;
-    --board: #393939;
     --card-color: #565656;
     --matches-color: #404040;
     --flipped-card-color: #fffaf6;
@@ -195,7 +194,7 @@ heading {
 }
 
 .board {
-    background-color: var(--board);
+    background-color: var(--bg-color);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, auto);
@@ -330,7 +329,7 @@ heading {
 
 #cleared-modal {
     background-color: white;
-    color: black;
+    color:  var(--button-text-color);
 }
 
 #cleared-modal.active {
@@ -338,7 +337,7 @@ heading {
 }
 
 #cleared-close-btn {
-    color: black;
+    color:  var(--button-text-color);
 }
 
 .cleared-title {
@@ -495,7 +494,7 @@ input:focus {
 
 #create-modal {
     background-color: white;
-    color: black;
+    color:  var(--button-text-color);
     height: auto;
 }
 
@@ -504,7 +503,7 @@ input:focus {
 }
 
 #create-close-btn {
-    color: black;
+    color:  var(--button-text-color);
 }
 
 .create-modal-text {
@@ -608,7 +607,7 @@ input:focus {
 
 .num {
     font-family: 'Paytone One', sans-serif;
-    color: var(--bg-color);
+    color:  var(--button-text-color);
     font-size: 1.5vmin;
     font-weight: 600;
     width: 3vmin;   
