@@ -355,8 +355,8 @@ function addCard() {
 
     cardList.appendChild(listLine);
 
-    custom.newCard(engText, chText, false, false);
-    custom.newCard(engText, engText, false, false);
+    custom.newCard(engText, chText, false, false, false);
+    custom.newCard(engText, engText, false, false, false);
 
     cardDeck = custom;
 
@@ -417,20 +417,32 @@ function openList(evt) {
     Object.values(deckOptions).forEach((deck) => {
         deck.cards.forEach((card) => {
             if (card.saved === true) {
-
                 const listItem = document.createElement('li');
                 listItem.innerText = card.text + Array(3).fill('\xa0').join('') + card.id;
-
                 if (listItem.innerText.match(/[\u4E00-\u9FFF]/)) {
                     listItem.style.fontFamily = 'Noto Serif TC';
                 } else {
                     listItem.style.fontFamily = 'Paytone One';
                 } 
                 newList.appendChild(listItem);
-
             }
         })
     });
+
+    // Adds DOM elements for cards that have been saved from custom deck
+
+    custom.cards.forEach((card) => {
+        if (card.saved === true) {
+            const listItem = document.createElement('li');
+            listItem.innerText = card.text + Array(3).fill('\xa0').join('') + card.id;
+            if (listItem.innerText.match(/[\u4E00-\u9FFF]/)) {
+                listItem.style.fontFamily = 'Noto Serif TC';
+            } else {
+                listItem.style.fontFamily = 'Paytone One';
+            } 
+            newList.appendChild(listItem);
+        }
+    })
 
     myListText.appendChild(newList);
 
