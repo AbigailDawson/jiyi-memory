@@ -4,13 +4,11 @@
 ![Game Play](/images/game-play.png)
 
 ## <div align="center">A Game with a Purpose</div>
-As someone who has spent years devoted the study of foreign languages, I have always been fascinated by the psychology behind learning — and methods for *how* to learn effectively. 
+As someone who has spent years devoted to the study of foreign languages, I have always been fascinated by the psychology behind learning — and methods for *how* to learn effectively. 
 
-Whether it's a foreign language, a musical instrument, a technical skill or just information you need to know for a test, almost everyone has something they want to learn.
+Whether it's a foreign language, a musical instrument, a technical skill or just information you need to know for a test, almost everyone has something they want to learn. And for some, the best way to learn is through play.
 
-And for some, the best way to learn is through play.
-
-I designed **[記憶 Memory](link)** to be a template for a learning tool that could be adapted to any subject matter. As long as you're having fun playing the game, the learning will come naturally - you might not even notice it happening!
+I designed **[記憶 Memory](link)** to be a template for a learning tool. My game uses traditional Chinese characters, but this template could be adapted to any subject matter. As long as you're having fun playing the game, the learning will come naturally - you might not even notice it happening!
 
 ## <div align="center">Getting Started</div>
 
