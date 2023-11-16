@@ -299,16 +299,16 @@ function renderMessage() {
 
         if (turns === 20) {
             msgTitle.innerText = 'Perfect Game!';
-            msgText.innerText = 'You matched all the cards on the first try! That\'s really quite an impressive feat. Congratulations!';
+            msgText.innerHTML = `You matched all the cards in <span style="color: #900C3F">${turns}</span> turns! That's really quite an impressive feat. Congratulations!`;
         } else if (turns > 20 && turns <= 30) {
             msgTitle.innerText = 'Almost Perfect!';
-            msgText.innerText = 'You matched nearly all the cards on your first try! You either have some serious luck or some mad skills. Either way, great job!';
+            msgText.innerHTML = `You matched all the cards in only <span style="color: #900C3F">${turns}</span> turns! You either have some serious luck or some mad skills. Either way, great job!`;
         } else if (turns > 30 && turns <= 40) {
             msgTitle.innerText = 'Success!';
-            msgText.innerText = 'Excellent work! Your studies have paid off! Remember, you can always activate Study Mode to review the vocabulary and improve your score.';
+            msgText.innerHTML = `Excellent work! You cleared the board in <span style="color: #900C3F">${turns}</span> turns. Remember, you can always activate Study Mode to review the vocabulary and improve your score.`;
         } else if (turns > 40) {
             msgTitle.innerText = 'Great Effort!';
-            msgText.innerText = 'Great work! If you\'d like to get even faster at recognizing these words, try activating Study Mode before playing to review the vocabulary!';
+            msgText.innerHTML = `It took you <span style="color: #900C3F">${turns}</span> turns to clear the board. If you'd like to get even faster at recognizing these words, try activating Study Mode before playing to review the vocabulary!`;
         }
 
         document.getElementById('play-again').addEventListener('click', function() {
