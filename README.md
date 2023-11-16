@@ -60,11 +60,9 @@ Click **Play!** to get started!
 
 ## Next Steps
 
-The biggest limitation of this game is that it's not scalable with the current code foundation. The code relies on a while loop to assign card objects to random places on the board, but adding cards beyond the 10 already loaded into each deck creates an infinite loop that crashes the browser. 
+The biggest limitation of this game is that it's not scalable with the current code foundation. The code relies on a while loop to assign card objects to random places on the board, but adding cards beyond the 10 already loaded into each deck creates an infinite loop that crashes the browser. This is something I would be interested in reapproaching so the game could be played with a much larger vocabulary base that could be potentially pulled from an English-Chinese dictionary database.
 
-Additionally, there are some limitations with the current code structure, which uses 20 card objects to make up a deck. I have run into numerous issues coding out game features with this structure, but will spare the details for this document.
-
-Despite these challenges I would like to add the following features to the existing game:
+I would also like to add the following features to the existing game:
 
 1. Improve My Study List feature
 * Allow the player to remove words or clear their list
