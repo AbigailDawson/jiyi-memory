@@ -21,9 +21,6 @@ class Cards {
         this.cards.push(card);
         return card;
     }
-    get allCards() {
-        return this.cards;
-    }
 }
 
 const starter = new Cards('starter', '#a8dadc'); 
