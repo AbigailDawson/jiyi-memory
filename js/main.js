@@ -308,7 +308,7 @@ function renderMessage() {
             msgText.innerHTML = `Excellent work! You cleared the board in <span style="color: #900C3F">${turns}</span> turns. Remember, you can always activate Study Mode to review the vocabulary and improve your score.`;
         } else if (turns > 40) {
             msgTitle.innerText = 'Great Effort!';
-            msgText.innerHTML = `It took you <span style="color: #900C3F">${turns}</span> turns to clear the board. If you'd like to get even faster at recognizing these words, try activating Study Mode before playing to review the vocabulary!`;
+            msgText.innerHTML = `It took you <span style="color: #900C3F">${turns}</span> turns to clear the board. If you'd like to get even faster at recognizing these words, try activating Study Mode before playing to review the vocabulary!`
         }
 
         document.getElementById('play-again').addEventListener('click', function() {
