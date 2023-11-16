@@ -6,9 +6,9 @@
 ## <div align="center">A Game with a Purpose</div>
 As someone who has spent years devoted to the study of foreign languages, I have always been fascinated by the psychology behind learning — and methods for *how* to learn effectively. 
 
-Whether it's a foreign language, a musical instrument, a technical skill or just information you need to know for a test, almost everyone has something they want to learn. And for some, the best way to learn is through play.
+Whether it's a foreign language, a musical instrument, a technical skill or just information you need to know for a test, almost everyone has something they want to learn. And for some, the best way to learn is through play. As long as you're having fun playing the game, the learning will come naturally - you might not even notice it happening!
 
-I designed **[記憶 Memory](link)** to be a template for a learning tool. My game uses traditional Chinese characters, but this template could be adapted to any subject matter. As long as you're having fun playing the game, the learning will come naturally - you might not even notice it happening!
+I designed **[記憶 Memory](link)** to be a template for a learning tool. My game uses traditional Chinese characters, but this template could be adapted to any subject matter.
 
 ## <div align="center">Getting Started</div>
 
@@ -28,7 +28,7 @@ To preview the cards that are in this deck, turn on **Study Mode** by clicking t
 
 2. Matches are removed from the board and will display on the **Matches** board to the right.
 
-Once you've gotten a feel for how the game works, check out the other beginner decks, or try an intermediate or advanced deck for an added challenge!
+Once you've gotten a feel for how the game works, check out the other beginner decks or try an intermediate or advanced deck for an added challenge!
 
 ## <div align="center">Special Features</div>
 
@@ -52,8 +52,29 @@ If you want to study your own words that aren't included in the premade decks, y
 
 Once you have entered 10 words, you'll also have the option to choose a color for your deck.
 
-Now you can play with a deck of your own words!
+Click **Play!** to get started!
 
 ## Tech
 
  **記憶 Memory** is created with HTML, CSS and JavaScript.
+
+## Next Steps
+
+The biggest limitation of this game is that it's not scalable with the current code foundation. The code relies on a while loop to assign card objects to random places on the board, but adding cards beyond the 10 already loaded into each deck creates an infinite loop that crashes the browser. 
+
+Additionally, there are some limitations with the current code structure, which uses 20 card objects to make up a deck. I have run into numerous issues coding out game features with this structure, but will spare the details for this document.
+
+Despite these challenges I would like to add the following features to the existing game:
+
+1. Improve My Study List feature
+* Allow the player to remove words or clear their list
+* Allow for more words to be added in multiple columns
+* Offer a way for the player to download their list of words
+
+2. Expand Create Deck feature
+* Allow the player to create and save multiple decks
+* Allow for words to be deleted from the Create Deck form
+
+3. Improve animations and design elements for a more enjoyable feel during game play, possibly including pronunciation audio that could be toggled on/off for cards.
+
+4. Integrate pinyin for Chinese characters.
