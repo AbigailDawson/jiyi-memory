@@ -115,7 +115,7 @@ hobbies.newCard('running', '跑步', false, false);
 hobbies.newCard('travel', '旅遊', false, false);
 hobbies.newCard('art', '美術', false, false);
 hobbies.newCard('music', '音樂', false, false);
-hobbies.newCard('cooking', '做飯', false, false);
+hobbies.newCard('cooking', '煮飯', false, false);
 hobbies.newCard('horseback riding', '騎馬', false, false);
 
 const school = new Cards('schoolCards', '#fde2e4');
