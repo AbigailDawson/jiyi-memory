@@ -1,5 +1,3 @@
-// Create an array of instances of a class: https://stackoverflow.com/questions/52377344/javascript-array-of-instances-of-a-class
-
 class Card {
     constructor(id, text, flipped, matched, saved) {
         this.id = id;
