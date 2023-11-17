@@ -220,6 +220,7 @@ function renderBoard() {
                 cellEl.innerText = '';
 
             } else if (card.matched !== true && card.flipped === true) {
+                if (card.text.match(/[\u4E00-\u9FFF]/)) cellEl.setAttribute('lang', 'zh-Hant');
                 cellEl.style.backgroundColor = 'var(--flipped-card-color)';
                 cellEl.innerText = card.text;
             }

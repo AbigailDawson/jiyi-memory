@@ -202,6 +202,11 @@ heading {
     padding: .5vmin;
 }
 
+.board > div:lang(zh-Hant) {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 4vmin;
+}
+
 .board > div {
     display: flex;
     justify-content: center;
