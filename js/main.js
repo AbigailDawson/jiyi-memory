@@ -222,6 +222,11 @@ function renderBoard() {
             } else if (card.matched !== true && card.flipped === true) {
                 cellEl.style.backgroundColor = 'var(--flipped-card-color)';
                 cellEl.innerText = card.text;
+                // console.log(card.text);
+                // console.log(card.text.match(/[\u4E00-\u9FFF]/));
+                // if (card.text.match(/[\u4E00-\u9FFF]/)) {
+                //     cellEl.style.fontSize = '3.5vmin';
+                // }
             }
         })   
     })
@@ -328,6 +333,7 @@ document.getElementById('card-text').addEventListener('keyup', function(evt) {
     }
 });
 
+
 function addCard() {
     cardCount++;
 
@@ -335,73 +341,91 @@ function addCard() {
     const engText = document.getElementById('card-id').value;
     const chText = document.getElementById('card-text').value;
 
-    // Displays cards on list
-    const cardList = document.querySelector('.card-list')
-    const listLine = document.createElement('div');
-    listLine.classList.add('list-line', 'flx-ctr');
-
-    const listNum = document.createElement('div');
-    listNum.classList.add('num', 'flx-ctr');
-    listNum.innerText = `${cardCount}.`
-    
-    const listBlockEng = document.createElement('div');
-    const listBlockCh = document.createElement('div');
-    listBlockEng.classList.add('list-block', 'flx-ctr');
-    listBlockCh.classList.add('list-block', 'flx-ctr');
-    listBlockEng.innerText = engText
-    listBlockCh.innerText = chText;
-    listBlockCh.style.fontFamily = 'Noto Serif TC';
-
-    listLine.appendChild(listNum);
-    listLine.appendChild(listBlockEng);
-    listLine.appendChild(listBlockCh);
-
-    cardList.appendChild(listLine);
-
+    // Adds card to new custom deck
     custom.newCard(engText, chText, false, false, false);
     custom.newCard(engText, engText, false, false, false);
 
+    // Move to evt listener?
     cardDeck = custom;
 
-    document.getElementById('card-id').value = '';
-    document.getElementById('card-text').value = '';
-    document.getElementById('card-id').focus();
-
-    if (cardCount === 10) {
-        document.getElementById('card-id').setAttribute('disabled', 'disabled');
-        document.getElementById('card-text').setAttribute('disabled', 'disabled');
-
-        const colorPicker = document.createElement('div');
-        colorPicker.classList.add('color-picker', 'flx-ctr')
-
-        const colorPickerLabel = document.createElement('label');
-        colorPickerLabel.setAttribute('for', 'color-picker');
-        colorPickerLabel.classList.add('color-picker', 'flx-ctr');
-        colorPickerLabel.innerText = 'Choose a color for your deck: '
-        
-        const colorPickerInput = document.createElement('input');
-        colorPickerInput.setAttribute('type', 'color');
-        colorPickerInput.setAttribute('id', 'color-picker');
-        colorPickerInput.setAttribute('value', '#b7efd0');
-        
-        colorPicker.appendChild(colorPickerLabel);
-        colorPicker.appendChild(colorPickerInput);
-        cardList.appendChild(colorPicker);
-
-        const playBtn = document.createElement('button');
-        playBtn.classList.add('play-btn');
-        playBtn.innerText = 'Play!'
-
-        playBtn.addEventListener('click', function(evt) {
-            evt.preventDefault();
-            custom.color = colorPickerInput.value;
-            createModal.classList.remove('active');
-            overlay.classList.remove('active');
-            init(custom);
-        });
-        cardList.appendChild(playBtn);
-    }
+    renderCreateDeck();
 }
+
+function renderCreateDeck() {
+    console.log(cardCount);
+    const cardList = document.querySelector('.card-list')
+    const existingList = cardList.querySelector('div');
+    
+    if (existingList) cardList.removeChild(existingList);
+    
+    custom.cards.forEach((card) => {
+        if (!card.text.match(/[\u4E00-\u9FFF]/)) {
+            return;
+        } else {
+            const listLine = document.createElement('div');
+            listLine.classList.add('list-line', 'flx-ctr');
+    
+            const listNum = document.createElement('div');
+            listNum.classList.add('num', 'flx-ctr');
+            listNum.innerText = `${cardCount}.`
+    
+            const listBlockEng = document.createElement('div');
+            const listBlockCh = document.createElement('div');
+            listBlockEng.classList.add('list-block', 'flx-ctr');
+            listBlockCh.classList.add('list-block', 'flx-ctr');
+            listBlockEng.innerText = card.id;
+            listBlockCh.innerText = card.text;
+            listBlockCh.style.fontFamily = 'Noto Serif TC';
+    
+            listLine.appendChild(listNum);
+            listLine.appendChild(listBlockEng);
+            listLine.appendChild(listBlockCh);
+    
+            cardList.appendChild(listLine);
+
+            document.getElementById('card-id').value = '';
+            document.getElementById('card-text').value = '';
+            document.getElementById('card-id').focus();
+        }
+        
+    })
+
+    // if (cardCount === 10) {
+    //     document.getElementById('card-id').setAttribute('disabled', 'disabled');
+    //     document.getElementById('card-text').setAttribute('disabled', 'disabled');
+
+    //     const colorPicker = document.createElement('div');
+    //     colorPicker.classList.add('color-picker', 'flx-ctr')
+
+    //     const colorPickerLabel = document.createElement('label');
+    //     colorPickerLabel.setAttribute('for', 'color-picker');
+    //     colorPickerLabel.classList.add('color-picker', 'flx-ctr');
+    //     colorPickerLabel.innerText = 'Choose a color for your deck: '
+        
+    //     const colorPickerInput = document.createElement('input');
+    //     colorPickerInput.setAttribute('type', 'color');
+    //     colorPickerInput.setAttribute('id', 'color-picker');
+    //     colorPickerInput.setAttribute('value', '#b7efd0');
+        
+    //     colorPicker.appendChild(colorPickerLabel);
+    //     colorPicker.appendChild(colorPickerInput);
+    //     cardList.appendChild(colorPicker);
+
+    //     const playBtn = document.createElement('button');
+    //     playBtn.classList.add('play-btn');
+    //     playBtn.innerText = 'Play!'
+
+    //     playBtn.addEventListener('click', function(evt) {
+    //         evt.preventDefault();
+    //         custom.color = colorPickerInput.value;
+    //         createModal.classList.remove('active');
+    //         overlay.classList.remove('active');
+    //         init(custom);
+    //     });
+    //     cardList.appendChild(playBtn);
+    // }
+}
+
 
 function openList(evt) {
     evt.preventDefault();
@@ -454,3 +478,15 @@ function openList(evt) {
         overlay.classList.remove('active');
     })
 }
+
+// Things to fix/improve:
+
+    // flexible fonts
+    // targeting unicode to change font styles
+    // removing items from create deck list
+    // what to do about overflowing study list?
+    // don't allow blank cards in create deck form
+    // display message on blank study list
+
+    // require Chinese character input in form
+    // click outside modal to close it
