@@ -17,6 +17,7 @@ const matchEls = [...document.querySelectorAll('.match-board > div')];
 const studyCheckbox = document.getElementById('check');
 const deckBtns = [...document.querySelectorAll('.deck-btn')];
 const deckBtn = document.querySelector('.deck-btns');
+const addCardBtn = document.getElementById('add-card');
 
 const clearedModal = document.getElementById('cleared-modal');
 const createModal = document.getElementById('create-modal');
@@ -34,6 +35,7 @@ studyCheckbox.addEventListener('change', handleToggle);
 document.getElementById('reset').addEventListener('click', resetBoard);
 document.getElementById('create-deck').addEventListener('click', openForm);
 document.getElementById('my-list-btn').addEventListener('click', openList);
+addCardBtn.addEventListener('click', addCard)
 
 // Makes the starter deck active on page load, before init() is called
 document.getElementById('starter-btn').classList.add('active-deck');
@@ -334,13 +336,6 @@ document.getElementById('card-text').addEventListener('keyup', function(evt) {
         document.getElementById('add-card').click();
     }
 });
-
-document.getElementById('card-text').addEventListener('change', function(evt) {
-    const isValid = evt.target.reportValidity();
-    // console.log(isValid);
-    evt.target.setAttribute('aria-invalid', !isValid); // if aria-invalid is true, a screen reader will idenitfy the input as invalid
-});
-
 
 function addCard() {
     cardCount++;
