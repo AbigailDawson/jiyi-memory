@@ -279,7 +279,6 @@ heading {
     padding: 1vmin;
     font-family: 'Varela Round', sans-serif;
     font-size: 1.7vmin;
-    font-weight: 600;
     border-radius: .5vmin;
     background-color: var(--matches-color);
     color: var(--button-text-color);
