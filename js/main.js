@@ -346,21 +346,25 @@ function addCard() {
     custom.newCard(engText, engText, false, false, false);
 
     // Move to evt listener?
-    cardDeck = custom;
+    // cardDeck = custom;
 
     renderCreateDeck();
 }
 
 function renderCreateDeck() {
-    const cardList = document.querySelector('.card-list')
-    const existingList = cardList.querySelector('div');
     
-    if (existingList) cardList.removeChild(existingList);
     
+    const cardList = document.querySelector('.card-list');
+    const existingList = document.querySelector('listLine');
+    if (existingList) cardList.remove(existingList);
+
     const chCards = custom.cards.filter((card) => card.text.match(/[\u4E00-\u9FFF]/));
+    console.log('chCards before forEach loop runs: ', chCards)
 
     chCards.forEach((card, idx) => {
-        console.log('card index: ', idx);
+        console.log('card: ', card.text);
+        console.log('index: ', idx);
+
         const listLine = document.createElement('div');
         listLine.classList.add('list-line', 'flx-ctr');
 
@@ -387,40 +391,42 @@ function renderCreateDeck() {
         document.getElementById('card-id').focus();
     })
 
-    // if (cardCount === 10) {
-    //     document.getElementById('card-id').setAttribute('disabled', 'disabled');
-    //     document.getElementById('card-text').setAttribute('disabled', 'disabled');
+    if (cardCount === 10) {
+        document.getElementById('card-id').setAttribute('disabled', 'disabled');
+        document.getElementById('card-text').setAttribute('disabled', 'disabled');
 
-    //     const colorPicker = document.createElement('div');
-    //     colorPicker.classList.add('color-picker', 'flx-ctr')
+        const colorPicker = document.createElement('div');
+        colorPicker.classList.add('color-picker', 'flx-ctr')
 
-    //     const colorPickerLabel = document.createElement('label');
-    //     colorPickerLabel.setAttribute('for', 'color-picker');
-    //     colorPickerLabel.classList.add('color-picker', 'flx-ctr');
-    //     colorPickerLabel.innerText = 'Choose a color for your deck: '
+        const colorPickerLabel = document.createElement('label');
+        colorPickerLabel.setAttribute('for', 'color-picker');
+        colorPickerLabel.classList.add('color-picker', 'flx-ctr');
+        colorPickerLabel.innerText = 'Choose a color for your deck: '
         
-    //     const colorPickerInput = document.createElement('input');
-    //     colorPickerInput.setAttribute('type', 'color');
-    //     colorPickerInput.setAttribute('id', 'color-picker');
-    //     colorPickerInput.setAttribute('value', '#b7efd0');
+        const colorPickerInput = document.createElement('input');
+        colorPickerInput.setAttribute('type', 'color');
+        colorPickerInput.setAttribute('id', 'color-picker');
+        colorPickerInput.setAttribute('value', '#b7efd0');
         
-    //     colorPicker.appendChild(colorPickerLabel);
-    //     colorPicker.appendChild(colorPickerInput);
-    //     cardList.appendChild(colorPicker);
+        colorPicker.appendChild(colorPickerLabel);
+        colorPicker.appendChild(colorPickerInput);
+        cardList.appendChild(colorPicker);
 
-    //     const playBtn = document.createElement('button');
-    //     playBtn.classList.add('play-btn');
-    //     playBtn.innerText = 'Play!'
+        const playBtn = document.createElement('button');
+        playBtn.classList.add('play-btn');
+        playBtn.innerText = 'Play!'
 
-    //     playBtn.addEventListener('click', function(evt) {
-    //         evt.preventDefault();
-    //         custom.color = colorPickerInput.value;
-    //         createModal.classList.remove('active');
-    //         overlay.classList.remove('active');
-    //         init(custom);
-    //     });
-    //     cardList.appendChild(playBtn);
-    // }
+        playBtn.addEventListener('click', function(evt) {
+            evt.preventDefault();
+            custom.color = colorPickerInput.value;
+            cardDeck = custom;
+            createModal.classList.remove('active');
+            overlay.classList.remove('active');
+            init(custom);
+        });
+
+        cardList.appendChild(playBtn);
+    }
 }
 
 
