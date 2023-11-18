@@ -345,14 +345,10 @@ function addCard() {
     custom.newCard(engText, chText, false, false, false);
     custom.newCard(engText, engText, false, false, false);
 
-    // Move to evt listener?
-    // cardDeck = custom;
-
     renderCreateDeck();
 }
 
 function renderCreateDeck() {
-    
     
     const cardList = document.querySelector('.card-list');
     const existingList = document.querySelector('listLine');
