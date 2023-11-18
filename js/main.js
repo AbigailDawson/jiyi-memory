@@ -222,11 +222,13 @@ function renderBoard() {
             } else if (card.matched !== true && card.flipped === true) {
                 cellEl.style.backgroundColor = 'var(--flipped-card-color)';
                 cellEl.innerText = card.text;
-                // console.log(card.text);
-                // console.log(card.text.match(/[\u4E00-\u9FFF]/));
-                // if (card.text.match(/[\u4E00-\u9FFF]/)) {
-                //     cellEl.style.fontSize = '3.5vmin';
-                // }
+                if (!card.text.match(/[\u4E00-\u9FFF]/)) {
+                    cellEl.style.fontSize = '2.3vmin';
+                    cellEl.style.fontFamily = 'Paytone One, serif';
+                } else if (card.text.match(/[\u4E00-\u9FFF]/)) {
+                    cellEl.style.fontSize = '3.2vmin';
+                    cellEl.style.fontFamily = 'Noto Serif TC, sans-serif';
+                }
             }
         })   
     })
