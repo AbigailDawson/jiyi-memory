@@ -335,6 +335,11 @@ document.getElementById('card-text').addEventListener('keyup', function(evt) {
     }
 });
 
+document.getElementById('card-text').addEventListener('input', function(evt) {
+    const input = evt.target.value;
+    const isValid = /^[\u4E00-\u9FFF0-9]+$/.test(input)
+    console.log(isValid)
+})
 
 function addCard() {
     cardCount++;
@@ -482,8 +487,6 @@ function openList(evt) {
 
 // Things to fix/improve:
 
-    // flexible fonts
-    // targeting unicode to change font styles
     // removing items from create deck list
     // what to do about overflowing study list?
     // don't allow blank cards in create deck form
