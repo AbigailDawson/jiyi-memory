@@ -335,11 +335,12 @@ document.getElementById('card-text').addEventListener('keyup', function(evt) {
     }
 });
 
-document.getElementById('card-text').addEventListener('input', function(evt) {
-    const input = evt.target.value;
-    const isValid = /^[\u4E00-\u9FFF0-9]+$/.test(input)
-    console.log(isValid)
-})
+document.getElementById('card-text').addEventListener('change', function(evt) {
+    const isValid = evt.target.reportValidity();
+    console.log(isValid);
+    evt.target.setAttribute('aria-invalid', !isValid); // if aria-invalid is true, a screen reader will idenitfy the input as invalid
+});
+
 
 function addCard() {
     cardCount++;
