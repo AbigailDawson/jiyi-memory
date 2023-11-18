@@ -352,42 +352,47 @@ function addCard() {
 }
 
 function renderCreateDeck() {
-    console.log(cardCount);
     const cardList = document.querySelector('.card-list')
     const existingList = cardList.querySelector('div');
     
     if (existingList) cardList.removeChild(existingList);
     
-    custom.cards.forEach((card) => {
+    const chCards = [];
+    custom.cards.forEach((card, idx) => {
         if (!card.text.match(/[\u4E00-\u9FFF]/)) {
             return;
         } else {
-            const listLine = document.createElement('div');
-            listLine.classList.add('list-line', 'flx-ctr');
-    
-            const listNum = document.createElement('div');
-            listNum.classList.add('num', 'flx-ctr');
-            listNum.innerText = `${cardCount}.`
-    
-            const listBlockEng = document.createElement('div');
-            const listBlockCh = document.createElement('div');
-            listBlockEng.classList.add('list-block', 'flx-ctr');
-            listBlockCh.classList.add('list-block', 'flx-ctr');
-            listBlockEng.innerText = card.id;
-            listBlockCh.innerText = card.text;
-            listBlockCh.style.fontFamily = 'Noto Serif TC';
-    
-            listLine.appendChild(listNum);
-            listLine.appendChild(listBlockEng);
-            listLine.appendChild(listBlockCh);
-    
-            cardList.appendChild(listLine);
-
-            document.getElementById('card-id').value = '';
-            document.getElementById('card-text').value = '';
-            document.getElementById('card-id').focus();
+            chCards.push(card);
         }
-        
+    });
+    console.log(chCards);
+
+    chCards.forEach((card, idx) => {
+        console.log('card index: ', idx);
+        const listLine = document.createElement('div');
+        listLine.classList.add('list-line', 'flx-ctr');
+
+        const listNum = document.createElement('div');
+        listNum.classList.add('num', 'flx-ctr');
+        listNum.innerText = `${idx + 1}.`;
+
+        const listBlockEng = document.createElement('div');
+        const listBlockCh = document.createElement('div');
+        listBlockEng.classList.add('list-block', 'flx-ctr');
+        listBlockCh.classList.add('list-block', 'flx-ctr');
+        listBlockEng.innerText = card.id;
+        listBlockCh.innerText = card.text;
+        listBlockCh.style.fontFamily = 'Noto Serif TC';
+
+        listLine.appendChild(listNum);
+        listLine.appendChild(listBlockEng);
+        listLine.appendChild(listBlockCh);
+
+        cardList.appendChild(listLine);
+
+        document.getElementById('card-id').value = '';
+        document.getElementById('card-text').value = '';
+        document.getElementById('card-id').focus();
     })
 
     // if (cardCount === 10) {
