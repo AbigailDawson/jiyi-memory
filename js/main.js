@@ -357,15 +357,7 @@ function renderCreateDeck() {
     
     if (existingList) cardList.removeChild(existingList);
     
-    const chCards = [];
-    custom.cards.forEach((card, idx) => {
-        if (!card.text.match(/[\u4E00-\u9FFF]/)) {
-            return;
-        } else {
-            chCards.push(card);
-        }
-    });
-    console.log(chCards);
+    const chCards = custom.cards.filter((card) => card.text.match(/[\u4E00-\u9FFF]/));
 
     chCards.forEach((card, idx) => {
         console.log('card index: ', idx);
