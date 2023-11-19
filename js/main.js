@@ -351,6 +351,13 @@ function addCard() {
     renderCreateDeck();
 }
 
+function removeCard() {
+    custom.cards.pop(custom.cards[custom.cards.length - 1])
+    custom.cards.pop(custom.cards[custom.cards.length - 1]);
+    console.log('custom deck after delete: ', custom);
+    renderCreateDeck();
+}
+
 function renderCreateDeck() {
     const cardList = document.querySelector('.card-list');
     cardList.innerHTML = '';
@@ -379,6 +386,7 @@ function renderCreateDeck() {
         removeBtn.style.background = 'no-repeat center';
         removeBtn.style.backgroundImage = `url('/icons/delete-icon.svg')`;
         removeBtn.style.backgroundSize = 'contain';
+        removeBtn.addEventListener('click', removeCard);
         
         listLine.appendChild(listNum);
         listLine.appendChild(listBlockEng);
