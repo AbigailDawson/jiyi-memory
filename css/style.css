@@ -716,7 +716,7 @@ input:focus {
     left: 0;
 }
 
-@media (min-width: 950px) {
+@media (min-width: 900px) {
     .mobile-decks {
         display: none;
     }
@@ -726,7 +726,7 @@ input:focus {
     }
 }
 
-@media (max-width: 949px) {
+@media (max-width: 899px) {
 
     .flx-ctr {
         display: flex;
