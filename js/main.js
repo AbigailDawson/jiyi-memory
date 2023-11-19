@@ -15,6 +15,7 @@ const boardEls = [...document.querySelectorAll('.board > div')];
 const boardEl = document.querySelector('.board');
 const matchEls = [...document.querySelectorAll('.match-board > div')];
 const studyCheckbox = document.getElementById('check');
+const smallStudyBtn = document.getElementById('small-study-btn');
 const deckBtns = [...document.querySelectorAll('.deck-btn')];
 const deckBtn = document.querySelector('.deck-btns');
 const addCardBtn = document.getElementById('add-card');
@@ -34,7 +35,9 @@ const mobileDecks = document.querySelector('.mobile-decks');
 deckBtn.addEventListener('click', setDeck);
 boardEl.addEventListener('click', handleCardFlip);
 studyCheckbox.addEventListener('change', handleToggle);
+smallStudyBtn.addEventListener('click', handleToggle);
 document.getElementById('reset').addEventListener('click', resetBoard);
+document.getElementById('small-reset-btn').addEventListener('click', resetBoard);
 document.getElementById('create-deck').addEventListener('click', openForm);
 document.getElementById('my-list-btn').addEventListener('click', openList);
 addCardBtn.addEventListener('click', addCard)
@@ -50,6 +53,8 @@ document.getElementById('starter-btn').classList.add('active-deck');
 init();
 
 function resetBoard() {
+    console.log('click heard')
+
     init(cardDeck);   
 }
 
@@ -116,7 +121,7 @@ function init(selectedDeck) {
 
 function handleToggle(evt) {
     evt.preventDefault();
-    if (studyCheckbox.checked === true) {
+    if (studyCheckbox.checked === true || evt.target.innerText === 'Study Mode') {
         studyModal.classList.add('active');
         overlay.classList.add('active');
         
