@@ -374,9 +374,14 @@ function renderCreateDeck() {
         listBlockCh.innerText = card.text;
         listBlockCh.style.fontFamily = 'Noto Serif TC';
 
+        const removeBtn = document.createElement('div');
+        removeBtn.classList.add('remove-btn');
+        removeBtn.innerHTML = '&times;';
+
         listLine.appendChild(listNum);
         listLine.appendChild(listBlockEng);
         listLine.appendChild(listBlockCh);
+        listLine.appendChild(removeBtn)
 
         cardList.appendChild(listLine);
 

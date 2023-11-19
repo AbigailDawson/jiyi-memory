@@ -628,3 +628,13 @@ input:focus {
     height: 3vmin;
     border-radius: 1vmin;
 }
+
+.remove-btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    color: rgb(201, 0, 0);
+    font-size: 2vmin;
+    padding: 0 0 .5vmin .5vmin;
+}
