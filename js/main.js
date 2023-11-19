@@ -376,8 +376,10 @@ function renderCreateDeck() {
 
         const removeBtn = document.createElement('div');
         removeBtn.classList.add('remove-btn');
-        removeBtn.innerHTML = '&times;';
-
+        removeBtn.style.background = 'no-repeat center';
+        removeBtn.style.backgroundImage = `url('/icons/delete-icon.svg')`;
+        removeBtn.style.backgroundSize = 'contain';
+        
         listLine.appendChild(listNum);
         listLine.appendChild(listBlockEng);
         listLine.appendChild(listBlockCh);

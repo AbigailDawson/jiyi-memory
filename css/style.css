@@ -634,7 +634,8 @@ input:focus {
     border: none;
     outline: none;
     background: none;
-    color: rgb(201, 0, 0);
-    font-size: 2vmin;
-    padding: 0 0 .5vmin .5vmin;
+    fill: rgb(201, 0, 0);
+    height: 2vmin;
+    width: 2vmin;
+    margin-left: .5vmin;
 }
