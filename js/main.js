@@ -381,7 +381,7 @@ function renderCreateDeck() {
             listBlockEng.classList.add('list-block', 'flx-ctr');
             listBlockCh.classList.add('list-block', 'flx-ctr');
             listBlockEng.innerText = card.id;
-            listBlockCh.innfgierText = card.text;
+            listBlockCh.innerText = card.text;
             listBlockCh.style.fontFamily = 'Noto Serif TC';
 
             const removeBtn = document.createElement('div');
