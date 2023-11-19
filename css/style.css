@@ -716,7 +716,7 @@ input:focus {
     left: 0;
 }
 
-@media (min-width: 1360px) {
+@media (min-width: 950px) {
     .mobile-decks {
         display: none;
     }
@@ -726,7 +726,7 @@ input:focus {
     }
 }
 
-@media (max-width: 1359px) {
+@media (max-width: 949px) {
 
     .flx-ctr {
         display: flex;
@@ -817,7 +817,7 @@ input:focus {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600) {
     .ham-container {
         padding: 0 1vmin 3vmin 3vmin;
     }
