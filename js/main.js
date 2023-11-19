@@ -352,39 +352,38 @@ function addCard() {
 }
 
 function renderCreateDeck() {
-    
     const cardList = document.querySelector('.card-list');
-
+    cardList.innerHTML = '';
 
     const chCards = custom.cards.filter((card) => card.text.match(/[\u4E00-\u9FFF]/));
 
-    const lastAddedCard = chCards[chCards.length - 1]
+    chCards.forEach((card, idx) => {
 
-    const listLine = document.createElement('div');
-    listLine.classList.add('list-line', 'flx-ctr');
+        const listLine = document.createElement('div');
+        listLine.classList.add('list-line', 'flx-ctr');
 
-    const listNum = document.createElement('div');
-    const cardIdx = chCards.indexOf(lastAddedCard) + 1;
-    listNum.classList.add('num', 'flx-ctr');
-    listNum.innerText = `${cardIdx}.`;
+        const listNum = document.createElement('div');
+        listNum.classList.add('num', 'flx-ctr');
+        listNum.innerText = `${idx + 1}.`;
 
-    const listBlockEng = document.createElement('div');
-    const listBlockCh = document.createElement('div');
-    listBlockEng.classList.add('list-block', 'flx-ctr');
-    listBlockCh.classList.add('list-block', 'flx-ctr');
-    listBlockEng.innerText = lastAddedCard.id;
-    listBlockCh.innerText = lastAddedCard.text;
-    listBlockCh.style.fontFamily = 'Noto Serif TC';
+        const listBlockEng = document.createElement('div');
+        const listBlockCh = document.createElement('div');
+        listBlockEng.classList.add('list-block', 'flx-ctr');
+        listBlockCh.classList.add('list-block', 'flx-ctr');
+        listBlockEng.innerText = card.id;
+        listBlockCh.innerText = card.text;
+        listBlockCh.style.fontFamily = 'Noto Serif TC';
 
-    listLine.appendChild(listNum);
-    listLine.appendChild(listBlockEng);
-    listLine.appendChild(listBlockCh);
+        listLine.appendChild(listNum);
+        listLine.appendChild(listBlockEng);
+        listLine.appendChild(listBlockCh);
 
-    cardList.appendChild(listLine);
+        cardList.appendChild(listLine);
 
-    document.getElementById('card-id').value = '';
-    document.getElementById('card-text').value = '';
-    document.getElementById('card-id').focus();
+        document.getElementById('card-id').value = '';
+        document.getElementById('card-text').value = '';
+        document.getElementById('card-id').focus();
+    })
 
     if (cardCount === 10) {
         document.getElementById('card-id').setAttribute('disabled', 'disabled');
