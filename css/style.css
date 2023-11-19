@@ -816,3 +816,65 @@ input:focus {
         margin-top: 10vmin;
     }
 }
+
+@media (max-width: 768px) {
+    .ham-container {
+        padding: 0 1vmin 3vmin 3vmin;
+    }
+    
+    .hamburger {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .hamburger .bar,
+    .hamburger:after,
+    .hamburger:before {
+        height: 2px;
+        margin: 5px 0px;    
+    }
+    
+    .hamburger.is-active:before {
+        transform: rotate(-45deg) translate(-5px, 5px);
+    }
+
+    .hamburger.is-active:after {
+        transform: rotate(45deg) translate(-5px, -5px);
+    }
+    
+    .mobile-decks {
+        width: 50%;
+        padding-top: 17vmin;
+    }
+    
+    #create-deck {
+
+    }
+
+    .title-flx {
+        margin: 0 0 0 2vmin;
+    }
+
+    .title-flx > a {
+        font-size: 5vmin;
+    }
+
+    .subtitle {
+        font-size: 2vmin;
+        letter-spacing: .3vmin;
+        padding-top: 1.5vmin;
+    }
+
+    .sm-flx {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .row-flx {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+    }
+
+}
