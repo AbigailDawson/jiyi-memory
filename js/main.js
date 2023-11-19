@@ -116,7 +116,7 @@ function init(selectedDeck) {
 
 function handleToggle(evt) {
     evt.preventDefault();
-    if (studyCheckbox.checked = true) {
+    if (studyCheckbox.checked === true) {
         studyModal.classList.add('active');
         overlay.classList.add('active');
         

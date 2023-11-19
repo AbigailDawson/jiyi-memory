@@ -84,6 +84,11 @@ heading {
     letter-spacing: .3vmin;
 }
 
+.small-study-mode,
+.small-reset {
+    display: none;
+}
+
 #reset,
 #play-again,
 #my-list-btn {
@@ -379,13 +384,12 @@ heading {
 .toggle-text {
     font-family: 'Varela Round', sans-serif;
     font-size: 1.5vmin;
-    margin-bottom: -10%;
+    margin-bottom: -20%;
 }
 
 input[type="checkbox"].toggle {
     opacity: 0;
-    left: -90000px;
-    top: -90000px
+    left: -9999px;
 }
 
 input[type="checkbox"].toggle + label {
@@ -397,7 +401,7 @@ input[type="checkbox"].toggle + label {
 input[type="checkbox"].toggle + label::before {
     content: '';
     width: 6.2vmin;
-    height: 3.2vmin;
+    height: 3.25vmin;
     background-color: var(--text-color);
     border-radius: 2vmin;
     margin-right: 1vmin;
@@ -699,7 +703,7 @@ input:focus {
     left: 0;
 }
 
-@media (min-width: 1050px) {
+@media (min-width: 1360px) {
     .mobile-decks {
         display: none;
     }
@@ -709,9 +713,18 @@ input:focus {
     }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1359px) {
+    
+    .flx-ctr {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
     .main {
         position: relative;
+        margin-top: 10vmin;
     }
 
     .left {
@@ -735,5 +748,58 @@ input:focus {
         font-size: 1.3vmin;
         letter-spacing: .1vmin;
         padding-top: 1vmin;
+    }
+
+    .mini-flx {
+        padding: 0 2vmin 0 2vmin;
+    }
+    
+    .mini-flx > p {
+        font-family: 'Varela Round', sans-serif;
+        font-size: 1.5vmin;
+        letter-spacing: .1vmin;
+    }
+    
+    #turn-count,
+    #remaining-count {
+        padding: 1vmin 0;
+        font-family: 'Paytone One', sans-serif;
+        font-size: 1.5vmin;
+        letter-spacing: .3vmin;
+    }
+
+    .toggle-settings {
+        display: none;
+    }
+
+    .small-study-mode,
+    .small-reset {
+        display: block;
+        cursor: pointer;
+        outline: none;
+        font-family: 'Paytone One', sans-serif;
+        font-size: 1.3vmin;
+        letter-spacing: .1vmin;
+        height: 3.5vmin;
+        width: 12vmin;
+        border-radius: .8vmin;
+        border: none;
+        box-shadow: 0 0 .3vmin .2vmin rgba(255, 255, 255, .2);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin-top: 1.3vmin;
+        padding-bottom: .4vmin;
+        transition: 200ms ease-in-out;
+    }
+
+    .small-study-mode:hover,
+    .small-reset:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 .2vmin .2vmin rgba(255, 255, 255, 0.5);
+    }
+    
+    .center,
+    .right {
+        margin-top: 10vmin;
     }
 }
