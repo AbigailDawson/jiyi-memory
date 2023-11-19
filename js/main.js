@@ -350,11 +350,8 @@ function addCard() {
 }
 
 function removeCard() {
-    console.log(custom.cards);
-
     const itemIndex = parseInt(this.getAttribute('data-item-index'));
     custom.cards.splice(itemIndex, 2);
-
     renderCreateDeck();
 }
 
@@ -384,7 +381,7 @@ function renderCreateDeck() {
             listBlockEng.classList.add('list-block', 'flx-ctr');
             listBlockCh.classList.add('list-block', 'flx-ctr');
             listBlockEng.innerText = card.id;
-            listBlockCh.innerText = card.text;
+            listBlockCh.innfgierText = card.text;
             listBlockCh.style.fontFamily = 'Noto Serif TC';
 
             const removeBtn = document.createElement('div');
