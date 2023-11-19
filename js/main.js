@@ -338,8 +338,6 @@ document.getElementById('card-text').addEventListener('keyup', function(evt) {
 });
 
 function addCard() {
-    cardCount++;
-
     // Gets values from input fields
     const engText = document.getElementById('card-id').value;
     const chText = document.getElementById('card-text').value;
@@ -352,9 +350,11 @@ function addCard() {
 }
 
 function removeCard() {
-    custom.cards.pop(custom.cards[custom.cards.length - 1])
-    custom.cards.pop(custom.cards[custom.cards.length - 1]);
-    console.log('custom deck after delete: ', custom);
+    console.log(custom.cards);
+
+    const itemIndex = parseInt(this.getAttribute('data-item-index'));
+    custom.cards.splice(itemIndex, 2);
+
     renderCreateDeck();
 }
 
@@ -362,45 +362,51 @@ function renderCreateDeck() {
     const cardList = document.querySelector('.card-list');
     cardList.innerHTML = '';
 
-    const chCards = custom.cards.filter((card) => card.text.match(/[\u4E00-\u9FFF]/));
+    // const chCards = custom.cards.filter((card) => card.text.match(/[\u4E00-\u9FFF]/));
 
-    chCards.forEach((card, idx) => {
+    custom.cards.forEach((card, idx) => {
 
-        const listLine = document.createElement('div');
-        listLine.classList.add('list-line', 'flx-ctr');
+        if (!card.text.match(/[\u4E00-\u9FFF]/)) {
+            return;
 
-        const listNum = document.createElement('div');
-        listNum.classList.add('num', 'flx-ctr');
-        listNum.innerText = `${idx + 1}.`;
+        } else if (card.text.match(/[\u4E00-\u9FFF]/)) {
+            const listLine = document.createElement('div');
+            listLine.classList.add('list-line', 'flx-ctr');
 
-        const listBlockEng = document.createElement('div');
-        const listBlockCh = document.createElement('div');
-        listBlockEng.classList.add('list-block', 'flx-ctr');
-        listBlockCh.classList.add('list-block', 'flx-ctr');
-        listBlockEng.innerText = card.id;
-        listBlockCh.innerText = card.text;
-        listBlockCh.style.fontFamily = 'Noto Serif TC';
+            const listNum = document.createElement('div');
+            listNum.classList.add('num', 'flx-ctr');
+            listNum.innerText = `${idx}.`;
 
-        const removeBtn = document.createElement('div');
-        removeBtn.classList.add('remove-btn');
-        removeBtn.style.background = 'no-repeat center';
-        removeBtn.style.backgroundImage = `url('/icons/delete-icon.svg')`;
-        removeBtn.style.backgroundSize = 'contain';
-        removeBtn.addEventListener('click', removeCard);
-        
-        listLine.appendChild(listNum);
-        listLine.appendChild(listBlockEng);
-        listLine.appendChild(listBlockCh);
-        listLine.appendChild(removeBtn)
+            const listBlockEng = document.createElement('div');
+            const listBlockCh = document.createElement('div');
+            listBlockEng.classList.add('list-block', 'flx-ctr');
+            listBlockCh.classList.add('list-block', 'flx-ctr');
+            listBlockEng.innerText = card.id;
+            listBlockCh.innerText = card.text;
+            listBlockCh.style.fontFamily = 'Noto Serif TC';
 
-        cardList.appendChild(listLine);
+            const removeBtn = document.createElement('div');
+            removeBtn.classList.add('remove-btn');
+            removeBtn.style.background = 'no-repeat center';
+            removeBtn.style.backgroundImage = `url('/icons/delete-icon.svg')`;
+            removeBtn.style.backgroundSize = 'contain';
+            removeBtn.setAttribute('data-item-index', idx);
+            removeBtn.addEventListener('click', removeCard);
+            
+            listLine.appendChild(listNum);
+            listLine.appendChild(listBlockEng);
+            listLine.appendChild(listBlockCh);
+            listLine.appendChild(removeBtn)
 
-        document.getElementById('card-id').value = '';
-        document.getElementById('card-text').value = '';
-        document.getElementById('card-id').focus();
+            cardList.appendChild(listLine);
+
+            document.getElementById('card-id').value = '';
+            document.getElementById('card-text').value = '';
+            document.getElementById('card-id').focus();
+        }
     })
 
-    if (cardCount === 10) {
+    if (custom.cards.length === 20) {
         document.getElementById('card-id').setAttribute('disabled', 'disabled');
         document.getElementById('card-text').setAttribute('disabled', 'disabled');
 
