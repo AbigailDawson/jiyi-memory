@@ -28,6 +28,8 @@ const clearedCloseBtn = document.getElementById('cleared-close-btn');
 const createCloseBtn = document.getElementById('create-close-btn');
 const myListCloseBtn = document.getElementById('my-list-close-btn');
 const overlay = document.getElementById('overlay');
+const hamBtn = document.querySelector('.hamburger');
+const mobileDecks = document.querySelector('.mobile-decks');
 
 deckBtn.addEventListener('click', setDeck);
 boardEl.addEventListener('click', handleCardFlip);
@@ -36,6 +38,11 @@ document.getElementById('reset').addEventListener('click', resetBoard);
 document.getElementById('create-deck').addEventListener('click', openForm);
 document.getElementById('my-list-btn').addEventListener('click', openList);
 addCardBtn.addEventListener('click', addCard)
+
+hamBtn.addEventListener('click', function() {
+    hamBtn.classList.toggle('is-active'); 
+    mobileDecks.classList.toggle('is-active');
+})
 
 // Makes the starter deck active on page load, before init() is called
 document.getElementById('starter-btn').classList.add('active-deck');
