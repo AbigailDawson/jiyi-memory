@@ -78,6 +78,9 @@ function setDeck(evt) {
     deckBtns.forEach((deckBtn) => deckBtn.classList.remove('active-deck'));
     evt.target.classList.add('active-deck');
 
+    document.querySelector('.mobile-decks').classList.remove('is-active');
+    document.querySelector('.hamburger').classList.remove('is-active');
+
     init(selectedDeck);
 }
 
