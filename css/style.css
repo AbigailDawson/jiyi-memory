@@ -647,14 +647,14 @@ input:focus {
 /* ---- RESPONSIVE DESIGNS ---- */
 
 .ham-container {
-    padding-bottom: 1vmin;
+    padding-bottom: 2vmin;
 }
 
 .hamburger {
     position: relative;
     display: block;
-    width: 50px;
-    height: 50px;
+    width: 5vmin;
+    height: 5vmin;
     cursor: pointer;
     z-index: 100;
 
@@ -670,15 +670,15 @@ input:focus {
     content: '';
     display: block;
     width: 100%;
-    height: 5px;
-    background-color: white;
-    margin: 10px 0px;
+    height: .6vmin;
+    background-color: var(--text-color);
+    margin: 1.2vmin 0;
     transition: 0.4s;
 
 }
 
 .hamburger.is-active:before {
-    transform: rotate(-45deg) translate(-10px, 10px);
+    transform: rotate(-45deg) translate(-.9vmin, 1.6vmin);
 }
 
 .hamburger.is-active .bar {
@@ -686,7 +686,7 @@ input:focus {
 }
 
 .hamburger.is-active:after {
-    transform: rotate(45deg) translate(-11px, -10px);
+    transform: rotate(45deg) translate(-1vmin, -1.7vmin);
 }
 
 .mobile-decks {
@@ -694,14 +694,19 @@ input:focus {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    gap: 3vmin;
     position: fixed;
     top: 0;
     left: -100%;
-    width: 30%;
+    width: 33%;
     min-height: 100vh;
     z-index: 98;
     padding-top: 17vmin;
-    background-color: var(--matches-color);
+    background: linear-gradient(
+        180deg,
+        var(--header-color) 0%,
+        var(--card-color) 30%
+        );    
     transition: 0.4s
 }
 
@@ -737,7 +742,7 @@ input:focus {
 
     .main {
         position: relative;
-        margin-top: 10vmin;
+        margin-top: 13vmin;
     }
 
     .left {
@@ -815,6 +820,10 @@ input:focus {
     .right {
         margin-top: 10vmin;
     }
+
+    .deck-btn {
+        margin-top: 1.5vmin;
+    }
 }
 
 @media (max-width: 600) {
@@ -845,10 +854,6 @@ input:focus {
     .mobile-decks {
         width: 50%;
         padding-top: 17vmin;
-    }
-    
-    #create-deck {
-
     }
 
     .title-flx {
