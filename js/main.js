@@ -362,7 +362,7 @@ function renderCreateDeck() {
     const cardList = document.querySelector('.card-list');
     cardList.innerHTML = '';
 
-    // const chCards = custom.cards.filter((card) => card.text.match(/[\u4E00-\u9FFF]/));
+    let cardCount = 0;
 
     custom.cards.forEach((card, idx) => {
 
@@ -370,12 +370,14 @@ function renderCreateDeck() {
             return;
 
         } else if (card.text.match(/[\u4E00-\u9FFF]/)) {
+            cardCount++;
+
             const listLine = document.createElement('div');
             listLine.classList.add('list-line', 'flx-ctr');
 
             const listNum = document.createElement('div');
             listNum.classList.add('num', 'flx-ctr');
-            listNum.innerText = `${idx}.`;
+            listNum.innerText = `${cardCount}.`;
 
             const listBlockEng = document.createElement('div');
             const listBlockCh = document.createElement('div');
@@ -390,7 +392,7 @@ function renderCreateDeck() {
             removeBtn.style.background = 'no-repeat center';
             removeBtn.style.backgroundImage = `url('/icons/delete-icon.svg')`;
             removeBtn.style.backgroundSize = 'contain';
-            removeBtn.setAttribute('data-item-index', idx);
+            removeBtn.setAttribute('data-item-index', custom.cards.indexOf(card));
             removeBtn.addEventListener('click', removeCard);
             
             listLine.appendChild(listNum);
