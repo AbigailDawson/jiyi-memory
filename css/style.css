@@ -720,7 +720,7 @@ input:focus {
 .mobile-decks.is-active {
     left: 0;
 }
-
+/* 
 @media (min-width: 900px) {
     .mobile-decks {
         display: none;
@@ -882,4 +882,4 @@ input:focus {
         margin: 0;
     }
 
-}
+} */

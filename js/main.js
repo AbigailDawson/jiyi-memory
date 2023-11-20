@@ -29,23 +29,23 @@ const clearedCloseBtn = document.getElementById('cleared-close-btn');
 const createCloseBtn = document.getElementById('create-close-btn');
 const myListCloseBtn = document.getElementById('my-list-close-btn');
 const overlay = document.getElementById('overlay');
-const hamBtn = document.querySelector('.hamburger');
-const mobileDecks = document.querySelector('.mobile-decks');
+// const hamBtn = document.querySelector('.hamburger');
+// const mobileDecks = document.querySelector('.mobile-decks');
 
 deckBtn.addEventListener('click', setDeck);
 boardEl.addEventListener('click', handleCardFlip);
 studyCheckbox.addEventListener('change', handleToggle);
-smallStudyBtn.addEventListener('click', handleToggle);
+// smallStudyBtn.addEventListener('click', handleToggle);
 document.getElementById('reset').addEventListener('click', resetBoard);
-document.getElementById('small-reset-btn').addEventListener('click', resetBoard);
+// document.getElementById('small-reset-btn').addEventListener('click', resetBoard);
 document.getElementById('create-deck').addEventListener('click', openForm);
 document.getElementById('my-list-btn').addEventListener('click', openList);
 addCardBtn.addEventListener('click', addCard)
 
-hamBtn.addEventListener('click', function() {
-    hamBtn.classList.toggle('is-active'); 
-    mobileDecks.classList.toggle('is-active');
-})
+// hamBtn.addEventListener('click', function() {
+//     hamBtn.classList.toggle('is-active'); 
+//     mobileDecks.classList.toggle('is-active');
+// })
 
 // Makes the starter deck active on page load, before init() is called
 document.getElementById('starter-btn').classList.add('active-deck');
@@ -78,8 +78,8 @@ function setDeck(evt) {
     deckBtns.forEach((deckBtn) => deckBtn.classList.remove('active-deck'));
     evt.target.classList.add('active-deck');
 
-    document.querySelector('.mobile-decks').classList.remove('is-active');
-    document.querySelector('.hamburger').classList.remove('is-active');
+    // document.querySelector('.mobile-decks').classList.remove('is-active');
+    // document.querySelector('.hamburger').classList.remove('is-active');
 
     init(selectedDeck);
 }
