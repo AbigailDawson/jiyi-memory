@@ -53,8 +53,6 @@ document.getElementById('starter-btn').classList.add('active-deck');
 init();
 
 function resetBoard() {
-    console.log('click heard')
-
     init(cardDeck);   
 }
 
